@@ -24,3 +24,9 @@ table{width:100%;border-collapse:collapse;margin:1rem 0;border:1px solid rgba(14
 th,td{padding:.6rem;border-bottom:1px solid rgba(148,163,184,.15);text-align:left}
 thead th{background:rgba(148,163,184,.08)}
 .muted{color:var(--muted)}
+
+/* Branding tweaks for Phenix Force */
+.brand-link{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.brand-logo{width:32px;height:32px;object-fit:contain;border-radius:6px;background:transparent}
+.brand-name{font-weight:800;letter-spacing:.02em;color:#38bdf8}
+.brand-sub{font-weight:600;color:#9ca3af;margin-left:.25rem}
