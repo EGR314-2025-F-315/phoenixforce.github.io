@@ -97,34 +97,47 @@
     <!-- HERO (Centered) -->
     <header class="max-w-5xl mx-auto px-4 lg:px-6 pt-10">
       <div
-        class="max-w-3xl mx-auto text-center bg-white/80 backdrop-blur rounded-3xl border border-black/10 shadow-soft p-8"
+        class="relative max-w-3xl mx-auto text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
       >
-        <p
-          class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
-        >
-          Project Home
-        </p>
-        <h1
-          class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
-        >
-          Title &amp; Snapshot
-        </h1>
-        <p class="mt-3 text-ink/75">
-          Minimal landing page with required project facts and quick links. Use
-          this as the entry point to your Team Organization report and the
-          Appendix.
-        </p>
-        <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
-          <a
-            href="./team-organization/"
-            class="btn btn-md bg-black text-white border-0"
-            >Open Team Organization</a
+        <!-- Background image -->
+        <div
+          class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+        ></div>
+
+        <!-- White faded overlay -->
+        <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+
+        <!-- Content -->
+        <div class="relative p-8">
+          <p
+            class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
           >
-          <a
-            href="./appendix/"
-            class="btn btn-md bg-white border border-black/10"
-            >Open Appendix</a
+            Project Home
+          </p>
+          <h1
+            class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
           >
+            Title &amp; Snapshot
+          </h1>
+          <p class="mt-3 text-ink/75">
+            Minimal landing page with required project facts and quick links.
+            Use this as the entry point to your Team Organization report and the
+            Appendix.
+          </p>
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
+            <a
+              href="./team-organization/"
+              class="btn btn-md bg-black text-white border-0"
+            >
+              Open Team Organization
+            </a>
+            <a
+              href="./appendix/"
+              class="btn btn-md bg-white border border-black/10"
+            >
+              Open Appendix
+            </a>
+          </div>
         </div>
       </div>
     </header>
