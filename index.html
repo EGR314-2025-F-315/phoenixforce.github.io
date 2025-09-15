@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phenix Force · EGR 314</title>
-  <meta name="description" content="Phenix Force · Team Organization, Charter, and Repository · EGR 3X4 Embedded Systems" />
-  <link rel="icon" href="./assets/phenix-force-logo.png" />
+  <title>Phenix Force · EGR314</title>
+  <meta name="description" content="Phenix Force · EGR314 Embedded Systems · Team Report" />
+  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" />
   <link rel="stylesheet" href="./assets/styles.css" />
   <script defer src="./assets/script.js"></script>
 </head>
 <body>
-  <!-- Top Nav -->
-  <header class="site-header">
-    <div class="container nav">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="wrap">
       <a class="brand" href="./">
-        <img class="brand-logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" alt="Phenix Force logo" />
+        <img class="logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" alt="Phenix Force logo" />
         <div class="brand-text">
-          <span class="brand-name">Phenix Force</span>
-          <span class="brand-sub">EGR 3X4 · Team Report</span>
+          <span class="brand-title">Phenix Force</span>
+          <span class="brand-sub">EGR314 · Team Report</span>
         </div>
       </a>
-      <nav class="menu">
+      <nav class="nav">
         <a href="./team-organization/">Team Organization</a>
         <a href="./appendix/">Appendix A</a>
         <a href="./resources/">Resources</a>
@@ -29,80 +29,89 @@
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <h1>Engineering with Purpose</h1>
-          <p class="lede">
-            This site is the living report for our embedded-systems project. It presents executive-level summaries up front
-            and links detailed artifacts in the appendix—clean, transparent, and inspection-ready.
-          </p>
-
-          <ul class="badges">
-            <li><strong>Team:</strong> Phenix Force</li>
-            <li><strong>Org:</strong> <em>[ASU-EGR314-YYYY-S/F-###]</em></li>
-            <li><strong>Semester:</strong> <em>[Spring/Fall 2025]</em></li>
-          </ul>
-
-          <div class="cta">
-            <a class="btn btn-primary" href="./team-organization/">Open Team Organization</a>
-            <a class="btn btn-ghost" href="./appendix/">View Appendix A</a>
-          </div>
+  <!-- Hero banner (dashboard-style) -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">Engineering with Purpose</h1>
+        <p class="hero-lede">
+          A modern, inspection-ready report for our embedded-systems project. High-level summaries up front.
+          Detailed artifacts linked in the appendix.
+        </p>
+        <div class="chips">
+          <span class="chip"><strong>Team:</strong> Phenix Force</span>
+          <span class="chip"><strong>Org:</strong> <em>EGR314-2025-F-315</em></span>
+          <span class="chip"><strong>Semester:</strong> <em>Fall 2025</em></span>
         </div>
-
-        <div class="hero-card">
-          <div class="card">
-            <h3>Front Matter</h3>
-            <dl class="meta">
-              <dt>Project Name</dt><dd><em>[Replace with your project name]</em></dd>
-              <dt>Team Number</dt><dd><em>[ASU-EGR314-2025-S-228]</em></dd>
-              <dt>Team Members</dt><dd><em>[List names]</em></dd>
-              <dt>Preparation Date</dt><dd><em>[Month Day, 2025]</em></dd>
-              <dt>University / Class / Professor</dt><dd>ASU · EGR 3X4 · Prof. Aukes</dd>
-            </dl>
-            <p class="hint">Keep this page concise. Move verbose material to the appendix and link it contextually.</p>
-          </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="./team-organization/">Open Team Organization</a>
+          <a class="btn btn-ghost" href="./appendix/">View Appendix A</a>
         </div>
       </div>
-    </section>
 
-    <!-- SECTIONS -->
-    <section class="sections">
-      <div class="container grid">
-        <article class="card card-link">
-          <h3>Team Organization</h3>
-          <p>Charter, mission, roles & responsibilities, communication procedures, and accountability plan.</p>
-          <a class="link" href="./team-organization/">Open section →</a>
-        </article>
+      <aside class="hero-card card">
+        <h3>Front Matter</h3>
+        <dl class="meta">
+          <dt>Project Name</dt><dd><em>[Replace with your project name]</em></dd>
+          <dt>Team Number</dt><dd><em>EGR314-2025-F-315</em></dd>
+          <dt>Team Members</dt><dd><em>[List names]</em></dd>
+          <dt>Preparation Date</dt><dd><em>[Month Day, 2025]</em></dd>
+          <dt>University / Class / Professor</dt><dd>ASU · EGR314 · Prof. Aukes</dd>
+        </dl>
+        <p class="hint">Keep this page concise. Move verbose material to the appendix and link it contextually.</p>
+      </aside>
+    </div>
+  </section>
 
-        <article class="card card-link">
-          <h3>Appendix A — Organization</h3>
-          <p>Brainstorm artifacts, availability matrix, meeting templates, and supporting notes.</p>
-          <a class="link" href="./appendix/">Open appendix →</a>
-        </article>
+  <!-- Stats row (like the screenshot) -->
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat card"><span class="stat-label">Status</span><span class="stat-value">On Track</span></div>
+      <div class="stat card"><span class="stat-label">Deliverables</span><span class="stat-value">Website · Charter · Mission</span></div>
+      <div class="stat card"><span class="stat-label">Next Review</span><span class="stat-value">[MM/DD]</span></div>
+      <div class="stat card"><span class="stat-label">Repo</span><span class="stat-value">Public</span></div>
+    </div>
+  </section>
 
-        <article class="card card-link">
-          <h3>Resources</h3>
-          <p>Course guides, Pages setup, and Markdown references curated for quick use.</p>
-          <a class="link" href="./resources/">View resources →</a>
-        </article>
+  <!-- Cards grid -->
+  <section class="sections">
+    <div class="wrap card-grid">
+      <article class="card link-card">
+        <div class="card-kicker">Report</div>
+        <h3>Team Organization</h3>
+        <p>Charter, mission, roles & responsibilities, communication procedures, accountability plan.</p>
+        <a class="card-link" href="./team-organization/">Open section →</a>
+      </article>
 
-        <article class="card card-link">
-          <h3>Grading & Submission</h3>
-          <p>Checklist for URLs and PDF export instructions with the official points breakdown.</p>
-          <a class="link" href="./grading/">See grading →</a>
-        </article>
-      </div>
-    </section>
-  </main>
+      <article class="card link-card">
+        <div class="card-kicker">Artifacts</div>
+        <h3>Appendix A — Organization</h3>
+        <p>Brainstorm notes, availability matrix, meeting templates, and supporting documentation.</p>
+        <a class="card-link" href="./appendix/">Open appendix →</a>
+      </article>
 
-  <footer class="site-footer">
-    <div class="container">
+      <article class="card link-card">
+        <div class="card-kicker">References</div>
+        <h3>Resources</h3>
+        <p>Course guides, GitHub Pages setup, Markdown references—curated and current.</p>
+        <a class="card-link" href="./resources/">View resources →</a>
+      </article>
+
+      <article class="card link-card">
+        <div class="card-kicker">Checklist</div>
+        <h3>Grading & Submission</h3>
+        <p>URLs to repo & site, PDF export instructions, and official points breakdown.</p>
+        <a class="card-link" href="./grading/">See grading →</a>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
       <hr />
-      <small>© 2025 Phenix Force. Replace placeholders before submitting.</small>
+      <small>© 2025 Phenix Force · EGR314. Replace placeholders before submitting.</small>
     </div>
   </footer>
 </body>
 </html>
+
