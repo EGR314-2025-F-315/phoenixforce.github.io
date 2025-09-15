@@ -57,7 +57,7 @@ body{
   position:absolute;inset:0;z-index:-1;
   background:
     linear-gradient(180deg, rgba(10,16,14,.65), rgba(10,16,14,.45) 45%, rgba(247,243,231,.85) 88%, var(--bg) 100%),
-    url("./assets/hero.png") center/cover no-repeat;
+    url("https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero.png") center/cover no-repeat;
 }
 .hero-grid{
   display:grid;grid-template-columns:1.2fr .8fr;gap:16px;
