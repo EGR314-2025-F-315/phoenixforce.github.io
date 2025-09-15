@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Phenix Force · EGR314</title>
   <meta name="description" content="Phenix Force · EGR314 Embedded Systems · Team Report" />
-  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" />
+  <link rel="icon" href="./assets/phenix-force-logo.png" />
   <link rel="stylesheet" href="./assets/styles.css" />
   <script defer src="./assets/script.js"></script>
 </head>
 <body>
   <!-- Topbar -->
   <header class="topbar">
-    <div class="wrap">
+    <div class="wrap topbar-inner">
       <a class="brand" href="./">
-        <img class="logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" alt="Phenix Force logo" />
+        <img class="brand-logo" src="./assets/phenix-force-logo.png" alt="Phenix Force logo" />
         <div class="brand-text">
           <span class="brand-title">Phenix Force</span>
           <span class="brand-sub">EGR314 · Team Report</span>
@@ -29,14 +29,14 @@
     </div>
   </header>
 
-  <!-- Hero banner (dashboard-style) -->
+  <!-- HERO: full-bleed image with gradient + glass card -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-title">Engineering with Purpose</h1>
-        <p class="hero-lede">
-          A modern, inspection-ready report for our embedded-systems project. High-level summaries up front.
-          Detailed artifacts linked in the appendix.
+    <div class="hero-bg"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>Engineering with Purpose</h1>
+        <p class="lede">
+          A clean, inspection-ready report for our embedded-systems project. Executive summaries first; deep details in the appendix.
         </p>
         <div class="chips">
           <span class="chip"><strong>Team:</strong> Phenix Force</span>
@@ -49,21 +49,21 @@
         </div>
       </div>
 
-      <aside class="hero-card card">
+      <aside class="glass card">
         <h3>Front Matter</h3>
         <dl class="meta">
           <dt>Project Name</dt><dd><em>[Replace with your project name]</em></dd>
-          <dt>Team Number</dt><dd><em>EGR314-2025-F-315</em></dd>
+          <dt>Team Number</dt><dd>EGR314-2025-F-315</dd>
           <dt>Team Members</dt><dd><em>[List names]</em></dd>
           <dt>Preparation Date</dt><dd><em>[Month Day, 2025]</em></dd>
           <dt>University / Class / Professor</dt><dd>ASU · EGR314 · Prof. Aukes</dd>
         </dl>
-        <p class="hint">Keep this page concise. Move verbose material to the appendix and link it contextually.</p>
+        <p class="hint">Keep this page concise. Link deeper material in the appendix.</p>
       </aside>
     </div>
   </section>
 
-  <!-- Stats row (like the screenshot) -->
+  <!-- Stats row -->
   <section class="stats">
     <div class="wrap stats-grid">
       <div class="stat card"><span class="stat-label">Status</span><span class="stat-value">On Track</span></div>
@@ -73,35 +73,35 @@
     </div>
   </section>
 
-  <!-- Cards grid -->
+  <!-- Section cards -->
   <section class="sections">
-    <div class="wrap card-grid">
+    <div class="wrap grid">
       <article class="card link-card">
-        <div class="card-kicker">Report</div>
+        <div class="kicker">Report</div>
         <h3>Team Organization</h3>
         <p>Charter, mission, roles & responsibilities, communication procedures, accountability plan.</p>
-        <a class="card-link" href="./team-organization/">Open section →</a>
+        <a class="link" href="./team-organization/">Open section →</a>
       </article>
 
       <article class="card link-card">
-        <div class="card-kicker">Artifacts</div>
+        <div class="kicker">Artifacts</div>
         <h3>Appendix A — Organization</h3>
         <p>Brainstorm notes, availability matrix, meeting templates, and supporting documentation.</p>
-        <a class="card-link" href="./appendix/">Open appendix →</a>
+        <a class="link" href="./appendix/">Open appendix →</a>
       </article>
 
       <article class="card link-card">
-        <div class="card-kicker">References</div>
+        <div class="kicker">References</div>
         <h3>Resources</h3>
         <p>Course guides, GitHub Pages setup, Markdown references—curated and current.</p>
-        <a class="card-link" href="./resources/">View resources →</a>
+        <a class="link" href="./resources/">View resources →</a>
       </article>
 
       <article class="card link-card">
-        <div class="card-kicker">Checklist</div>
+        <div class="kicker">Checklist</div>
         <h3>Grading & Submission</h3>
         <p>URLs to repo & site, PDF export instructions, and official points breakdown.</p>
-        <a class="card-link" href="./grading/">See grading →</a>
+        <a class="link" href="./grading/">See grading →</a>
       </article>
     </div>
   </section>
@@ -114,4 +114,3 @@
   </footer>
 </body>
 </html>
-
