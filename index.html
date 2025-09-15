@@ -1,115 +1,235 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phenix Force · EGR314</title>
-  <meta name="description" content="Phenix Force · EGR314 Embedded Systems · Team Report" />
-  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" />
-  <link rel="stylesheet" href="./assets/styles.css" />
-  <script defer src="./assets/script.js"></script>
-</head>
-<body>
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="./">
-        <img class="brand-logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png" alt="Phenix Force logo" />
-        <div class="brand-text">
-          <span class="brand-title">Phenix Force</span>
-          <span class="brand-sub">EGR314 · Team Report</span>
-        </div>
-      </a>
-      <nav class="nav">
-        <a href="./team-organization/">Team Organization</a>
-        <a href="./appendix/">Appendix A</a>
-        <a href="./resources/">Resources</a>
-        <a href="./grading/">Grading</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Home - Phenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
 
-  <!-- HERO: full-bleed image with gradient + glass card -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1>Engineering with Purpose</h1>
-        <p class="lede">
-          A clean, inspection-ready report for our embedded-systems project. Executive summaries first; deep details in the appendix.
-        </p>
-        <div class="chips">
-          <span class="chip"><strong>Team:</strong> Phenix Force</span>
-          <span class="chip"><strong>Org:</strong> <em>EGR314-2025-F-315</em></span>
-          <span class="chip"><strong>Semester:</strong> <em>Fall 2025</em></span>
-        </div>
-        <div class="cta">
-          <a class="btn btn-primary" href="./team-organization/">Open Team Organization</a>
-          <a class="btn btn-ghost" href="./appendix/">View Appendix A</a>
-        </div>
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    <!-- NAV -->
+    <div
+      class="navbar bg-white/90 backdrop-blur border-b border-black/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a href="./" class="flex items-center gap-2 pl-1">
+          <img
+            class="w-8 h-8 rounded-lg"
+            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+            alt="Phenix Force"
+          />
+          <span class="font-black tracking-wide">Phenix Force</span>
+        </a>
       </div>
-
-      <aside class="glass card">
-        <h3>Front Matter</h3>
-        <dl class="meta">
-          <dt>Project Name</dt><dd><em>[Replace with your project name]</em></dd>
-          <dt>Team Number</dt><dd>EGR314-2025-F-315</dd>
-          <dt>Team Members</dt><dd><em>[List names]</em></dd>
-          <dt>Preparation Date</dt><dd><em>[Month Day, 2025]</em></dd>
-          <dt>University / Class / Professor</dt><dd>ASU · EGR314 · Dr. Suo</dd>
-        </dl>
-      </aside>
+      <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li>
+            <a class="font-semibold" href="./team-organization/"
+              >Team Organization</a
+            >
+          </li>
+          <li><a class="font-semibold" href="./appendix/">Appendix</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a
+          class="btn btn-sm bg-gradient-to-r from-rose to-peach text-black font-bold border-0 shadow-soft"
+          href="./grading/"
+          >Grading</a
+        >
+      </div>
     </div>
-  </section>
 
-  <!-- Stats row -->
-  <section class="stats">
-    <div class="wrap stats-grid">
-      <div class="stat card"><span class="stat-label">Status</span><span class="stat-value">On Track</span></div>
-      <div class="stat card"><span class="stat-label">Deliverables</span><span class="stat-value">Website · Charter · Mission</span></div>
-      <div class="stat card"><span class="stat-label">Next Review</span><span class="stat-value">[MM/DD]</span></div>
-      <div class="stat card"><span class="stat-label">Repo</span><span class="stat-value">Public</span></div>
-    </div>
-  </section>
+    <!-- PAGE HEADER (matches Team Organization style) -->
+    <header class="max-w-5xl mx-auto px-4 lg:px-6 py-10">
+      <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">
+        Project Home
+      </p>
+      <h1
+        class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+      >
+        Title & Snapshot
+      </h1>
+      <p class="mt-3 text-ink/75 max-w-prose">
+        Minimal landing page with required project facts and quick links. Use
+        this as the entry point to your Team Organization report and the
+        Appendix.
+      </p>
 
-  <!-- Section cards -->
-  <section class="sections">
-    <div class="wrap grid">
-      <article class="card link-card">
-        <div class="kicker">Report</div>
-        <h3>Team Organization</h3>
-        <p>Charter, mission, roles & responsibilities, communication procedures, accountability plan.</p>
-        <a class="link" href="./team-organization/">Open section →</a>
-      </article>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <a
+          href="./team-organization/"
+          class="btn btn-md bg-black text-white border-0"
+          >Open Team Organization</a
+        >
+        <a href="./appendix/" class="btn btn-md bg-white border border-black/10"
+          >Open Appendix</a
+        >
+      </div>
+    </header>
 
-      <article class="card link-card">
-        <div class="kicker">Artifacts</div>
-        <h3>Appendix A — Organization</h3>
-        <p>Brainstorm notes, availability matrix, meeting templates, and supporting documentation.</p>
-        <a class="link" href="./appendix/">Open appendix →</a>
-      </article>
+    <main class="max-w-5xl mx-auto px-4 lg:px-6 pb-12 space-y-6">
+      <!-- PROJECT FACTS (compact, professional card like your report page) -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Project Facts</span
+          >
 
-      <article class="card link-card">
-        <div class="kicker">References</div>
-        <h3>Resources</h3>
-        <p>Course guides, GitHub Pages setup, Markdown references—curated and current.</p>
-        <a class="link" href="./resources/">View resources →</a>
-      </article>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-3"
+          >
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                Project Name
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">TerraGuard</div>
+            </div>
 
-      <article class="card link-card">
-        <div class="kicker">Checklist</div>
-        <h3>Grading & Submission</h3>
-        <p>URLs to repo & site, PDF export instructions, and official points breakdown.</p>
-        <a class="link" href="./grading/">See grading →</a>
-      </article>
-    </div>
-  </section>
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                Team Number
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">
+                EGR314-2025-F-315
+              </div>
+            </div>
 
-  <footer class="footer">
-    <div class="wrap">
-      <hr />
-      <small>© 2025 Phenix Force · EGR314. Replace placeholders before submitting.</small>
-    </div>
-  </footer>
-</body>
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                Team Members
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">
+                Vinny Panchal, Emonie France, Amanda Pizarro, Danitza Jimenez,
+                James Austin, Erjan Baigenzhin
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                Preparation Date
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">
+                September 14, 2025
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                Semester & Year
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">Fall 2025</div>
+            </div>
+
+            <div class="rounded-xl border border-black/10 p-3">
+              <div
+                class="text-[11px] font-bold uppercase tracking-wide text-ink/60"
+              >
+                University · Class · Professor
+              </div>
+              <div class="mt-1 font-extrabold text-[17px]">
+                ASU · EGR314 · Dr. Suo
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK LINKS (same card aesthetic as report page) -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a
+          href="./team-organization/"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft transition hover:bg-white/95"
+        >
+          <div class="card-body">
+            <span
+              class="badge w-max bg-black/5 border border-black/10 font-bold"
+              >Start Here</span
+            >
+            <h2 class="card-title font-display text-2xl">Team Organization</h2>
+            <p class="text-ink/70">
+              Charter statement and Product Mission-each with a short connective
+              context to show ownership.
+            </p>
+            <div class="mt-2 font-bold">Open →</div>
+          </div>
+        </a>
+
+        <a
+          href="./appendix/"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft transition hover:bg-white/95"
+        >
+          <div class="card-body">
+            <span
+              class="badge w-max bg-black/5 border border-black/10 font-bold"
+              >Optional</span
+            >
+            <h2 class="card-title font-display text-2xl">
+              Appendix A - Organization
+            </h2>
+            <p class="text-ink/70">
+              Notes, extra artifacts, availability matrix, and meeting
+              templates.
+            </p>
+            <div class="mt-2 font-bold">Open →</div>
+          </div>
+        </a>
+      </section>
+    </main>
+
+    <footer class="py-6 px-4 lg:px-6 max-w-5xl mx-auto">
+      <div class="divider my-3"></div>
+      <small class="opacity-70">© 2025 Phenix Force · EGR314</small>
+    </footer>
+  </body>
 </html>

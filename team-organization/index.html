@@ -1,131 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team Organization · Phenix Force · EGR314</title>
-  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" />
-  <link rel="stylesheet" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/styles.css" />
-  <script defer src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/script.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="../">
-        <img class="brand-logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" alt="Phenix Force logo" />
-        <div class="brand-text">
-          <span class="brand-title">Phenix Force</span>
-          <span class="brand-sub">EGR314 · Team Report</span>
-        </div>
-      </a>
-      <nav class="nav">
-        <a href="../team-organization/">Team Organization</a>
-        <a href="../appendix/">Appendix A</a>
-        <a href="../resources/">Resources</a>
-        <a href="../grading/">Grading</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="sections" style="padding-top:18px">
-    <div class="wrap">
-      <div class="card" style="margin-bottom:14px">
-        <div class="kicker">Report</div>
-        <h1 style="margin:6px 0 4px">Team Organization</h1>
-        <p class="lede" style="color:#4D5852">Executive-level summary of how our team operates. Long process notes belong in Appendix A.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Team Organization - Phenix Force</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 20px 60px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="text-ink bg-[#F6F5F2]">
+    <!-- Nav -->
+    <div
+      class="navbar bg-white/90 backdrop-blur border-b border-black/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a href="../" class="flex items-center gap-2 pl-1">
+          <img
+            class="w-9 h-9 rounded-lg"
+            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+            alt="Phenix Force"
+          />
+          <span class="font-black tracking-wide">Phenix Force</span>
+        </a>
       </div>
-
-      <section class="card" id="charter">
-        <h2>Team Charter</h2>
-        <p><em>Paste your finalized charter statement here.</em></p>
-        <p>Context & ownership: briefly explain how we aligned on the charter (criteria, trade-offs, assumptions). Link any long notes to Appendix A.</p>
-      </section>
-
-      <section class="card" id="mission" style="margin-top:12px">
-        <h2>Product Mission Statement</h2>
-        <p><em>Paste your product mission statement here.</em></p>
-        <p>Why this mission fits stakeholders and course constraints. Reference early specs where applicable.</p>
-      </section>
-
-      <section class="card" id="communication" style="margin-top:12px">
-        <h2>Communication Channels & Procedures</h2>
-        <table>
-          <caption><strong>Table 1.</strong> Team Member Communication Modes</caption>
-          <thead><tr><th>Name</th><th>First Choice</th><th>Second Choice</th><th>Third Choice</th></tr></thead>
-          <tbody>
-            <tr><td>Member 1</td><td>Discord</td><td>Text</td><td>Email</td></tr>
-            <tr><td>Member 2</td><td>Discord</td><td>Text</td><td>Email</td></tr>
-            <tr><td>Member 3</td><td>Discord</td><td>Text</td><td>Email</td></tr>
-            <tr><td>Member 4</td><td>Discord</td><td>Text</td><td>Email</td></tr>
-          </tbody>
-        </table>
-        <ul>
-          <li>Primary async channel: <strong>[e.g., Discord #phenix-force]</strong></li>
-          <li>Synchronous: <strong>[weekly in-person/Zoom]</strong></li>
-          <li>Instructor correspondence owner: <strong>[Name]</strong> → mirrors updates to team via <strong>[Channel]</strong></li>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li><a class="font-bold" href="./">Team Organization</a></li>
+          <li><a class="font-bold" href="../appendix/">Appendix</a></li>
         </ul>
-      </section>
-
-      <section class="card" id="meetings" style="margin-top:12px">
-        <h2>Meeting Schedule & Coordination</h2>
-        <ul>
-          <li>Shared availability (≥ 4 hrs/wk outside class): <strong>[link/screenshot]</strong></li>
-          <li>Standing weekly meeting: <strong>[Day Time, Location/Link]</strong></li>
-          <li>Reminders: <strong>[Shared calendar / Discord events]</strong></li>
-          <li>Change policy: <strong>[how to propose/confirm changes]</strong></li>
-        </ul>
-      </section>
-
-      <section class="card" id="roles" style="margin-top:12px">
-        <h2>Roles & Responsibilities</h2>
-        <table>
-          <caption><strong>Table 2.</strong> Project Roles and Duties</caption>
-          <thead><tr><th>Role</th><th>Duties</th><th>Initial Assignee</th></tr></thead>
-          <tbody>
-            <tr><td>Meeting leader</td><td>Schedule, agenda, run meetings</td><td>[Name]</td></tr>
-            <tr><td>Meeting recorder</td><td>Minutes, attendance, action items</td><td>[Name]</td></tr>
-            <tr><td>Assignment leader</td><td>Coordinates Canvas deliverables</td><td>[Name]</td></tr>
-            <tr><td>Project monitor</td><td>Timeline, deadlines, status</td><td>[Name]</td></tr>
-            <tr><td>GitHub owner</td><td>Org/repo setup, Pages, PR flow</td><td>[Name]</td></tr>
-          </tbody>
-        </table>
-        <ul>
-          <li>Rotation cadence: <strong>[e.g., every 2 weeks]</strong></li>
-          <li>Selection method: <strong>[round-robin/strength-based]</strong></li>
-          <li>Cross-support: <strong>[peer pairing, review checklists]</strong></li>
-          <li>Adjusting roles: <strong>[trigger & process]</strong></li>
-          <li>Milestone tracking: <strong>[Gantt/Sheet/GitHub Issues]</strong></li>
-          <li>Assign technical work: <strong>[by subsystem; Issue assignment]</strong></li>
-        </ul>
-      </section>
-
-      <section class="card" id="accountability" style="margin-top:12px">
-        <h2>Team Coordination & Accountability</h2>
-        <ul>
-          <li>Submission sign-off: <strong>[all members review/approve PR]</strong></li>
-          <li>Skill coverage: <strong>[teach-backs; buddy system]</strong></li>
-          <li>Design review feedback: <strong>[log Issues; owners; due dates]</strong></li>
-          <li>Missed contributions: <strong>[escalation ladder; make-up plan]</strong></li>
-          <li>Underperformance → support → consequences: <strong>[coaching → written plan → instructor]</strong></li>
-        </ul>
-      </section>
-
-      <section class="card" id="conflict" style="margin-top:12px">
-        <h2>Conflict Recognition & Resolution</h2>
-        <ul>
-          <li>Normalize disagreement; use specs/data to resolve.</li>
-          <li>Distribute roles to avoid conflicts of interest.</li>
-          <li>Resolve internally when possible; escalate per course policy.</li>
-        </ul>
-      </section>
+      </div>
+      <div class="navbar-end">
+        <a
+          class="btn bg-gradient-to-r from-rose to-peach text-black font-extrabold border-0 shadow-soft"
+          href="../grading/"
+          >Grading</a
+        >
+      </div>
     </div>
-  </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <hr />
-      <small>© 2025 Phenix Force · EGR314</small>
-    </div>
-  </footer>
-</body>
+    <!-- Header -->
+    <header class="max-w-5xl mx-auto px-4 lg:px-6 py-10">
+      <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">
+        Team Organization
+      </p>
+      <h1
+        class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+      >
+        Charter & Product Mission
+      </h1>
+      <p class="mt-3 text-ink/75 max-w-prose">
+        Short, inspection-ready statements with just enough context to show
+        ownership and agreement.
+      </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 lg:px-6 space-y-6 pb-12">
+      <!-- Charter -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Charter Statement</span
+          >
+          <blockquote class="mt-3 text-2xl font-semibold leading-snug">
+            “<span class="font-display"
+              >[Paste your concise team charter statement here]</span
+            >”
+          </blockquote>
+          <h3 class="mt-6 font-extrabold">Context (How we own this)</h3>
+          <p class="mt-1">
+            In our kickoff, the team aligned on the scope and responsibilities
+            that make this charter real. We mapped roles to deliverables,
+            identified decision paths, and agreed on expectations for quality
+            and velocity.
+          </p>
+          <p class="mt-2">
+            This statement isn’t copy-pasted; it reflects the commitments each
+            member accepted after reviewing constraints, workload, and risks.
+            The charter will be reviewed at each milestone and adjusted only
+            with team consent.
+          </p>
+        </div>
+      </section>
+
+      <!-- Product Mission -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Product Mission Statement</span
+          >
+          <blockquote class="mt-3 text-2xl font-semibold leading-snug">
+            “<span class="font-display"
+              >[Paste your concise product mission statement here]</span
+            >”
+          </blockquote>
+          <h3 class="mt-6 font-extrabold">Context (Why this mission)</h3>
+          <p class="mt-1">
+            We evaluated alternatives and selected this mission because it
+            maximizes learning goals for embedded systems while keeping scope
+            feasible. It clarifies the user value, the system constraints, and
+            how success will be demonstrated in reviews.
+          </p>
+          <p class="mt-2">
+            The mission ties directly to our testing plan and demo criteria, so
+            progress is measurable and the team can make tradeoffs quickly.
+          </p>
+        </div>
+      </section>
+
+      <!-- (Optional but helpful) brief connective tissue about agreement -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >How We Agreed</span
+          >
+          <p>
+            We used a short facilitated workshop: brainstorm → cluster → vote →
+            draft → refine. Concerns were captured as risks with owners.
+            Everyone confirmed timelines and role fit before we finalized the
+            charter and mission.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-8 px-4 lg:px-6 max-w-5xl mx-auto">
+      <div class="divider my-4"></div>
+      <small class="opacity-70">© 2025 Phenix Force · EGR314</small>
+    </footer>
+  </body>
 </html>

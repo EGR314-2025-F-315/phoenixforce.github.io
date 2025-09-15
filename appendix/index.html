@@ -1,70 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Appendix A — Organization · Phenix Force · EGR314</title>
-  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" />
-  <link rel="stylesheet" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/styles.css" />
-  <script defer src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/script.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="../">
-        <img class="brand-logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" alt="Phenix Force logo" />
-        <div class="brand-text">
-          <span class="brand-title">Phenix Force</span>
-          <span class="brand-sub">EGR314 · Team Report</span>
-        </div>
-      </a>
-      <nav class="nav">
-        <a href="../team-organization/">Team Organization</a>
-        <a href="../appendix/">Appendix A</a>
-        <a href="../resources/">Resources</a>
-        <a href="../grading/">Grading</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="sections" style="padding-top:18px">
-    <div class="wrap grid" style="grid-template-columns:1fr">
-      <section class="card">
-        <div class="kicker">Artifacts</div>
-        <h1>Appendix A — Team Organization</h1>
-        <p class="lede" style="color:#4D5852">Park detailed artifacts here. Link back to these sections from the main pages.</p>
-      </section>
-
-      <section class="card" id="brainstorm" style="margin-top:12px">
-        <h2>Brainstorm Artifacts</h2>
-        <pre>
-- Raw notes from kickoff discussion…
-- Affinity groupings…
-- Risks, assumptions, open questions…
-        </pre>
-      </section>
-
-      <section class="card" id="availability" style="margin-top:12px">
-        <h2>Weekly Availability Matrix</h2>
-        <p>Screenshot or link to the shared schedule spreadsheet (keep the editable version in Drive).</p>
-      </section>
-
-      <section class="card" id="procedures" style="margin-top:12px">
-        <h2>Meeting Templates</h2>
-        <ul>
-          <li>Agenda template</li>
-          <li>Minutes template</li>
-          <li>Action-item checklist</li>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Appendix A - Organization · Phenix Force</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 20px 60px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="text-ink bg-[#F6F5F2]">
+    <!-- Nav -->
+    <div
+      class="navbar bg-white/90 backdrop-blur border-b border-black/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a href="../" class="flex items-center gap-2 pl-1">
+          <img
+            class="w-9 h-9 rounded-lg"
+            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+            alt="Phenix Force"
+          />
+          <span class="font-black tracking-wide">Phenix Force</span>
+        </a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li>
+            <a class="font-bold" href="../team-organization/"
+              >Team Organization</a
+            >
+          </li>
+          <li><a class="font-bold" href="./">Appendix</a></li>
         </ul>
-      </section>
+      </div>
+      <div class="navbar-end">
+        <a
+          class="btn bg-gradient-to-r from-rose to-peach text-black font-extrabold border-0 shadow-soft"
+          href="../grading/"
+          >Grading</a
+        >
+      </div>
     </div>
-  </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <hr />
-      <small>© 2025 Phenix Force · EGR314</small>
-    </div>
-  </footer>
-</body>
+    <!-- Header -->
+    <header class="max-w-5xl mx-auto px-4 lg:px-6 py-10">
+      <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">
+        Appendix A - Organization
+      </p>
+      <h1
+        class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+      >
+        Supporting Material
+      </h1>
+      <p class="mt-3 text-ink/75 max-w-prose">
+        This page holds extra, detailed work that supports the Team Organization
+        section without cluttering the main report.
+      </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 lg:px-6 space-y-6 pb-12">
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Notes & Brainstorms</h2>
+          <ul class="list-disc ml-5">
+            <li>[Bullet notes from team discussions]</li>
+            <li>[Constraints, assumptions, prior art]</li>
+            <li>[Open questions queued for next review]</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Availability Matrix (Optional)</h2>
+          <p class="mb-2">
+            Summarize weekly availability or link to a separate sheet.
+          </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[Name]</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>[Name]</td>
+                <td>-</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Meeting Template (Optional)</h2>
+          <pre class="bg-black/5 p-4 rounded-xl whitespace-pre-wrap text-sm">
+Agenda:
+1) Check-in & blockers (5m)
+2) Progress since last review (10m)
+3) Decisions needed (10m)
+4) Next steps & owners (5m)
+
+Notes:
+- …
+        </pre
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-8 px-4 lg:px-6 max-w-5xl mx-auto">
+      <div class="divider my-4"></div>
+      <small class="opacity-70">© 2025 Phenix Force · EGR314</small>
+    </footer>
+  </body>
 </html>
