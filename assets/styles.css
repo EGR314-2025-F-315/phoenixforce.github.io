@@ -1,32 +1,167 @@
-:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#9ca3af;--brand:#38bdf8;--accent:#a78bfa;--link:#60a5fa;--card:#0b1220}
+/* =========================
+   PHENIX FORCE THEME
+   ========================= */
+:root{
+  /* Brand palette */
+  --egg-nog:#FBEDC3;
+  --mustard:#CCB363;
+  --copper:#C27E35;
+  --dust:#6F7D7B;
+  --garnet:#76290B;
+  --velvet:#1E3226;
+
+  /* UI tokens */
+  --bg:var(--egg-nog);
+  --ink:#1b1b1b;
+  --muted:#494949;
+  --panel: #f7f0db;              /* softer egg-nog */
+  --elev:  #fffaf0;              /* light panel accent */
+  --card: #fffdf6;               /* card base */
+  --border: rgba(22,34,30,.15);  /* subtle border (velvet tint) */
+
+  /* Accents */
+  --accent: var(--copper);
+  --accent-2: var(--mustard);
+  --brand-dark: var(--velvet);
+  --brand-mid: #2a4a3b;          /* derived from velvet */
+}
+
+/* Base */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,var(--bg),#111827 60%);color:var(--text);line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:2rem}
-.site-header{position:sticky;top:0;background:rgba(15,23,42,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(148,163,184,.15);z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
-.brand a{font-weight:800;color:var(--brand);text-decoration:none}
-.menu{display:flex;gap:1rem;flex-wrap:wrap}
-.menu a{color:var(--text);text-decoration:none;padding:.45rem .75rem;border-radius:.6rem}
-.menu a:hover{background:rgba(148,163,184,.12)}
-.hero{margin-top:1.25rem;border:1px solid rgba(148,163,184,.15);border-radius:1rem;padding:1.5rem;background:linear-gradient(180deg,rgba(2,6,23,.6),rgba(15,23,42,.6))}
-.hero h1{margin:.2rem 0 .6rem}
-.badges{display:flex;gap:.5rem;flex-wrap:wrap}
-.badge{font-size:.85rem;border:1px solid rgba(148,163,184,.2);padding:.25rem .6rem;border-radius:999px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.25rem}
-.card{border:1px solid rgba(148,163,184,.15);background:var(--card);border-radius:1rem;padding:1rem 1.2rem}
-.card h3{margin:.2rem 0 .4rem}
-.card p{margin:.2rem 0 .75rem;color:var(--muted)}
-.button{display:inline-block;background:var(--brand);color:#001018;text-decoration:none;font-weight:700;padding:.5rem .8rem;border-radius:.6rem}
-a{color:var(--link)}
-.notice{margin-top:1rem;padding:.75rem 1rem;border-left:4px solid var(--accent);background:rgba(167,139,250,.12);border-radius:.4rem}
-table{width:100%;border-collapse:collapse;margin:1rem 0;border:1px solid rgba(148,163,184,.2)}
-th,td{padding:.6rem;border-bottom:1px solid rgba(148,163,184,.15);text-align:left}
-thead th{background:rgba(148,163,184,.08)}
-.muted{color:var(--muted)}
+body{
+  background:
+    radial-gradient(1200px 800px at 85% -10%, rgba(194,126,53,0.08), transparent 40%),
+    radial-gradient(900px 600px at -10% 20%, rgba(28,50,38,0.08), transparent 50%),
+    var(--bg);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height:1.6;
+}
 
-/* Branding tweaks for Phenix Force */
-.brand-link{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-.brand-logo{width:32px;height:32px;object-fit:contain;border-radius:6px;background:transparent}
-.brand-name{font-weight:800;letter-spacing:.02em;color:#38bdf8}
-.brand-sub{font-weight:600;color:#9ca3af;margin-left:.25rem}
+/* Containers */
+.container{max-width:1100px;margin:0 auto;padding:1.25rem 1.25rem}
+
+/* Header */
+.site-header{
+  position:sticky; top:0; z-index:20;
+  background: color-mix(in oklab, var(--egg-nog) 82%, white);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(1.1) blur(6px);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.brand:hover{opacity:.95}
+.brand-logo{width:40px;height:40px;object-fit:contain;border-radius:10px;background:transparent}
+.brand-text{display:flex;flex-direction:column}
+.brand-name{font-weight:800;letter-spacing:.02em;color:var(--brand-dark)}
+.brand-sub{font-weight:600;color:var(--dust);font-size:.9rem}
+.menu a{
+  color:var(--brand-dark);
+  text-decoration:none;
+  padding:.55rem .85rem;
+  border-radius:.6rem;
+  border:1px solid transparent;
+}
+.menu a:hover{
+  background: color-mix(in oklab, var(--mustard) 18%, white);
+  border-color: color-mix(in oklab, var(--mustard) 28%, transparent);
+}
+
+/* Hero */
+.hero{
+  padding:2.2rem 0 1.2rem;
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, white), transparent 60%);
+  border-bottom:1px solid var(--border);
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:1.5rem;
+}
+@media (max-width:900px){ .hero-inner{grid-template-columns:1fr} }
+.hero-copy h1{
+  font-family: ui-serif, "Georgia", "Times New Roman", serif;
+  font-weight:800;
+  font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.4rem);
+  line-height:1.15;
+  margin:0 0 .6rem;
+  color: var(--brand-dark);
+}
+.lede{font-size:1.05rem;color:var(--muted);max-width:56ch}
+.badges{
+  display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 1.2rem;padding:0;list-style:none
+}
+.badges li{
+  background: color-mix(in oklab, var(--mustard) 15%, white);
+  border:1px solid color-mix(in oklab, var(--mustard) 35%, transparent);
+  padding:.35rem .6rem;border-radius:999px;color: var(--brand-dark);
+}
+.cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem}
+.btn{
+  display:inline-block;text-decoration:none;
+  padding:.6rem .95rem;border-radius:.65rem;
+  font-weight:700;border:1px solid transparent;
+}
+.btn-primary{
+  color:white;background: linear-gradient(180deg, var(--copper), color-mix(in oklab, var(--garnet) 65%, var(--copper)));
+  box-shadow: 0 6px 18px rgba(118,41,11,.18);
+}
+.btn-primary:hover{filter:saturate(1.05) brightness(1.02)}
+.btn-ghost{
+  color:var(--brand-dark);
+  background: color-mix(in oklab, var(--mustard) 8%, white);
+  border-color: color-mix(in oklab, var(--mustard) 28%, transparent);
+}
+.btn-ghost:hover{background: color-mix(in oklab, var(--mustard) 13%, white)}
+
+/* Hero side card */
+.hero-card .card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.2rem 1.2rem 1rem;
+  box-shadow: 0 10px 30px rgba(30,50,38,.06);
+}
+.card h3{
+  font-family: ui-serif, "Georgia", "Times New Roman", serif;
+  margin:.1rem 0 .7rem;color: var(--brand-mid)
+}
+.meta{display:grid;grid-template-columns: 1fr 2fr;gap:.35rem .8rem;margin:.4rem 0 1rem}
+.meta dt{font-weight:700;color:var(--dust)}
+.meta dd{margin:0}
+.hint{font-size:.9rem;color:var(--muted)}
+
+/* Section grid */
+.sections{padding:1.4rem 0 2.2rem}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media (max-width:1100px){ .grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+.card{
+  background: var(--elev);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.1rem 1.2rem 1rem;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card-link:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--copper) 35%, var(--border));
+  box-shadow: 0 8px 22px rgba(118,41,11,.12);
+}
+.card p{color:var(--muted)}
+.link{
+  display:inline-block;margin-top:.35rem;
+  color: var(--garnet); text-decoration:none; font-weight:700;
+}
+.link:hover{text-decoration:underline}
+
+/* Footer */
+.site-footer{padding:1.4rem 0 2.2rem}
+.site-footer hr{border:none;border-top:1px solid var(--border);margin:1rem 0 1rem}
+.site-footer small{color:var(--muted)}
+
+/* Utilities */
+.visually-hidden{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;white-space:nowrap}
