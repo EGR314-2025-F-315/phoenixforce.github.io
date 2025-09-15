@@ -3,56 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grading & Submission · Phenix Force</title>
-  <link rel="stylesheet" href="../assets/styles.css" />
-  <link rel="icon" href="../assets/phenix-force-logo.png" />
+  <title>Grading & Submission · Phenix Force · EGR314</title>
+  <link rel="icon" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" />
+  <link rel="stylesheet" href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/styles.css" />
+  <script defer src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/script.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <a href="../" class="brand-link">
-          <img class="brand-logo" src="../assets/phenix-force-logo.png" alt="Phenix Force logo" />
-          <span class="brand-name">Phenix Force</span>
-          <span class="brand-sub">EGR 3X4 · Team Report</span>
-        </a>
-      </div>
-      <nav class="menu">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../">
+        <img class="brand-logo" src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phenix-force-logo.png" alt="Phenix Force logo" />
+        <div class="brand-text">
+          <span class="brand-title">Phenix Force</span>
+          <span class="brand-sub">EGR314 · Team Report</span>
+        </div>
+      </a>
+      <nav class="nav">
         <a href="../team-organization/">Team Organization</a>
         <a href="../appendix/">Appendix A</a>
         <a href="../resources/">Resources</a>
-        <a href="../grading/">Grading & Submission</a>
+        <a href="../grading/">Grading</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Grading & Submission</h1>
+  <main class="sections" style="padding-top:18px">
+    <div class="wrap grid" style="grid-template-columns:1fr 1fr">
+      <section class="card">
+        <div class="kicker">Checklist</div>
+        <h1>Grading & Submission</h1>
+        <p class="lede" style="color:#4D5852">Everything your reviewers need to access and assess your work.</p>
+      </section>
 
-    <h2>Submission Checklist</h2>
-    <ul>
-      <li>Public repo URL (organization GitHub): <code>https://github.com/&lt;org&gt;/&lt;org&gt;.github.io</code></li>
-      <li>Live site URL (GitHub Pages): <code>https://&lt;org&gt;.github.io</code></li>
-      <li>Exported PDF of the Team Organization page for easier review</li>
-    </ul>
+      <section class="card" style="margin-top:12px">
+        <h2>Submission Checklist</h2>
+        <ul>
+          <li>Public repo URL: <code>https://github.com/&lt;org&gt;/&lt;org&gt;.github.io</code></li>
+          <li>Live site URL: <code>https://&lt;org&gt;.github.io</code></li>
+          <li>Exported PDF of the <a class="link" href="../team-organization/">Team Organization</a> page</li>
+        </ul>
 
-    <h2>Points Breakdown (Total 100)</h2>
-    <table>
-      <thead><tr><th>Item</th><th>Points</th></tr></thead>
-      <tbody>
-        <tr><td>Website</td><td>25</td></tr>
-        <tr><td>Repo</td><td>25</td></tr>
-        <tr><td>Team Charter</td><td>25</td></tr>
-        <tr><td>Mission Statement</td><td>25</td></tr>
-      </tbody>
-    </table>
+        <h2 style="margin-top:10px">Points Breakdown (Total 100)</h2>
+        <table>
+          <thead><tr><th>Item</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td>Website</td><td>25</td></tr>
+            <tr><td>Repo</td><td>25</td></tr>
+            <tr><td>Team Charter</td><td>25</td></tr>
+            <tr><td>Mission Statement</td><td>25</td></tr>
+          </tbody>
+        </table>
 
-    <h2>PDF Export Tip</h2>
-    <p>Use your browser’s “Print to PDF” on <a href="../team-organization/">/team-organization/</a>. Ensure headings/tables render cleanly. Turn on “Background graphics” if needed.</p>
+        <h2 style="margin-top:10px">PDF Export Tip</h2>
+        <p>Use your browser’s “Print to PDF” on <a class="link" href="../team-organization/">/team-organization/</a>. Ensure headings/tables render cleanly. Turn on “Background graphics” if needed.</p>
+      </section>
+    </div>
   </main>
 
-  <footer class="container site-footer">
-    <hr /><small class="muted">© 2025 Phenix Force</small>
+  <footer class="footer">
+    <div class="wrap">
+      <hr />
+      <small>© 2025 Phenix Force · EGR314</small>
+    </div>
   </footer>
 </body>
 </html>
