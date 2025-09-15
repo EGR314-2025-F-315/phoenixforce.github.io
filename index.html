@@ -3,86 +3,106 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EGR 3X4 · Phenix Force</title>
-  <link rel="stylesheet" href="./assets/styles.css" />
-  <script defer src="./assets/script.js"></script>
+  <title>Phenix Force · EGR 314</title>
   <meta name="description" content="Phenix Force · Team Organization, Charter, and Repository · EGR 3X4 Embedded Systems" />
   <link rel="icon" href="./assets/phenix-force-logo.png" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script defer src="./assets/script.js"></script>
 </head>
 <body>
+  <!-- Top Nav -->
   <header class="site-header">
     <div class="container nav">
-      <div class="brand">
-        <a href="./" class="brand-link">
-          <img class="brand-logo" src="./assets/phenix-force-logo.png" alt="Phenix Force logo" />
+      <a class="brand" href="./">
+        <img class="brand-logo" src="./assets/phenix-force-logo.png" alt="Phenix Force logo" />
+        <div class="brand-text">
           <span class="brand-name">Phenix Force</span>
           <span class="brand-sub">EGR 3X4 · Team Report</span>
-        </a>
-      </div>
+        </div>
+      </a>
       <nav class="menu">
         <a href="./team-organization/">Team Organization</a>
         <a href="./appendix/">Appendix A</a>
         <a href="./resources/">Resources</a>
-        <a href="./grading/">Grading & Submission</a>
+        <a href="./grading/">Grading</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main>
+    <!-- HERO -->
     <section class="hero">
-      <h1>Welcome to Phenix Force</h1>
-      <p>This GitHub Pages site is our living report for the Embedded Systems design project. It consolidates all deliverables for review and grading while keeping the main content high-level and pushing details to the appendix.</p>
-      <div class="badges">
-        <span class="badge">Team: <strong>Phenix Force</strong></span>
-        <span class="badge">Org: <strong><em>[ASU-EGR314-YYYY-S/F-###]</em></strong></span>
-        <span class="badge">Semester: <strong><em>[Spring/Fall 2025]</em></strong></span>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Engineering with Purpose</h1>
+          <p class="lede">
+            This site is the living report for our embedded-systems project. It presents executive-level summaries up front
+            and links detailed artifacts in the appendix—clean, transparent, and inspection-ready.
+          </p>
+
+          <ul class="badges">
+            <li><strong>Team:</strong> Phenix Force</li>
+            <li><strong>Org:</strong> <em>[ASU-EGR314-YYYY-S/F-###]</em></li>
+            <li><strong>Semester:</strong> <em>[Spring/Fall 2025]</em></li>
+          </ul>
+
+          <div class="cta">
+            <a class="btn btn-primary" href="./team-organization/">Open Team Organization</a>
+            <a class="btn btn-ghost" href="./appendix/">View Appendix A</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card">
+            <h3>Front Matter</h3>
+            <dl class="meta">
+              <dt>Project Name</dt><dd><em>[Replace with your project name]</em></dd>
+              <dt>Team Number</dt><dd><em>[ASU-EGR314-2025-S-228]</em></dd>
+              <dt>Team Members</dt><dd><em>[List names]</em></dd>
+              <dt>Preparation Date</dt><dd><em>[Month Day, 2025]</em></dd>
+              <dt>University / Class / Professor</dt><dd>ASU · EGR 3X4 · Prof. Aukes</dd>
+            </dl>
+            <p class="hint">Keep this page concise. Move verbose material to the appendix and link it contextually.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <div class="grid">
-      <article class="card">
-        <h3>Team Organization</h3>
-        <p>Charter, mission statement, roles & responsibilities, communication procedures, and accountability plan.</p>
-        <a class="button" href="./team-organization/">Open section</a>
-      </article>
+    <!-- SECTIONS -->
+    <section class="sections">
+      <div class="container grid">
+        <article class="card card-link">
+          <h3>Team Organization</h3>
+          <p>Charter, mission, roles & responsibilities, communication procedures, and accountability plan.</p>
+          <a class="link" href="./team-organization/">Open section →</a>
+        </article>
 
-      <article class="card">
-        <h3>Appendix A — Team Organization</h3>
-        <p>Supporting detail: brainstorming artifacts, availability matrix, meeting templates, and working notes.</p>
-        <a class="button" href="./appendix/">Open appendix</a>
-      </article>
+        <article class="card card-link">
+          <h3>Appendix A — Organization</h3>
+          <p>Brainstorm artifacts, availability matrix, meeting templates, and supporting notes.</p>
+          <a class="link" href="./appendix/">Open appendix →</a>
+        </article>
 
-      <article class="card">
-        <h3>Resources</h3>
-        <p>Course links: report template, GitHub Pages setup, and Markdown references.</p>
-        <a class="button" href="./resources/">View resources</a>
-      </article>
+        <article class="card card-link">
+          <h3>Resources</h3>
+          <p>Course guides, Pages setup, and Markdown references curated for quick use.</p>
+          <a class="link" href="./resources/">View resources →</a>
+        </article>
 
-      <article class="card">
-        <h3>Grading & Submission</h3>
-        <p>Checklist for URLs and the Team Organization PDF export, plus points breakdown.</p>
-        <a class="button" href="./grading/">See grading</a>
-      </article>
-    </div>
-
-    <h2 id="front-matter">Front Matter</h2>
-    <ul>
-      <li><strong>Project Name:</strong> <em>[Replace with your project name]</em></li>
-      <li><strong>Team Number:</strong> <em>[e.g., ASU-EGR314-2025-S-228]</em></li>
-      <li><strong>Team Members (optional):</strong> <em>[List names]</em></li>
-      <li><strong>Preparation Date:</strong> <em>[Month Day, 2025]</em></li>
-      <li><strong>University / Class / Professor:</strong> Arizona State University · EGR 3X4 · Prof. Aukes</li>
-    </ul>
-
-    <div class="notice">
-      <strong>Note:</strong> Keep this page concise. If something hurts the flow, move it to
-      <a href="./appendix/">Appendix A</a> and link it from the main text.
-    </div>
+        <article class="card card-link">
+          <h3>Grading & Submission</h3>
+          <p>Checklist for URLs and PDF export instructions with the official points breakdown.</p>
+          <a class="link" href="./grading/">See grading →</a>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <footer class="container site-footer">
-    <hr />
-    <small class="muted">© 2025 Phenix Force. Replace placeholders before submitting.</small>
+  <footer class="site-footer">
+    <div class="container">
+      <hr />
+      <small>© 2025 Phenix Force. Replace placeholders before submitting.</small>
+    </div>
   </footer>
 </body>
 </html>
