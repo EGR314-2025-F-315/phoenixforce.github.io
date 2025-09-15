@@ -85,9 +85,7 @@
   .btn--ghost{background:rgba(239,235,206,.24);color:#1c261f;border:1px solid rgba(239,235,206,.55)}
   .btn--ghost:hover{background:rgba(239,235,206,.32)}
   
-  /* ---------- squircles + glass ---------- */
   .squircle{
-    /* soft superellipse corners (keeps it less boxy) */
     -webkit-mask:
       radial-gradient(160% 140% at 0 0,#000 98%,transparent 100%) top left,
       radial-gradient(160% 140% at 100% 0,#000 98%,transparent 100%) top right,

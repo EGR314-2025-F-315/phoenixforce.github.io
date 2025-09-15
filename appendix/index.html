@@ -72,71 +72,380 @@
         Supporting Material
       </h1>
       <p class="mt-3 text-ink/75 max-w-prose">
-        This page holds extra, detailed work that supports the Team Organization
-        section without cluttering the main report.
+        Extra detail that supports our Team Organization page-notes, optional
+        steps, and working artifacts that don’t fit in the main body.
       </p>
     </header>
 
     <main class="max-w-5xl mx-auto px-4 lg:px-6 space-y-6 pb-12">
+      <!-- Notes & Brainstorms -->
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
         <div class="card-body">
           <h2 class="card-title">Notes & Brainstorms</h2>
-          <ul class="list-disc ml-5">
-            <li>[Bullet notes from team discussions]</li>
-            <li>[Constraints, assumptions, prior art]</li>
-            <li>[Open questions queued for next review]</li>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>
+              <b>Assumptions:</b> rugged embedded device for wildfire response;
+              glove-friendly screen+buttons; internet-optional comms
+              (ESP-NOW/LoRa); outdoor sun/dust.
+            </li>
+            <li>
+              <b>Key metrics:</b> ≤1 s alert latency; 99% message delivery
+              (n≥100 in lab); &gt;95% detection accuracy for chosen condition;
+              ≤3 actions for core task.
+            </li>
+            <li>
+              <b>Constraints:</b> course timeline, limited budget, safe lab
+              surrogates (no open flame), simple enclosure & power budget.
+            </li>
+            <li>
+              <b>Why this scope:</b> maximizes embedded-systems learning while
+              remaining demo-feasible; clear pass/fail tests.
+            </li>
+            <li>
+              <b>Deliverables to outlive class:</b> repo with build notes,
+              wiring/schematic, BOM, 2-min demo video, one-pager.
+            </li>
           </ul>
         </div>
       </section>
 
+      <!-- Optional Team Organization Steps -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Optional Team Organization Steps</h2>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>
+              <b>Expectations Charter:</b> response time ≤24h on chat; meetings
+              start on time; escalate blockers after 2 days.
+            </li>
+            <li>
+              <b>Feedback Cadence:</b> 5-minute retro at end of weekly
+              checkpoint (keep/change/try next).
+            </li>
+            <li>
+              <b>Conflict Path:</b> 1:1 → team discussion (15 min timebox) →
+              instructor input if unresolved.
+            </li>
+            <li>
+              <b>Peer Reviews:</b> every PR needs one review; use a 3-item
+              checklist (builds clean, tests noted, docs touched).
+            </li>
+            <li>
+              <b>Role Rotation (optional):</b> midpoint swap of a small subtask
+              to cross-train (e.g., HMI helps with comms retries).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Roles & Ownership -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Roles & Ownership (maps to course pillars)</h2>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>Owner</th>
+                  <th>Primary Deliverables</th>
+                  <th>KPIs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Comms Lead (Two-Way Link)</td>
+                  <td>[Owner]</td>
+                  <td>Device↔Base protocol, acks/retries, link-loss UX</td>
+                  <td>99% delivery; round-trip ≤1 s (lab)</td>
+                </tr>
+                <tr>
+                  <td>HMI/UX Lead (Screen + Buttons)</td>
+                  <td>[Owner]</td>
+                  <td>Info hierarchy, glove flow, on-device tutorial</td>
+                  <td>Core task ≤3 actions; 60-sec learnability</td>
+                </tr>
+                <tr>
+                  <td>Sensing & Actuation Lead</td>
+                  <td>[Owner]</td>
+                  <td>Sensor selection, signal processing, alert logic</td>
+                  <td>&gt;95% detection (lab); confusion matrix</td>
+                </tr>
+                <tr>
+                  <td>Systems & Test Lead</td>
+                  <td>[Owner]</td>
+                  <td>Power/wiring, enclosure fit, CI/build, test plans</td>
+                  <td>Build from clean clone; test plan executed</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm opacity-70 mt-2">
+            Tip: add two more roles (Enclosure/Manufacturing, Data/Modeling) if
+            you have &gt;4 teammates.
+          </p>
+        </div>
+      </section>
+
+      <!-- RACI Snapshot -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">RACI Snapshot (who does what)</h2>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Comms</th>
+                  <th>HMI</th>
+                  <th>Sensing</th>
+                  <th>Systems</th>
+                  <th>Instructor/TA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Choose link & protocol</td>
+                  <td><b>R/A</b></td>
+                  <td>C</td>
+                  <td>C</td>
+                  <td>C</td>
+                  <td>I</td>
+                </tr>
+                <tr>
+                  <td>Design HMI flow</td>
+                  <td>C</td>
+                  <td><b>R/A</b></td>
+                  <td>C</td>
+                  <td>I</td>
+                  <td>I</td>
+                </tr>
+                <tr>
+                  <td>Sensor selection & thresholds</td>
+                  <td>I</td>
+                  <td>C</td>
+                  <td><b>R/A</b></td>
+                  <td>C</td>
+                  <td>I</td>
+                </tr>
+                <tr>
+                  <td>Power & enclosure</td>
+                  <td>I</td>
+                  <td>I</td>
+                  <td>C</td>
+                  <td><b>R/A</b></td>
+                  <td>I</td>
+                </tr>
+                <tr>
+                  <td>Weekly demo</td>
+                  <td>R</td>
+                  <td>R</td>
+                  <td>R</td>
+                  <td><b>A</b></td>
+                  <td>I</td>
+                </tr>
+                <tr>
+                  <td>Docs & portfolio</td>
+                  <td>R</td>
+                  <td>R</td>
+                  <td>R</td>
+                  <td><b>A</b></td>
+                  <td>I</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm opacity-70 mt-2">
+            R = Responsible, A = Accountable, C = Consulted, I = Informed.
+          </p>
+        </div>
+      </section>
+
+      <!-- Risks & Mitigations -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Risk Register (starter)</h2>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Risk</th>
+                  <th>Impact</th>
+                  <th>Mitigation</th>
+                  <th>Owner</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>False positives/negatives</td>
+                  <td>Wasted alerts; missed events</td>
+                  <td>Calibration runs; threshold tuning; confusion matrix</td>
+                  <td>Sensing</td>
+                </tr>
+                <tr>
+                  <td>Link unreliability</td>
+                  <td>Lost/late alerts</td>
+                  <td>Acks/retries; store-and-forward; link-loss UI</td>
+                  <td>Comms</td>
+                </tr>
+                <tr>
+                  <td>Power budget blow-up</td>
+                  <td>Short runtime</td>
+                  <td>Measure real draw; sleep modes; right-size battery</td>
+                  <td>Systems</td>
+                </tr>
+                <tr>
+                  <td>Scope creep</td>
+                  <td>Missed demo</td>
+                  <td>Feature freeze after Week 4; backlog future ideas</td>
+                  <td>All</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Definition of Done -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Definition of Done (DoD)</h2>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Builds from a clean clone; README updated.</li>
+            <li>Test case(s) executed with logged results and short clip.</li>
+            <li>Wiring/schematic and enclosure notes updated.</li>
+            <li>
+              Metrics recorded (latency, delivery, accuracy as applicable).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Milestones -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Milestones (subject to course calendar)</h2>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>
+              <b>Week 2:</b> choose sensors & comms; trade studies started.
+            </li>
+            <li><b>Week 4:</b> vertical slice (sensor → alert → message).</li>
+            <li><b>Week 6:</b> usability pass (gloves/sun); tutorial added.</li>
+            <li>
+              <b>Week 8:</b> reliability run (n≥100 messages; 99% success).
+            </li>
+            <li><b>Final:</b> polished demo + portfolio package.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Test Plan Summary -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Test Plan Summary</h2>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>
+              <b>Latency:</b> timestamp sensor event → alert display → message
+              ack.
+            </li>
+            <li>
+              <b>Reliability:</b> send 100+ messages under varied
+              distance/orientation; log success/RTT.
+            </li>
+            <li>
+              <b>Detection:</b> lab surrogate stimuli; record TP/FP/FN/TN; plot
+              confusion matrix.
+            </li>
+            <li>
+              <b>Usability:</b> task time for core flow; 60-sec learnability
+              check.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Decision Log Template -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Decision Log (Template)</h2>
+          <pre class="bg-black/5 p-4 rounded-xl whitespace-pre-wrap text-sm">
+Date:
+Topic:
+Options Considered:
+Criteria & Tradeoffs:
+Decision:
+Owner:
+Revisit If:
+          </pre>
+        </div>
+      </section>
+
+      <!-- Availability Matrix (Optional) -->
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
         <div class="card-body">
           <h2 class="card-title">Availability Matrix (Optional)</h2>
-          <p class="mb-2">
-            Summarize weekly availability or link to a separate sheet.
-          </p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Member</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>[Name]</td>
-                <td>✓</td>
-                <td>-</td>
-                <td>✓</td>
-                <td>✓</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>[Name]</td>
-                <td>-</td>
-                <td>✓</td>
-                <td>-</td>
-                <td>✓</td>
-                <td>✓</td>
-              </tr>
-            </tbody>
-          </table>
+          <p class="mb-2">Summarize weekly availability or link to a sheet.</p>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>[Name]</td>
+                  <td>✓</td>
+                  <td>-</td>
+                  <td>✓</td>
+                  <td>✓</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>[Name]</td>
+                  <td>-</td>
+                  <td>✓</td>
+                  <td>-</td>
+                  <td>✓</td>
+                  <td>✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
+      <!-- Meeting Template -->
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
         <div class="card-body">
-          <h2 class="card-title">Meeting Template (Optional)</h2>
+          <h2 class="card-title">Meeting Template</h2>
           <pre class="bg-black/5 p-4 rounded-xl whitespace-pre-wrap text-sm">
 Agenda:
 1) Check-in & blockers (5m)
@@ -146,8 +455,7 @@ Agenda:
 
 Notes:
 - …
-        </pre
-          >
+          </pre>
         </div>
       </section>
     </main>
