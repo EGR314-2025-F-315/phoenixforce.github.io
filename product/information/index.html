@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Information - Phenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 20px 60px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="text-ink bg-[#F6F5F2]">
+    <!-- NAV -->
+    <div
+      class="navbar bg-white/90 backdrop-blur border-b border-black/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a href="../" class="flex items-center gap-2 pl-1">
+          <img
+            class="w-9 h-9 rounded-lg"
+            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+            alt="Phenix Force"
+          />
+          <span class="font-black tracking-wide">Phenix Force</span>
+        </a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li>
+            <a class="font-bold" href="../team-organization/"
+              >Team Organization</a
+            >
+          </li>
+          <li><a class="font-bold" href="../appendix/">Appendix</a></li>
+          <li><a class="font-bold" href="./">Product Information</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a
+          class="btn bg-gradient-to-r from-rose to-peach text-black font-extrabold border-0 shadow-soft"
+          href="../grading/"
+          >Grading</a
+        >
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="max-w-5xl mx-auto px-4 lg:px-6 py-10 text-center">
+      <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">
+        Product Information
+      </p>
+      <h1
+        class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+      >
+        Device Overview, Audience, &amp; Metrics
+      </h1>
+      <p class="mt-3 text-ink/75 max-w-2xl mx-auto">
+        High-level information for reviewers: what we learned on our visit, the
+        device goal, who it serves, and the engineering metrics we will measure.
+      </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 lg:px-6 space-y-6 pb-12">
+      <!-- What we learned (Vinny) -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Overview — What We Learned (Vinny)</span
+          >
+          <div class="mt-3 grid gap-3">
+            <div>
+              <h3 class="font-extrabold">Where hotspots emerge</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  South-facing slopes; wind corridors/canyons; heavy fuel
+                  accumulations
+                </li>
+                <li>
+                  Human ignition zones: powerlines/transformers,
+                  trails/campgrounds, equipment staging areas
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Site &amp; policy constraints</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  Zoning/WUI rules, right-of-way, access roads, water sources
+                </li>
+                <li>
+                  Mounting height &amp; line-of-sight, comms coverage, power
+                  availability
+                </li>
+                <li>
+                  Environmental sealing (IP rating) and local noise limits for
+                  buzzers
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Engineering metrics to track</h3>
+              <ul class="list-disc ml-5">
+                <li>Time-to-detect; false-alarm rate</li>
+                <li>Localization/perimeter error</li>
+                <li>Message-delivery reliability &amp; latency</li>
+                <li>Uptime/runtime under battery power</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sensor pros & cons table -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Sensor Pros &amp; Cons (Quick Take)</span
+          >
+          <div class="overflow-x-auto mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Strengths (+)</th>
+                  <th>Limitations (−)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Thermal IR</b></td>
+                  <td>Sees heat through smoke</td>
+                  <td>Sun-heated rocks/metal can fool; higher power draw</td>
+                </tr>
+                <tr>
+                  <td><b>Smoke / PM</b></td>
+                  <td>Catches smoldering early</td>
+                  <td>Dust/humidity outdoors → false positives</td>
+                </tr>
+                <tr>
+                  <td><b>UV/IR Flame</b></td>
+                  <td>Fastest for open flame detection</td>
+                  <td>
+                    Needs line-of-sight; solar interference filters required
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Gas (CO/VOCs)</b></td>
+                  <td>Good near ignition sources</td>
+                  <td>Signal dilutes quickly in open air</td>
+                </tr>
+                <tr>
+                  <td><b>RGB + CV</b></td>
+                  <td>Perimeter &amp; classification capability</td>
+                  <td>Needs compute/lighting; potential privacy concerns</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Goal of device -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Goal of the Device (Vinny)</span
+          >
+          <div class="mt-3 grid gap-3">
+            <div>
+              <h3 class="font-extrabold">Primary objective</h3>
+              <p>
+                <b>Prevent &amp; detect early</b>; and if ignition occurs,
+                <b>guide responders</b> with fast, clear, geo-tagged
+                information.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Key capabilities</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  Local sensing with clear, glove-friendly on-device alerts
+                  (screen + buttons)
+                </li>
+                <li>
+                  Perimeter estimation and geo-tagged reports to a base
+                  map/tablet
+                </li>
+                <li>
+                  Internet-optional comms (mesh/peer link) with acks/retries and
+                  link-loss UX
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Targets & success -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Measurable Targets &amp; Definition of Success</span
+          >
+          <div class="mt-3 grid gap-3">
+            <div>
+              <h3 class="font-extrabold">Targets (course-fit)</h3>
+              <ul class="list-disc ml-5">
+                <li>Detect stimulus in <b>≤1–2 minutes</b> (lab surrogates)</li>
+                <li>Device↔base alert/telemetry latency <b>≤1 s</b> (lab)</li>
+                <li>
+                  Perimeter/localization error <b>≤25–50 m</b> (field surrogate)
+                </li>
+                <li>
+                  <b>≥24–48 h</b> battery runtime; weather-resistant enclosure
+                  plan
+                </li>
+                <li><b>≥99%</b> message delivery (n ≥ 100)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Definition of success</h3>
+              <ul class="list-disc ml-5">
+                <li>Repeatable demo hitting targets</li>
+                <li>
+                  Clean documentation: build steps, wiring/schematic, BOM, short
+                  demo video
+                </li>
+                <li>Portfolio-ready package others can reproduce</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audience -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Audience &amp; Use Cases (Vinny)</span
+          >
+          <div class="mt-3 grid gap-3">
+            <div>
+              <h3 class="font-extrabold">Primary users</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  Fire lookouts &amp; watch programs; park rangers &amp; land
+                  managers
+                </li>
+                <li>
+                  First responders: wildland crews, incident command, utility
+                  fire-prevention teams
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Use cases</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  Fixed lookout kit (tower/ridge) and rapid-deploy mobile unit
+                  (vehicle/tripod)
+                </li>
+                <li>
+                  Automatic alerts to a base tablet with map overlays &amp;
+                  acknowledge/assign flow
+                </li>
+                <li>Training/demo mode for drills and community education</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Value proposition &amp; adoption</h3>
+              <ul class="list-disc ml-5">
+                <li>
+                  Faster, clearer situational awareness with fewer false alarms
+                </li>
+                <li>
+                  Operates where public networks are weak; ≤60-second
+                  learnability
+                </li>
+                <li>Creates logs/metrics for after-action reviews</li>
+                <li>
+                  Pilot in a high-risk corridor → tune thresholds → scale to
+                  multi-site deployments
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Safety & Ethics (optional but good practice) -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <span class="badge w-max bg-black/5 border border-black/10 font-bold"
+            >Safety &amp; Ethics</span
+          >
+          <ul class="list-disc ml-5 mt-3">
+            <li>
+              No open-flame tests; use safe surrogates for heat/smoke signals
+            </li>
+            <li>
+              Respect privacy when using cameras; limit retention and focus on
+              hazard imagery
+            </li>
+            <li>
+              Document misuse considerations and provide clear warnings to users
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-8 px-4 lg:px-6 max-w-5xl mx-auto">
+      <div class="divider my-4"></div>
+      <small class="opacity-70">© 2025 Phenix Force · EGR314</small>
+    </footer>
+  </body>
+</html>
