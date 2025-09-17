@@ -53,13 +53,13 @@
               >Team Organization</a
             >
           </li>
-          <li>
+          <!--<li>
             <a
               class="font-semibold"
               href="/phoenixforce.github.io/product/information/"
               >Product Information</a
             >
-          </li>
+          </li>-->
           <li>
             <a class="font-bold" href="/phoenixforce.github.io/appendix/"
               >Appendix</a
@@ -69,7 +69,7 @@
             <a
               class="font-bold"
               href="/phoenixforce.github.io/assignments/design-ideation/"
-              >Presentation 1</a
+              >Assignment 1</a
             >
           </li>
         </ul>
@@ -78,8 +78,8 @@
       <div class="navbar-end">
         <a
           class="btn btn-sm bg-gradient-to-r from-rose/70 to-peach/70 text-black/80 font-semibold border-0 shadow-soft hover:from-rose/80 hover:to-peach/80"
-          href="/phoenixforce.github.io/grading/"
-          >Grading</a
+          href="https://github.com/EGR314-2025-F-315/phoenixforce.github.io"
+          >Github Repo</a
         >
       </div>
     </div>
@@ -126,10 +126,6 @@
               <b>Why this scope:</b> maximizes embedded-systems learning while
               remaining demo-feasible; clear pass/fail tests.
             </li>
-            <li>
-              <b>Deliverables to outlive class:</b> repo with build notes,
-              wiring/schematic, BOM, 2-min demo video, one-pager.
-            </li>
           </ul>
         </div>
       </section>
@@ -146,20 +142,12 @@
               start on time; escalate blockers after 2 days.
             </li>
             <li>
-              <b>Feedback Cadence:</b> 5-minute retro at end of weekly
-              checkpoint (keep/change/try next).
-            </li>
-            <li>
               <b>Conflict Path:</b> 1:1 → team discussion (15 min timebox) →
               instructor input if unresolved.
             </li>
             <li>
               <b>Peer Reviews:</b> every PR needs one review; use a 3-item
               checklist (builds clean, tests noted, docs touched).
-            </li>
-            <li>
-              <b>Role Rotation (optional):</b> midpoint swap of a small subtask
-              to cross-train (e.g., HMI helps with comms retries).
             </li>
           </ul>
         </div>
@@ -170,53 +158,82 @@
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
         <div class="card-body">
-          <h2 class="card-title">Roles & Ownership (maps to course pillars)</h2>
+          <h2 class="card-title">Team Roles</h2>
           <div class="overflow-x-auto">
             <table class="table">
               <thead>
                 <tr>
+                  <th>Name</th>
                   <th>Role</th>
-                  <th>Owner</th>
                   <th>Primary Deliverables</th>
-                  <th>KPIs</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Comms Lead (Two-Way Link)</td>
-                  <td>[Owner]</td>
-                  <td>Device↔Base protocol, acks/retries, link-loss UX</td>
-                  <td>99% delivery; round-trip ≤1 s (lab)</td>
+                  <td>Vinny</td>
+                  <td>Project Manager / Team Lead</td>
+                  <td>
+                    Project timeline & coordination; task assignments &
+                    follow-ups; meeting agendas/notes; risk & scope management;
+                    instructor/stakeholder communication.
+                  </td>
                 </tr>
                 <tr>
-                  <td>HMI/UX Lead (Screen + Buttons)</td>
-                  <td>[Owner]</td>
-                  <td>Info hierarchy, glove flow, on-device tutorial</td>
-                  <td>Core task ≤3 actions; 60-sec learnability</td>
+                  <td>Emonie</td>
+                  <td>Documentation Lead</td>
+                  <td>
+                    Report drafting & editing; citation management; submission
+                    packaging; Google Drive organization & version control;
+                    compliance with course formatting.
+                  </td>
                 </tr>
                 <tr>
-                  <td>Sensing & Actuation Lead</td>
-                  <td>[Owner]</td>
-                  <td>Sensor selection, signal processing, alert logic</td>
-                  <td>&gt;95% detection (lab); confusion matrix</td>
+                  <td>Amanda</td>
+                  <td>Design & Branding Lead</td>
+                  <td>
+                    Slide templates and graphics; diagrams/figures; logo and
+                    visual assets; UI mockups as needed; visual consistency
+                    across deliverables.
+                  </td>
                 </tr>
                 <tr>
-                  <td>Systems & Test Lead</td>
-                  <td>[Owner]</td>
-                  <td>Power/wiring, enclosure fit, CI/build, test plans</td>
-                  <td>Build from clean clone; test plan executed</td>
+                  <td>Danitza</td>
+                  <td>Research Lead</td>
+                  <td>
+                    Literature & standards review; sensor/comms trade studies;
+                    evidence-backed recommendations; source summaries; data
+                    collection planning.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Erjan</td>
+                  <td>Electronics Lead</td>
+                  <td>
+                    Circuit design & prototyping; PCB layout and BOM; component
+                    selection; firmware integration support; bench bring-up and
+                    debugging.
+                  </td>
+                </tr>
+                <tr>
+                  <td>James</td>
+                  <td>Test & Validation Lead</td>
+                  <td>
+                    Test plans & procedures; unit/system testing; data logging &
+                    analysis; acceptance criteria; demo readiness checks and
+                    issue tracking.
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p class="text-sm opacity-70 mt-2">
-            Tip: add two more roles (Enclosure/Manufacturing, Data/Modeling) if
-            you have &gt;4 teammates.
+            Note: team members may support multiple roles as project needs
+            evolve.
           </p>
         </div>
       </section>
 
-      <!-- RACI Snapshot -->
+      <!-- RACI Snapshot 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
@@ -290,9 +307,9 @@
             R = Responsible, A = Accountable, C = Consulted, I = Informed.
           </p>
         </div>
-      </section>
+      </section>-->
 
-      <!-- Risks & Mitigations -->
+      <!-- Risks & Mitigations
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
@@ -337,9 +354,9 @@
             </table>
           </div>
         </div>
-      </section>
+      </section>-->
 
-      <!-- Definition of Done -->
+      <!-- Definition of Done
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
@@ -354,9 +371,9 @@
             </li>
           </ul>
         </div>
-      </section>
+      </section>-->
 
-      <!-- Milestones -->
+      <!-- Milestones 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
@@ -374,9 +391,9 @@
             <li><b>Final:</b> polished demo + portfolio package.</li>
           </ul>
         </div>
-      </section>
+      </section> -->
 
-      <!-- Test Plan Summary -->
+      <!-- Test Plan Summary
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
@@ -401,7 +418,7 @@
             </li>
           </ul>
         </div>
-      </section>
+      </section>-->
 
       <!-- Decision Log Template -->
       <section
@@ -421,41 +438,210 @@ Revisit If:
         </div>
       </section>
 
+      <!-- Communication Channels -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Communication Channels</h2>
+          <p class="text-ink/75">Preferred modes for each team member.</p>
+
+          <div class="overflow-x-auto mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>First Choice Communication</th>
+                  <th>Second Choice Communication</th>
+                  <th>Third Choice Communication</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vinny Panchal</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+                <tr>
+                  <td>Emonie France</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+                <tr>
+                  <td>Amanda Pizarro</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+                <tr>
+                  <td>Danitza Jimenez</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+                <tr>
+                  <td>James Austin</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+                <tr>
+                  <td>Erjan Baigenzhin</td>
+                  <td>Group Text</td>
+                  <td>Phone Call</td>
+                  <td>Email / Canvas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm opacity-70 mt-2">
+            Notes: “Group Text” refers to the team chat chosen by the group
+            (iMessage/Text Message/WhatsApp/Discord). Call = direct phone/audio.
+            Email/Canvas for formal or instructor-facing items.
+          </p>
+        </div>
+      </section>
+
+      <!-- Communication Procedures -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Communication Procedures</h2>
+          <ul class="list-disc ml-5 space-y-2">
+            <li>
+              <b>Async (default):</b> Group text for day-to-day updates, quick
+              questions, and coordination.
+              <span class="opacity-70"
+                >Response expectation: within 24 hours; reactions are OK for
+                simple acks.</span
+              >
+            </li>
+            <li>
+              <b>Sync (when needed):</b> Phone call for blocking issues,
+              time-sensitive decisions, or pair-debugging.
+              <span class="opacity-70"
+                >Set a 15-30 min timebox; post a short summary in the group chat
+                afterward.</span
+              >
+            </li>
+            <li>
+              <b>Formal / Records:</b> Email (cc the team) or Canvas for
+              deliverables, instructor questions, and decisions that need a
+              paper trail.
+            </li>
+            <li>
+              <b>Instructor correspondence:</b> Primary point of contact:
+              <i>Vinny</i> (sends/receives), with all members cc’d.
+              <span class="opacity-70"
+                >Vinny posts a 2–3 line recap + links in the group chat within
+                12 hours of any instructor reply.</span
+              >
+            </li>
+            <li>
+              <b>Shared files:</b> Google Drive is the source of truth for docs
+              and assets:
+              <a
+                class="link"
+                href="https://drive.google.com/drive/u/1/folders/0AAWk-C6j3syhUk9PVA"
+                target="_blank"
+                rel="noopener"
+                >Team Drive Folder</a
+              >.
+              <span class="opacity-70"
+                >Naming:
+                <code>EGR314 - Deliverable - vYYMMDD - Owner</code> (e.g.,
+                <code>EGR314 - P1 Slides - v250915 - Vinny</code>).</span
+              >
+            </li>
+            <li>
+              <b>Escalation path:</b> 1) ping in group chat → 2) quick call
+              within 24h → 3) escalate to instructor if blocked & deadline risk.
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <!-- Availability Matrix (Optional) -->
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
       >
         <div class="card-body">
-          <h2 class="card-title">Availability Matrix (Optional)</h2>
-          <p class="mb-2">Summarize weekly availability or link to a sheet.</p>
+          <h2 class="card-title">Availability Matrix</h2>
+          <p class="mb-2">
+            Summary of the teams overall availability based on the survey form.
+          </p>
           <div class="overflow-x-auto">
             <table class="table">
               <thead>
                 <tr>
                   <th>Member</th>
+                  <th>Sun</th>
                   <th>Mon</th>
                   <th>Tue</th>
                   <th>Wed</th>
                   <th>Thu</th>
                   <th>Fri</th>
+                  <th>Sat</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>[Name]</td>
-                  <td>✓</td>
-                  <td>-</td>
+                  <td>Vinny</td>
                   <td>✓</td>
                   <td>✓</td>
-                  <td>-</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
                 </tr>
                 <tr>
-                  <td>[Name]</td>
-                  <td>-</td>
-                  <td>✓</td>
-                  <td>-</td>
+                  <td>Emonie</td>
                   <td>✓</td>
                   <td>✓</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+                <tr>
+                  <td>Amanda</td>
+                  <td>✓</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+                <tr>
+                  <td>Danitza</td>
+                  <td>✓</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+                <tr>
+                  <td>Erjan</td>
+                  <td>✓</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+                <tr>
+                  <td>James</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>✓</td>
+                  <td>x</td>
+                  <td>x</td>
                 </tr>
               </tbody>
             </table>
