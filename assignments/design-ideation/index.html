@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Presentation 1 · Design Ideation — Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    <!-- NAV (same as site) -->
+    <div
+      class="navbar bg-white/90 backdrop-blur border-b border-black/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a href="/phoenixforce.github.io/" class="flex items-center gap-2 pl-1">
+          <img
+            class="w-9 h-9 rounded-lg"
+            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+            alt="Phoenix Force"
+          />
+          <span class="font-black tracking-wide">Phoenix Force</span>
+        </a>
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li>
+            <a
+              class="font-bold"
+              href="/phoenixforce.github.io/team-organization/"
+              >Team Organization</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-semibold"
+              href="/phoenixforce.github.io/product/information/"
+              >Product Information</a
+            >
+          </li>
+          <li>
+            <a class="font-bold" href="/phoenixforce.github.io/appendix/"
+              >Appendix</a
+            >
+          </li>
+          <li>
+            <a
+              class="font-bold"
+              href="/phoenixforce.github.io/assignments/design-ideation/"
+              >Presentation 1</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-end">
+        <a
+          class="btn btn-sm bg-gradient-to-r from-rose/70 to-peach/70 text-black/80 font-semibold border-0 shadow-soft hover:from-rose/80 hover:to-peach/80"
+          href="/phoenixforce.github.io/grading/"
+          >Grading</a
+        >
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="max-w-5xl mx-auto px-4 lg:px-6 pt-10">
+      <div
+        class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+        ></div>
+        <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+
+        <div class="relative px-6 py-10 md:px-10 md:py-12">
+          <p
+            class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
+          >
+            Assignments
+          </p>
+          <h1
+            class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+          >
+            Presentation 1 — Design Ideation
+          </h1>
+          <p class="mt-3 text-ink/75">
+            Watch the embedded presentation and read the inline report
+            PDF—without leaving the site.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 lg:px-6 pb-12 space-y-6 mt-6">
+      <!-- VIDEO -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <div class="flex items-center justify-between gap-2">
+            <span
+              class="badge w-max bg-black/5 border border-black/10 font-bold"
+              >Video</span
+            >
+            <a
+              class="link link-hover text-sm opacity-70"
+              href="https://youtu.be/CLXD9IfAfV0"
+              target="_blank"
+              rel="noopener"
+              >Open on YouTube ↗</a
+            >
+          </div>
+
+          <!-- Responsive 16:9 embed -->
+          <div class="mt-3 rounded-2xl overflow-hidden border border-black/10">
+            <div class="w-full aspect-video">
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/CLXD9IfAfV0"
+                title="Presentation 1 — Phoenix Force"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PDF VIEWER -->
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body">
+          <div class="flex items-center justify-between gap-2">
+            <span
+              class="badge w-max bg-black/5 border border-black/10 font-bold"
+              >Report PDF</span
+            >
+            <a
+              class="link link-hover text-sm opacity-70"
+              href="/phoenixforce.github.io/assets/design-ideation-report.pdf"
+              target="_blank"
+              rel="noopener"
+              >Open in new tab ↗</a
+            >
+          </div>
+
+          <!-- Inline PDF -->
+          <div class="mt-3 rounded-2xl overflow-hidden border border-black/10">
+            <iframe
+              class="w-full"
+              style="height: 80vh"
+              src="/phoenixforce.github.io/assets/design-ideation-report.pdf#view=FitH&toolbar=1&navpanes=0"
+              title="Design Ideation Report PDF"
+            ></iframe>
+          </div>
+
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a
+              class="btn btn-sm"
+              href="/phoenixforce.github.io/assets/design-ideation-report.pdf"
+              download
+              >Download PDF</a
+            >
+            <a class="btn btn-sm btn-ghost" href="/phoenixforce.github.io/"
+              >Back to Home</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-6 px-4 lg:px-6 max-w-5xl mx-auto">
+      <div class="divider my-3"></div>
+      <small class="opacity-70">© 2025 Phoenix Force · EGR314</small>
+    </footer>
+  </body>
+</html>
