@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Assignment 1 · Design Ideation - Phoenix Force · EGR314</title>
+    <title>
+      Assignment 1 · Design Ideation (Integrated) · Phoenix Force · EGR314
+    </title>
     <link
       rel="icon"
       href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
@@ -42,6 +44,55 @@
           ),
           #f6f5f2;
       }
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Sidebar active state */
+      .toc a.active {
+        background: rgba(0, 0, 0, 0.06);
+        font-weight: 700;
+      }
+      /* Simple callout styles */
+      .callout {
+        border-left-width: 6px;
+      }
+      .callout.info {
+        border-left-color: #60a5fa;
+        background: #eff6ff;
+      }
+      .callout.warn {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .callout.success {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+      }
+      .callout.danger {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+      }
+      /* Sketch hotspot labels */
+      .hotspot {
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+      .hotspot .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 9999px;
+        background: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+      }
+      .hotspot .label {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 4px 8px;
+        font-size: 12px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body class="text-ink">
@@ -70,13 +121,6 @@
               >Team Organization</a
             >
           </li>
-          <!--<li>
-            <a
-              class="font-semibold"
-              href="/phoenixforce.github.io/product/information/"
-              >Product Information</a
-            >
-          </li>-->
           <li>
             <a
               class="font-bold"
@@ -101,115 +145,723 @@
       </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="max-w-5xl mx-auto px-4 lg:px-6 pt-10">
-      <div
-        class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
-      >
+    <!-- LAYOUT: Sidebar + Main -->
+    <div
+      class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+    >
+      <!-- Sidebar / TOC -->
+      <aside class="hidden lg:block sticky top-20 self-start">
         <div
-          class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
-        ></div>
-        <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
-
-        <div class="relative px-6 py-10 md:px-10 md:py-12">
-          <p
-            class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
-          >
-            Assignments
-          </p>
-          <h1
-            class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
-          >
-            Assignment 1 - Design Ideation
-          </h1>
-          <p class="mt-3 text-ink/75">
-            Presentation 1 and the Design Ideation report.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <main class="max-w-5xl mx-auto px-4 lg:px-6 pb-12 space-y-6 mt-6">
-      <!-- VIDEO -->
-      <section
-        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
-      >
-        <div class="card-body">
-          <div class="flex items-center justify-between gap-2">
-            <span
-              class="badge w-max bg-black/5 border border-black/10 font-bold"
-              >Video</span
+          class="toc card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h2
+              class="font-extrabold text-sm uppercase tracking-widest opacity-70 mb-2"
             >
-            <a
-              class="link link-hover text-sm opacity-70"
-              href="https://youtu.be/CLXD9IfAfV0"
-              target="_blank"
-              rel="noopener"
-              >Open on YouTube ↗</a
-            >
-          </div>
-
-          <!-- Responsive 16:9 embed -->
-          <div class="mt-3 rounded-2xl overflow-hidden border border-black/10">
-            <div class="w-full aspect-video">
-              <iframe
-                class="w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/CLXD9IfAfV0?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&controls=0"
-                title="Presentation 1 - Phoenix Force"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+              On this page
+            </h2>
+            <nav class="space-y-1 text-sm" id="tocLinks"></nav>
+            <div class="mt-4 pt-3 border-t border-black/10 text-xs opacity-70">
+              <p>Tip: The highlight updates as you scroll.</p>
             </div>
           </div>
         </div>
-      </section>
+      </aside>
 
-      <!-- PDF VIEWER -->
-      <section
-        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
-      >
-        <div class="card-body">
-          <div class="flex items-center justify-between gap-2">
-            <span
-              class="badge w-max bg-black/5 border border-black/10 font-bold"
-              >Report PDF</span
+      <!-- Main content -->
+      <main id="pageRoot" class="space-y-8">
+        <!-- HEADER -->
+        <header
+          class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+          ></div>
+          <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+          <div class="relative px-6 py-10 md:px-10 md:py-12">
+            <p
+              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
             >
-            <a
-              class="link link-hover text-sm opacity-70"
-              href="/phoenixforce.github.io/assets/design-ideation-report-v3.pdf"
-              target="_blank"
-              rel="noopener"
-              >Open in new tab ↗</a
+              Assignments
+            </p>
+            <h1
+              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
             >
+              Assignment 1 – Design Ideation
+            </h1>
+            <p class="mt-3 text-ink/75">
+              Integrated: video → full report (web-native) → appendix →
+              resources
+            </p>
           </div>
+        </header>
 
-          <!-- Inline PDF -->
-          <div class="mt-3 rounded-2xl overflow-hidden border border-black/10">
-            <iframe
-              class="w-full"
-              style="height: 80vh"
-              src="/phoenixforce.github.io/assets/design-ideation-report-v3.pdf#view=FitH&toolbar=1&navpanes=0"
-              title="Design Ideation Report PDF"
-            ></iframe>
-          </div>
-
-          <div class="mt-3 flex flex-wrap gap-3">
-            <a
-              class="btn btn-sm"
-              href="/phoenixforce.github.io/assets/design-ideation-report-v3.pdf"
-              download
-              >Download PDF</a
+        <!-- 1) VIDEO -->
+        <section
+          id="video"
+          data-title="Presentation Video"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-2">
+              <span
+                class="badge w-max bg-black/5 border border-black/10 font-bold"
+                >Video</span
+              >
+              <a
+                class="link link-hover text-sm opacity-70"
+                href="https://youtu.be/CLXD9IfAfV0"
+                target="_blank"
+                rel="noopener"
+                >Open on YouTube ↗</a
+              >
+            </div>
+            <div
+              class="mt-3 rounded-2xl overflow-hidden border border-black/10"
             >
+              <div class="w-full aspect-video">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube-nocookie.com/embed/CLXD9IfAfV0?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
+                  title="Presentation 1 - Phoenix Force"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <!-- 2) FULL REPORT (web-native, with tabs/pop-ups) -->
+        <section
+          id="report"
+          data-title="Report (Integrated)"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold"
+                  >Report</span
+                >
+                <span class="text-xs opacity-70">Flow mirrors the PDF</span>
+              </div>
+              <div class="text-xs opacity-70">
+                Images marked ✦ used AI – cited in
+                <a class="link" href="#resources">Resources</a>.
+              </div>
+            </div>
+
+            <!-- Callout: Instructor Feedback Applied -->
+            <div class="callout info rounded-xl p-4 mt-4">
+              <div class="font-semibold">Instructor note applied</div>
+              <div class="text-sm opacity-80">
+                Concept generation is now interactive below (tabs & pop-ups).
+                The full paper lives here and again as a downloadable PDF in
+                <a class="link" href="#resources">Resources</a>. Subsystem
+                call-outs were added on the product sketch.
+              </div>
+            </div>
+
+            <!-- Report sections -->
+            <article class="prose max-w-none">
+              <h2 id="goal" class="scroll-mt-24">Goal of the Project</h2>
+              <p>
+                Develop a modular wildfire response system to improve early
+                detection and monitoring of hot spots through distributed
+                <em>mobile sensor modules</em> linked to a
+                <em>base display module</em>. Using ESP‑Mesh networking,
+                multiple units relay temperature, smoke, CO, and related
+                indicators to a central, glove‑friendly interface for real‑time
+                situational awareness and faster mitigation.
+              </p>
+
+              <div class="callout success rounded-xl p-4">
+                <div class="font-semibold">Success metrics</div>
+                <ul class="text-sm list-disc ml-5">
+                  <li>≤ 1 s alert latency (lab target)</li>
+                  <li>≥ 99% message delivery over ≥ 100 trials</li>
+                  <li>≥ 95% detection accuracy for chosen condition</li>
+                  <li>≤ 3 actions to complete the core task</li>
+                </ul>
+              </div>
+
+              <h2 id="audience" class="scroll-mt-24">
+                Audience of the Project
+              </h2>
+              <p>
+                Primary: frontline wildfire responders (firefighters,
+                fire‑watch, emergency management) who need rugged, legible,
+                internet‑optional tools. Secondary: researchers and community
+                stakeholders for monitoring and education.
+              </p>
+
+              <h2 id="concepts" class="scroll-mt-24">
+                Concept Generation (Interactive)
+              </h2>
+              <!-- Tabs for Concept Generation -->
+              <div role="tablist" class="tabs tabs-bordered">
+                <input
+                  type="radio"
+                  name="cg"
+                  role="tab"
+                  class="tab"
+                  aria-label="100 Ideas"
+                  checked
+                />
+                <div role="tabpanel" class="tab-content p-0 pt-4">
+                  <p class="opacity-80 text-sm mb-2">
+                    Scrollable list. Click any idea to pin as a pop‑up note.
+                  </p>
+                  <div
+                    id="ideasList"
+                    class="max-h-72 overflow-auto border border-black/10 rounded-xl p-3 bg-black/5 text-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2"
+                  ></div>
+                </div>
+
+                <input
+                  type="radio"
+                  name="cg"
+                  role="tab"
+                  class="tab"
+                  aria-label="Grouped Themes"
+                />
+                <div role="tabpanel" class="tab-content p-0 pt-4">
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Sensors & Detection</div>
+                      <p class="text-sm opacity-80">
+                        Temperature, smoke, CO, thermal camera, wildlife
+                        detection, lidar.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Power & Energy</div>
+                      <p class="text-sm opacity-80">
+                        Solar backpack, swappable batteries, kinetic/hand‑crank,
+                        fuel‑cell.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Comms & Networking</div>
+                      <p class="text-sm opacity-80">
+                        LoRa/ESP‑Mesh, cellular/satellite fallback, SMS relay,
+                        repeater mode.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Alerts & Feedback</div>
+                      <p class="text-sm opacity-80">
+                        LED codes, siren + voice, haptic wristband, AR overlays.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Durability & Safety</div>
+                      <p class="text-sm opacity-80">
+                        Fire‑retardant, waterproof, dust/ash‑proof,
+                        shock‑absorbing.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4">
+                      <div class="font-semibold">Deployment Concepts</div>
+                      <p class="text-sm opacity-80">
+                        Rovers, drones, balloon sensors, wearable modules, mast
+                        antenna.
+                      </p>
+                    </div>
+                    <div class="callout info rounded-xl p-4 md:col-span-2">
+                      <div class="font-semibold">Mapping & Visualization</div>
+                      <p class="text-sm opacity-80">
+                        GPS geotagging, collaborative map, AI spread modeling,
+                        overlays.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <input
+                  type="radio"
+                  name="cg"
+                  role="tab"
+                  class="tab"
+                  aria-label="Top 15 Ranked"
+                />
+                <div role="tabpanel" class="tab-content p-0 pt-4">
+                  <ul class="list-disc ml-6 space-y-1 text-sm">
+                    <li>Thermal camera ✦ (hidden hotspots)</li>
+                    <li>Smoke sensor</li>
+                    <li>Predictive AI fire spread modeling ✦</li>
+                    <li>GPS geotagging + collaborative mapping</li>
+                    <li>AR heads‑up display in goggles ✦</li>
+                    <li>LoRa mesh (no Wi‑Fi/cell required)</li>
+                    <li>Satellite uplink fallback</li>
+                    <li>Emergency siren + vibration wristband</li>
+                    <li>Rugged casing (fire/water/shock)</li>
+                    <li>Solar backpack power</li>
+                    <li>Swappable batteries</li>
+                    <li>Helmet‑integrated thermal display ✦</li>
+                    <li>Remote‑controlled rover</li>
+                    <li>Hybrid firefighting drone</li>
+                    <li>Cloud hotspot archive + real‑time dashboard</li>
+                  </ul>
+                </div>
+
+                <input
+                  type="radio"
+                  name="cg"
+                  role="tab"
+                  class="tab"
+                  aria-label="Sticky Notes (UX)"
+                />
+                <div role="tabpanel" class="tab-content p-0 pt-4">
+                  <div class="grid md:grid-cols-2 gap-3">
+                    <div class="callout success rounded-xl p-4">
+                      <div class="font-semibold">Cues</div>
+                      <p class="text-sm opacity-80">
+                        Visual (LED, overlays), auditory (siren/voice), tactile
+                        (haptics) for redundancy under stress.
+                      </p>
+                    </div>
+                    <div class="callout success rounded-xl p-4">
+                      <div class="font-semibold">Controls</div>
+                      <p class="text-sm opacity-80">
+                        Large glove‑friendly buttons, one‑button SOS, icon‑first
+                        screens, modular clip‑ons.
+                      </p>
+                    </div>
+                    <div class="callout success rounded-xl p-4">
+                      <div class="font-semibold">Durability & Safety</div>
+                      <p class="text-sm opacity-80">
+                        Fire‑retardant, waterproof, dust/ash‑proof,
+                        shock‑resistant; comfort via balanced wearables.
+                      </p>
+                    </div>
+                    <div class="callout success rounded-xl p-4">
+                      <div class="font-semibold">Instruction</div>
+                      <p class="text-sm opacity-80">
+                        Quick‑start icons, intuitive color/sound codes, AR
+                        guidance, app simulator.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h2 id="sketch" class="scroll-mt-24">
+                Concept Sketch with Call‑outs
+              </h2>
+              <div class="callout warn rounded-xl p-4 mb-3 text-sm">
+                <strong>Note:</strong> Call‑outs identify subsystems/components
+                as requested. Replace the image below with your latest sketch at
+                <code>/assets/concept-sketch.png</code>.
+              </div>
+              <div
+                class="relative border border-black/10 rounded-2xl overflow-hidden bg-white"
+              >
+                <img
+                  src="/phoenixforce.github.io/assets/concept-sketch.png"
+                  alt="Concept sketch with subsystems"
+                  class="w-full max-h-[540px] object-contain"
+                />
+                <!-- Example hotspots (adjust positions/labels to match your sketch) -->
+                <div class="hotspot left-[35%] top-[40%]">
+                  <div class="dot mx-auto"></div>
+                  <div class="label mt-1">A. Sensor Mast (linear actuator)</div>
+                </div>
+                <div class="hotspot left-[58%] top-[52%]">
+                  <div class="dot mx-auto"></div>
+                  <div class="label mt-1">B. ESP‑Mesh/LoRa Radio</div>
+                </div>
+                <div class="hotspot left-[70%] top-[30%]">
+                  <div class="dot mx-auto"></div>
+                  <div class="label mt-1">C. Base Display (HMI)</div>
+                </div>
+                <div class="hotspot left-[20%] top-[70%]">
+                  <div class="dot mx-auto"></div>
+                  <div class="label mt-1">D. Battery Bay (swappable)</div>
+                </div>
+                <div class="hotspot left-[48%] top-[18%]">
+                  <div class="dot mx-auto"></div>
+                  <div class="label mt-1">E. Thermal/Smoke/CO Sensors</div>
+                </div>
+              </div>
+
+              <h2 id="product" class="scroll-mt-24">Product Description</h2>
+              <p>
+                Mobile sensor units with GPS and a raiseable sensor mast form a
+                distributed detection fabric. An ESP‑Mesh backbone relays
+                readings to a rugged base module with multi‑modal alerts and
+                glove‑friendly controls. Roles align to the course structure:
+                networking, HMI, sensing/actuation, and systems integration
+                (power, runtime, terrain navigation).
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3) APPENDIX (selected items from your prior Appendix A page) -->
+        <section
+          id="appendix"
+          data-title="Appendix (Org & Process)"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <h2 class="card-title">
+              Appendix – Organization Supporting Material
+            </h2>
+            <p class="opacity-80">
+              Key tables from Team Organization + process scaffolding used this
+              sprint.
+            </p>
+
+            <div class="mt-4 overflow-x-auto">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Primary Deliverables</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Vinny</td>
+                    <td>Project Manager / Team Lead</td>
+                    <td>
+                      Timeline, assignments, agendas, risk & scope, instructor
+                      comms
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Emonie</td>
+                    <td>Documentation Lead</td>
+                    <td>Reports, citations, packaging, Drive organization</td>
+                  </tr>
+                  <tr>
+                    <td>Amanda</td>
+                    <td>Design & Branding Lead</td>
+                    <td>
+                      Slides/graphics, diagrams, visual consistency, UI mocks
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Danitza</td>
+                    <td>Research Lead</td>
+                    <td>
+                      Literature & standards, trade studies, recommendations
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Erjan</td>
+                    <td>Electronics Lead</td>
+                    <td>Circuits, PCB, components, firmware bring‑up</td>
+                  </tr>
+                  <tr>
+                    <td>James</td>
+                    <td>Test & Validation Lead</td>
+                    <td>
+                      Plans, unit/system tests, data logging, acceptance checks
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3 mt-4">
+              <div class="callout info rounded-xl p-4">
+                <div class="font-semibold">Communication Procedures</div>
+                <ul class="text-sm list-disc ml-5">
+                  <li>Async default: group text (≤24h response)</li>
+                  <li>Sync for blockers: quick call (15–30m) + recap</li>
+                  <li>Formal trail: email/Canvas; Vinny as PoC (cc all)</li>
+                </ul>
+              </div>
+              <div class="callout info rounded-xl p-4">
+                <div class="font-semibold">Definition of Done (excerpt)</div>
+                <ul class="text-sm list-disc ml-5">
+                  <li>Builds from clean clone, README updated</li>
+                  <li>Test(s) executed with logs/clip</li>
+                  <li>Wiring/schematic & enclosure notes updated</li>
+                  <li>Metrics recorded: latency, delivery, accuracy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4) RESOURCES -->
+        <section
+          id="resources"
+          data-title="Resources"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <h2 class="card-title">Resources</h2>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-black/10 p-4 bg-black/5">
+                <div class="font-semibold">Report PDF</div>
+                <p class="text-sm opacity-80">
+                  Open or download the submitted PDF.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <a
+                    class="btn btn-sm"
+                    href="/phoenixforce.github.io/assets/design-ideation-report-v3.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Open PDF ↗</a
+                  >
+                  <a
+                    class="btn btn-sm"
+                    href="/phoenixforce.github.io/assets/design-ideation-report-v3.pdf"
+                    download
+                    >Download PDF</a
+                  >
+                </div>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 bg-black/5">
+                <div class="font-semibold">Presentation Video</div>
+                <p class="text-sm opacity-80">
+                  Watch on YouTube if the embed is blocked.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <a
+                    class="btn btn-sm"
+                    href="https://youtu.be/CLXD9IfAfV0"
+                    target="_blank"
+                    rel="noopener"
+                    >Open on YouTube ↗</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 callout info rounded-xl p-4 text-sm">
+              <div class="font-semibold">AI Image Citation</div>
+              <p class="opacity-80">
+                Any image marked with ✦ used AI in its generation. Include a
+                short caption like “Thermal vision mockup ✦ generated with
+                [tool], prompt archived in project notes.” Replace captions as
+                needed with your actual tools/prompts.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Pop-up modal for idea pinning -->
+    <dialog id="ideaModal" class="modal">
+      <div class="modal-box max-w-lg">
+        <h3 class="font-bold text-lg" id="ideaTitle">Idea</h3>
+        <p class="py-2 opacity-80 text-sm">
+          Pinned from the 100‑idea list. Add this to your sprint if aligned.
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
         </div>
-      </section>
-    </main>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
 
-    <footer class="py-6 px-4 lg:px-6 max-w-5xl mx-auto">
-      <div class="divider my-3"></div>
-      <small class="opacity-70">© 2025 Phoenix Force · EGR314</small>
-    </footer>
+    <!-- Script: build ideas list; TOC; scrollspy; pop‑ups -->
+    <script>
+      // 100 ideas (trimmed from the PDF list for brevity – fill with full set)
+      const ideas = [
+        "Temperature sensor",
+        "Moisture sensor",
+        "Gas levels sensor",
+        "Thermal camera",
+        "Predict fire escape path + alert nearby",
+        "Soil temperature probes",
+        "Smoke sensor",
+        "UV/solar radiation sensor",
+        "Humidity sensor",
+        "Barometric pressure sensor",
+        "Acoustic sensor for fire crackling",
+        "Seismic sensor for falling trees",
+        "Air particle density (PM2.5/PM10)",
+        "Magnetometer for power line faults",
+        "Wildlife movement detector",
+        "Solar charging dock",
+        "Hand‑crank generator",
+        "Kinetic charging",
+        "Solar backpack integration",
+        "Swappable battery packs",
+        "USB‑C charging",
+        "Wireless charging pad",
+        "Micro wind turbine",
+        "Hydrogen fuel‑cell backup",
+        "Thermoelectric generator",
+        "Weather system with ESP‑NOW",
+        "LoRa mesh network",
+        "Bluetooth LE sync",
+        "NFC tags for data logging",
+        "Wi‑Fi repeater mode",
+        "Cellular fallback SIM",
+        "Real‑time dashboard sync",
+        "SMS‑based alert system",
+        "Peer‑to‑peer ESP‑NOW relays",
+        "Satellite uplink module",
+        "Emergency alert siren",
+        "LED alert light",
+        "Color‑coded LED strip",
+        "Voice alert playback",
+        "Haptic vibration feedback",
+        "AR heads‑up display in goggles",
+        "Laser hotspot marker",
+        "Drone‑deployed flare",
+        "Wristband flashing lights",
+        "Projection‑based AR overlay",
+        "Shock‑absorbing casing",
+        "Waterproof enclosure",
+        "Wind‑proof housing",
+        "Fire‑retardant shell",
+        "Lightning surge protection",
+        "Dust/ash‑proof sealing",
+        "Ceramic high‑temp casing",
+        "Submersible resistance",
+        "Foldable protective shell",
+        "Self‑cleaning lens cover",
+        "Drone for aerial scanning",
+        "Car‑to‑drone launcher",
+        "Drone swarm mapping",
+        "Balloon‑mounted sensors",
+        "Vehicle‑mounted scanner",
+        "Fireline cable sensor deployment",
+        "Remote‑controlled rover",
+        "Chest‑mounted module",
+        "Helmet‑integrated thermal display",
+        "Foldable mini‑tower",
+        "GPS geotagging",
+        "Lidar terrain scanning",
+        "Mapping program integration",
+        "Predictive AI fire spread modeling",
+        "Cloud hotspot archive",
+        "3D terrain + hotspot overlay",
+        "Wind map overlay",
+        "Historical fire comparison",
+        "Augmented evacuation path overlay",
+        "Shared collaborative map",
+        "Wearable vest module",
+        "Helmet AR overlay add‑on",
+        "Mobile phone companion app",
+        "Glove‑friendly button controls",
+        "One‑button SOS beacon",
+        "Modular clip‑on design",
+        "Lightweight exosuit assist",
+        "High‑visibility orange housing",
+        "Camouflage mode",
+        "Training simulator mode",
+        "Linear actuator mast antenna",
+        "Foliage density detection",
+        "Wildlife GPS collar integration",
+        "Clip‑on screen modules",
+        "Multi‑sensor module packs",
+        "Fire‑retardant drone variant",
+        "Smart fire extinguisher",
+        "Hybrid firefighting drone",
+        "Fireproof drone charging nest",
+        "Data black box",
+        "Self‑deploying solar mats",
+        "Breadcrumb trail mini pingers",
+        "Thermal binoculars w/ overlays",
+        "Exoskeleton backpack frame",
+        "Biometric monitor",
+      ];
+
+      const ideasList = document.getElementById("ideasList");
+      const ideaModal = document.getElementById("ideaModal");
+      const ideaTitle = document.getElementById("ideaTitle");
+
+      // Render idea chips
+      ideas.forEach((txt, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className =
+          "btn btn-xs normal-case justify-start text-left whitespace-normal h-auto min-h-0 bg-white border-black/10 hover:bg-black/5";
+        b.textContent = i + 1 + ". " + txt;
+        b.addEventListener("click", () => {
+          ideaTitle.textContent = txt;
+          ideaModal.showModal();
+        });
+        ideasList.appendChild(b);
+      });
+
+      // Build TOC from anchor sections
+      const toc = document.getElementById("tocLinks");
+      const sections = Array.from(document.querySelectorAll(".anchor-section"));
+      const map = new Map();
+
+      function addTocItem(id, text) {
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+        a.textContent = text;
+        toc.appendChild(a);
+        map.set(id, a);
+      }
+
+      sections.forEach((sec) => addTocItem(sec.id, sec.dataset.title));
+
+      // Also add sub‑entries for key report headings
+      const subIds = [
+        ["goal", "Goal of the Project"],
+        ["audience", "Audience"],
+        ["concepts", "Concept Generation"],
+        ["sketch", "Concept Sketch"],
+        ["product", "Product Description"],
+        ["appendix", "Appendix"],
+        ["resources", "Resources"],
+      ];
+      subIds.forEach(([id, label]) => {
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.className =
+          "block pl-4 px-2 py-1 rounded-md hover:bg-black/5 text-xs opacity-80";
+        a.textContent = label;
+        toc.appendChild(a);
+        map.set(id, a);
+      });
+
+      // ScrollSpy via IntersectionObserver
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (map.has(id)) {
+              if (entry.isIntersecting) {
+                // Remove active from all
+                map.forEach((a) => a.classList.remove("active"));
+                map.get(id).classList.add("active");
+              }
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
+      );
+
+      const observeIds = [
+        "video",
+        "report",
+        "goal",
+        "audience",
+        "concepts",
+        "sketch",
+        "product",
+        "appendix",
+        "resources",
+      ];
+      observeIds.forEach((i) => {
+        const el = document.getElementById(i);
+        if (el) observer.observe(el);
+      });
+    </script>
   </body>
 </html>
