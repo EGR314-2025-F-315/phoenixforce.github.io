@@ -16,22 +16,31 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1 gap-1">
       <li>
-        <a class="font-bold" href="/phoenixforce.github.io/team-organization/"
-          >Team Organization</a
-        >
+        <a class="font-bold" href="/phoenixforce.github.io/team-organization/">
+          Team Organization
+        </a>
       </li>
       <li>
         <a
           class="font-bold"
           href="/phoenixforce.github.io/assignments/design-ideation/"
-          >Assignment 1</a
         >
+          Assignment 1
+        </a>
       </li>
       <li>
-        <a class="font-bold" href="/phoenixforce.github.io/appendix/"
-          >Appendix</a
+        <a
+          class="font-bold"
+          href="/phoenixforce.github.io/assignments/block-diagram/"
         >
+          Block Diagram
+        </a>
       </li>
+      <!--<li>
+        <a class="font-bold" href="/phoenixforce.github.io/appendix/">
+          Appendix
+        </a>
+      </li>-->
     </ul>
   </div>
 
@@ -39,18 +48,8 @@
     <a
       class="btn btn-sm bg-gradient-to-r from-rose/70 to-peach/70 text-black/80 font-semibold border-0 shadow-soft hover:from-rose/80 hover:to-peach/80"
       href="https://github.com/EGR314-2025-F-315/phoenixforce.github.io"
-      >Github Repo</a
     >
+      Github Repo
+    </a>
   </div>
 </div>
-<script>
-  (function () {
-    const here = location.pathname.replace(/\/$/, "");
-    document.querySelectorAll(".navbar a[href]").forEach((a) => {
-      const href = a.getAttribute("href").replace(/\/$/, "");
-      if (href && here.startsWith(href) && href !== "/phoenixforce.github.io") {
-        a.classList.add("underline");
-      }
-    });
-  })();
-</script>
