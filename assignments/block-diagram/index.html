@@ -1,0 +1,382 @@
+---
+layout: none
+title: Block Diagram · Phoenix Force · EGR314
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Block Diagram · Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Sidebar active state */
+      .toc a.active {
+        background: rgba(0, 0, 0, 0.06);
+        font-weight: 700;
+      }
+      /* Simple callout styles */
+      .callout {
+        border-left-width: 6px;
+      }
+      .callout.info {
+        border-left-color: #60a5fa;
+        background: #eff6ff;
+      }
+      .callout.warn {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .callout.success {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+      }
+      .callout.danger {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    {% include nav.html %}
+
+    <!-- LAYOUT: Sidebar + Main -->
+    <div
+      class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+    >
+      <!-- Sidebar / TOC -->
+      <aside class="hidden lg:block sticky top-20 self-start">
+        <div
+          class="toc card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h2
+              class="font-extrabold text-sm uppercase tracking-widest opacity-70 mb-2"
+            >
+              On this page
+            </h2>
+            <nav class="space-y-1 text-sm" id="tocLinks"></nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main id="pageRoot" class="space-y-8">
+        <!-- HEADER -->
+        <header
+          class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+          ></div>
+          <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+          <div class="relative px-6 py-10 md:px-10 md:py-12">
+            <p
+              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
+            >
+              Embedded Systems Assignments
+            </p>
+            <h1
+              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+            >
+              Block Diagram — Team Assignment
+            </h1>
+            <p class="mt-3 text-ink/75">
+              Team-level subsystem map, interfaces, and pin planning for
+              ESP32-based platform
+            </p>
+          </div>
+        </header>
+
+        <!-- Objectives -->
+        <section
+          id="objectives"
+          data-title="Objectives"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <span class="badge bg-black/5 border border-black/10 font-bold"
+              >Objectives</span
+            >
+            <p class="mt-3">
+              The goal of this assignment is to determine and document the
+              manner in which each team member's project will communicate
+              electronically. These diagrams clarify logical flow before code
+              and improve overall software/hardware quality.
+            </p>
+            <div class="callout success rounded-xl p-4 mt-3">
+              <div class="font-semibold">Deliverable scope</div>
+              <ul class="list-disc ml-5 text-sm">
+                <li>
+                  A complete <b>team-level block diagram</b> highlighting
+                  subsystems interfacing with the ESP32.
+                </li>
+                <li>
+                  Clear ownership per subsystem (one owner per subsystem).
+                </li>
+                <li>
+                  Pin maps, bus addresses, power plan, and programming ports.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Resources -->
+        <section
+          id="resources"
+          data-title="Resources"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <span class="badge bg-black/5 border border-black/10 font-bold"
+              >Resources</span
+            >
+            <ul class="list-disc ml-5 mt-3">
+              <li>draw.io / diagrams.net (Google Drive compatible)</li>
+              <li>Project description example diagram</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Assignment / Team Block Diagram -->
+        <section
+          id="assignment"
+          data-title="Assignment"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Assignment</span
+              >
+            </div>
+            <h2 class="text-xl font-bold mt-4">Team Block Diagram</h2>
+            <p class="mt-2">
+              Starting with the example from the project description and
+              teammates' individual block diagrams, provide a detailed
+              <b>team-level block diagram</b> that shows:
+            </p>
+            <ul class="list-disc ml-5 mt-2 space-y-1">
+              <li>
+                <b>Subsystem Owner</b> for each teammate (one subsystem per
+                member).
+              </li>
+              <li>
+                <b>Sensors connections</b> (I²C, SPI) and any UART/GPIO lines.
+              </li>
+              <li>
+                <b>Power connection & distribution</b> (regulators, rails,
+                fusing, switches).
+              </li>
+              <li><b>ICSP/USB programming port</b> routing and access.</li>
+              <li>
+                <b>Pin mapping</b> to specific GPIO/peripheral pins on each
+                microcontroller.
+              </li>
+              <li>
+                If I²C, list <b>addresses</b> for each peripheral; if SPI, list
+                <b>CS pins</b>.
+              </li>
+              <li>
+                Details of peripheral ICs (sensors, actuators, displays)
+                directly connected.
+              </li>
+            </ul>
+
+            <!-- Diagram drop-in card -->
+            <div class="mt-4 rounded-2xl border border-black/10 p-4 bg-black/5">
+              <div class="font-semibold">Block Diagram (embed)</div>
+              <p class="text-sm opacity-80">
+                Export your draw.io diagram as PNG or SVG and place it in
+                <code>/assets/</code>, then update the <code>src</code> below.
+              </p>
+              <div
+                class="mt-3 rounded-xl overflow-hidden border border-black/10 bg-white"
+              >
+                <img
+                  src="/phoenixforce.github.io/assets/team-block-diagram.png"
+                  alt="Team-level block diagram"
+                  class="w-full"
+                />
+              </div>
+            </div>
+
+            <!-- Pin map table scaffold -->
+            <div class="mt-4">
+              <h3 class="font-semibold text-lg">Pin Map (scaffold)</h3>
+              <div class="overflow-x-auto mt-2">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Subsystem</th>
+                      <th>Owner</th>
+                      <th>MCU</th>
+                      <th>Interface</th>
+                      <th>Pin(s) / Addr / CS</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Thermal / Smoke / CO</td>
+                      <td>—</td>
+                      <td>ESP32</td>
+                      <td>I²C</td>
+                      <td>SDA: GPIO21 · SCL: GPIO22 · Addr: 0xXX</td>
+                      <td>Shared bus w/ pull‑ups</td>
+                    </tr>
+                    <tr>
+                      <td>OLED Display</td>
+                      <td>—</td>
+                      <td>ESP32</td>
+                      <td>SPI</td>
+                      <td>
+                        MOSI: GPIO23 · SCK: GPIO18 · CS: GPIO5 · DC: GPIO4
+                      </td>
+                      <td>3.3V only</td>
+                    </tr>
+                    <tr>
+                      <td>LoRa / Mesh Radio</td>
+                      <td>—</td>
+                      <td>ESP32</td>
+                      <td>SPI/UART</td>
+                      <td>CS: GPIO15 · IRQ: GPIO34 · UART2: RX2/TX2</td>
+                      <td>IRQ on input‑only pin OK</td>
+                    </tr>
+                    <tr>
+                      <td>Power</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td>VBAT → 5V/3.3V regs; USB‑C PD (opt)</td>
+                      <td>Show fuses/switches</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Subsequent Uses -->
+        <section
+          id="uses"
+          data-title="Subsequent Uses"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <h2 class="card-title">Subsequent Uses of this Document</h2>
+            <p class="mt-2">
+              This document guides how functionality is distributed across
+              teammates and will be updated throughout the semester as part of
+              your public living report. It will be reviewed by external
+              reviewers during the design review.
+            </p>
+          </div>
+        </section>
+
+        <!-- Checklist -->
+        <section
+          id="checklist"
+          data-title="Checklist"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <h2 class="card-title">Checklist</h2>
+            <ul class="list-disc ml-5 space-y-1">
+              <li>The page is easy to find (linked from landing page).</li>
+              <li>The block diagram is clear, legible, and well‑formatted.</li>
+              <li>
+                Arrows show signal/power flow; buses labeled; directions clear.
+              </li>
+              <li>
+                Power plan is shown (connectors, jumpers, rails, protections).
+              </li>
+              <li>
+                Each teammate’s role is clearly documented with subsystem.
+              </li>
+              <li>Pin map, addresses, and chip‑selects are listed.</li>
+            </ul>
+            <a href="#pageRoot" class="btn btn-sm mt-3">Back to top</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Script: Build TOC + ScrollSpy -->
+    <script>
+      const toc = document.getElementById("tocLinks");
+      const sections = Array.from(document.querySelectorAll(".anchor-section"));
+      const map = new Map();
+
+      function addTocItem(id, text) {
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+        a.textContent = text;
+        toc.appendChild(a);
+        map.set(id, a);
+      }
+
+      sections.forEach((sec) => addTocItem(sec.id, sec.dataset.title));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (map.has(id)) {
+              if (entry.isIntersecting) {
+                map.forEach((a) => a.classList.remove("active"));
+                map.get(id).classList.add("active");
+              }
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
+      );
+
+      sections.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
