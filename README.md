@@ -1,6 +1,6 @@
 # Phoenix Force Project Site
 
-This repository hosts the Phoenix Force website for the EGR314 course. The site documents our TerraGuard concept, team organization, assignment deliverables, and support materials in a single GitHub Pages deployment that faculty and external reviewers can access quickly. hi
+This repository hosts the Phoenix Force website for the EGR314 course. The site documents our TerraGuard concept, team organization, assignment deliverables, and support materials in a single GitHub Pages deployment that faculty and external reviewers can access quickly.
 
 ## Live Site
 - Production: https://egr314-2025-f-315.github.io/phoenixforce.github.io/
