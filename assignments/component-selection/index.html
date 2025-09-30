@@ -1,0 +1,1020 @@
+---
+layout: none
+title: Component Selection · Phoenix Force · EGR314
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Component Selection · Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .toc a.active {
+        background: rgba(0, 0, 0, 0.06);
+        font-weight: 700;
+      }
+      .callout {
+        border-left-width: 6px;
+      }
+      .callout.info {
+        border-left-color: #60a5fa;
+        background: #eff6ff;
+      }
+      .callout.warn {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .callout.success {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+      }
+      .callout.danger {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+      }
+
+      /* simple grid for item cards */
+      .auto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    {% include nav.html %}
+
+    <!--
+      =============================================================
+      Phoenix Force · Component Selection Page
+      Author: Vinny (scaffold + comments for teammates)
+
+      HOW TO USE THIS PAGE
+      - Each subsystem below has a collapsible section with the candidate components.
+      - Click "Learn more" on a component to open a modal with Pros/Cons, selection rationale, and a datasheet/product link.
+      - Use the radio button on a card to mark the team's chosen component. The BOM at the bottom updates automatically.
+      - Drop images for each component into /assets/components/ and update the image paths in the DATA section below.
+      - Export this page to PDF once complete (File → Print → Save as PDF).
+
+      TEAMMATE TODOS (search for your tag):
+        [POWER]  – Fill regulators, batteries, protection parts and set selection rationale.
+        [SENSORS] – Fill thermal/gas/humidity/IMU etc. Use SMD options ≥0805 for passives.
+        [RF]     – Fill Wi‑Fi/LoRa/GPS/antenna candidates; add pigtails, connectors.
+        [MECH]   – Fill chassis/hatch/mounting hardware; include motor & driver.
+
+      NOTE: This scaffold is intentionally verbose with comments so everyone can find their place quickly.
+      =============================================================
+    -->
+
+    <!-- LAYOUT: Sidebar + Main -->
+    <div
+      class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+    >
+      <!-- Sidebar / TOC -->
+      <aside class="hidden lg:block sticky top-20 self-start">
+        <div
+          class="toc card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h2
+              class="font-extrabold text-sm uppercase tracking-widest opacity-70 mb-2"
+            >
+              On this page
+            </h2>
+            <nav class="space-y-1 text-sm" id="tocLinks"></nav>
+          </div>
+        </div>
+
+        <!-- FILTERS: quick jump by category -->
+        <div
+          class="mt-4 card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h3 class="font-bold text-sm uppercase tracking-widest opacity-70">
+              Categories
+            </h3>
+            <div id="categoryList" class="mt-2 space-y-1"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main id="pageRoot" class="space-y-8">
+        <!-- HEADER -->
+        <header
+          class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+          ></div>
+          <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+          <div class="relative px-6 py-10 md:px-10 md:py-12">
+            <p
+              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
+            >
+              Assignments
+            </p>
+            <h1
+              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+            >
+              Component Selection
+            </h1>
+            <p class="mt-3 text-ink/75">
+              Compare options for each subsystem, record rationale, and build
+              the Bill of Materials (BOM).
+            </p>
+          </div>
+        </header>
+
+        <!-- Objectives -->
+        <section
+          id="objectives"
+          data-title="Objectives"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <span class="badge bg-black/5 border border-black/10 font-bold"
+              >Objectives</span
+            >
+            <ul class="list-disc ml-5 mt-3 text-sm">
+              <li>
+                Create at least <b>3 options</b> for each major component and
+                capture <b>Pros/Cons</b>.
+              </li>
+              <li>
+                Select the optimal part for our requirements and write a
+                <b>clear rationale</b>.
+              </li>
+              <li>
+                Build a <b>team BOM</b> (including passives ≥ 0805, headers,
+                connectors) and vendor order lists.
+              </li>
+            </ul>
+            <div class="callout warn rounded-xl p-4 mt-3">
+              <div class="font-semibold">EGR 314 constraints</div>
+              <ul class="list-disc ml-5 text-sm">
+                <li>
+                  Surface‑mount parts for active components; 0805+ for R/C
+                  passives.
+                </li>
+                <li>
+                  Avoid USB power banks as primary source; include on‑board
+                  regulation.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Resources -->
+        <section
+          id="resources"
+          data-title="Resources"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <span class="badge bg-black/5 border border-black/10 font-bold"
+              >Resources</span
+            >
+            <ul class="list-disc ml-5 mt-3 text-sm">
+              <li>
+                Embedded Systems Design Resources (ordering pages, sizing
+                guides).
+              </li>
+              <li>Datasheets (linked inside each modal).</li>
+              <li>Team research notes (uploaded to repo /assets/research/).</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ==================== SUBSYSTEMS ==================== -->
+        <!--
+          NOTE: The data for all components lives in the JS DATA block at the bottom.
+          The UI below is rendered dynamically from that data, grouped by category.
+        -->
+        <section
+          id="subsystems"
+          data-title="Subsystems"
+          class="space-y-6 anchor-section"
+        >
+          <!-- JS will inject collapsible sections here. -->
+        </section>
+
+        <!-- ==================== BOM ==================== -->
+        <section
+          id="bom"
+          data-title="Bill of Materials"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between">
+              <h2 class="card-title">Bill of Materials (Selected Parts)</h2>
+              <button class="btn btn-sm" onclick="exportBOM()">
+                Export BOM (CSV)
+              </button>
+            </div>
+            <p class="mt-1 text-sm opacity-70">
+              Only the selected option for each component is priced; alternates
+              are listed with “—”. Update quantities as needed; totals update
+              live.
+            </p>
+
+            <div class="overflow-x-auto mt-3">
+              <table class="table table-sm" id="bomTable">
+                <thead>
+                  <tr>
+                    <th>Subsystem</th>
+                    <th>Component</th>
+                    <th>Chosen Option</th>
+                    <th>Vendor Link</th>
+                    <th>Unit Price ($)</th>
+                    <th>Qty</th>
+                    <th>Line Total ($)</th>
+                  </tr>
+                </thead>
+                <tbody id="bomBody"></tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="5" class="text-right">Grand Total ($)</th>
+                    <th id="bomQtyTotal">0</th>
+                    <th id="bomGrandTotal">0.00</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Checklist -->
+        <section
+          id="checklist"
+          data-title="Checklist"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <h2 class="card-title">Submission Checklist</h2>
+            <ul class="list-disc ml-5 space-y-1 text-sm">
+              <li>This page linked from the website’s landing page.</li>
+              <li>
+                Each subsystem has ≥3 options with pros/cons and a selection
+                rationale.
+              </li>
+              <li>
+                All selected parts appear in the BOM with vendor links and
+                quantities.
+              </li>
+              <li>
+                PDF exports of this page and the BOM uploaded to the repo.
+              </li>
+              <li>
+                Email to PolyBizz with vendor forms + shopping cart links (where
+                applicable).
+              </li>
+            </ul>
+            <a href="#pageRoot" class="btn btn-sm mt-3">Back to top</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ==================== MODAL SHELL ==================== -->
+    <dialog id="detailModal" class="modal">
+      <div class="modal-box max-w-2xl">
+        <h3 class="font-bold text-xl" id="modalTitle">Component</h3>
+        <p class="text-sm opacity-60" id="modalSubtitle"></p>
+        <div class="divider"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-semibold">Pros</h4>
+            <ul class="list-disc ml-5 text-sm" id="modalPros"></ul>
+          </div>
+          <div>
+            <h4 class="font-semibold">Cons</h4>
+            <ul class="list-disc ml-5 text-sm" id="modalCons"></ul>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold">Rationale</h4>
+          <p class="text-sm" id="modalRationale"></p>
+          <a
+            id="modalLink"
+            target="_blank"
+            class="link link-primary text-sm"
+          ></a>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- ==================== DATA & RENDERING SCRIPT ==================== -->
+    <script>
+      // =============================================================
+      // DATA: Candidate components per subsystem
+      // NOTE: These seed entries come from our shared research doc.
+      //       Please replace images with local files in /assets/components/ .
+      //       unitPrice is numeric, leave null when not selected; URL must be a product/datasheet page.
+      // =============================================================
+      const DATA = [
+        {
+          category: "Power", // [POWER]
+          items: [
+            {
+              key: "5v-regulator",
+              title: "5V Regulator (Buck/LDO)",
+              owner: "[POWER]",
+              options: [
+                {
+                  name: "LM2596 Buck Module (placeholder)",
+                  img: "/phoenixforce.github.io/assets/components/lm2596.png",
+                  link: "https://www.ti.com/product/LM2596",
+                  pros: [
+                    "3A capable buck regulator",
+                    "Good efficiency for VBAT → 5V",
+                  ],
+                  cons: [
+                    "Module form factor (through‑hole pins)",
+                    "Not ideal for custom PCB",
+                  ],
+                  unitPrice: 2.15,
+                  rationale:
+                    "Decent stop‑gap for prototyping; will replace with SMD buck for PCB run.",
+                  selected: true,
+                },
+                {
+                  name: "MP1584 Buck (reference)",
+                  img: "/phoenixforce.github.io/assets/components/mp1584.png",
+                  link: "https://www.monolithicpower.com/en/mp1584.html",
+                  pros: ["Compact SMD controller", "Wide VIN"],
+                  cons: [
+                    "Requires full external design",
+                    "Board layout sensitive",
+                  ],
+                  unitPrice: 0.98,
+                  selected: false,
+                },
+                {
+                  name: "AMS1117‑5.0 LDO (reference)",
+                  img: "/phoenixforce.github.io/assets/components/ams1117.png",
+                  link: "https://www.advanced-monolithic.com/pdf/ds1117.pdf",
+                  pros: ["Simple", "Low noise"],
+                  cons: [
+                    "Inefficient for large drops",
+                    "Thermal dissipation concerns",
+                  ],
+                  unitPrice: 0.35,
+                  selected: false,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Sensors", // [SENSORS]
+          items: [
+            // ===== Temperature Switch (from research sheet) =====
+            {
+              key: "temp-switch",
+              title: "Temperature Switch IC",
+              owner: "[SENSORS]",
+              options: [
+                {
+                  name: "TI TMP390A2DRLR (6‑pin)",
+                  img: "/phoenixforce.github.io/assets/components/tmp390.png",
+                  link: "https://www.ti.com/product/TMP390",
+                  pros: [
+                    "Ultra‑low power (~0.55 µA typ)",
+                    "Dual thresholds (HOT/COLD)",
+                    "Hysteresis options",
+                  ],
+                  cons: ["±3°C typ accuracy", "Needs 1 resistor + 1 capacitor"],
+                  unitPrice: 1.03,
+                  rationale:
+                    "Dual‑channel thresholds simplify over/under‑temp alerts without MCU polling.",
+                  selected: true,
+                },
+                {
+                  name: "Microchip MCP9510HT‑E/CH",
+                  img: "/phoenixforce.github.io/assets/components/mcp9510.png",
+                  link: "https://www.microchip.com/en-us/product/MCP9510",
+                  pros: [
+                    "‑40..125°C range",
+                    "Integrated comparator alert output",
+                    "Configurable hysteresis",
+                  ],
+                  cons: ["Lower accuracy at high temps"],
+                  unitPrice: 1.05,
+                  selected: false,
+                },
+                {
+                  name: "TI TMP708AIDBVR",
+                  img: "/phoenixforce.github.io/assets/components/tmp708.png",
+                  link: "https://www.ti.com/product/TMP708",
+                  pros: ["Low cost", "Simple configuration", "Good docs"],
+                  cons: ["Average accuracy"],
+                  unitPrice: 0.46,
+                  selected: false,
+                },
+              ],
+            },
+
+            // ===== Gas / Air Quality =====
+            {
+              key: "gas-sensor",
+              title: "Gas / Air Quality Sensor",
+              owner: "[SENSORS]",
+              options: [
+                {
+                  name: "Sensirion SCD30 (CO₂ + RH + Temp)",
+                  img: "/phoenixforce.github.io/assets/components/scd30.png",
+                  link: "https://www.sensirion.com/en/environmental-sensors/carbon-dioxide-sensors/",
+                  pros: [
+                    "CO₂ + humidity + temperature in one",
+                    "Well‑documented",
+                  ],
+                  cons: ["Expensive", "Module is through‑hole"],
+                  unitPrice: 33.29,
+                  selected: false,
+                },
+                {
+                  name: "Bosch BME688 (Gas + P/T/H with AI)",
+                  img: "/phoenixforce.github.io/assets/components/bme688.png",
+                  link: "https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/",
+                  pros: [
+                    "Low power",
+                    "Multi‑sensor with AI features",
+                    "Used in wildfire detection",
+                  ],
+                  cons: ["Small package for hand‑soldering"],
+                  unitPrice: 8.65,
+                  rationale:
+                    "Combines multiple measurements; reduces separate sensor count.",
+                  selected: true,
+                },
+                {
+                  name: "ScioSense ENS160‑BGLM",
+                  img: "/phoenixforce.github.io/assets/components/ens160.png",
+                  link: "https://www.sciosense.com/products/environmental-sensors/ens160/",
+                  pros: ["Gas + humidity + temp", "Immune to humidity/ozone"],
+                  cons: ["Primarily marketed for indoor AQI"],
+                  unitPrice: 6.76,
+                  selected: false,
+                },
+              ],
+            },
+
+            // ===== Humidity =====
+            {
+              key: "humidity-sensor",
+              title: "Humidity Sensor",
+              owner: "[SENSORS]",
+              options: [
+                {
+                  name: "Sensirion SHT40‑CD1B‑R3",
+                  img: "/phoenixforce.github.io/assets/components/sht40.png",
+                  link: "https://sensirion.com/products/catalog/SHT40/",
+                  pros: ["±1.8% RH typical", "I²C, 1.08–3.6V", "Low power"],
+                  cons: ["Needs membrane housing outdoors", "8‑week lead time"],
+                  unitPrice: 1.8,
+                  selected: true,
+                },
+                {
+                  name: "TI HDC1080DMBR",
+                  img: "/phoenixforce.github.io/assets/components/hdc1080.png",
+                  link: "https://www.ti.com/product/HDC1080",
+                  pros: ["±2% RH mid accuracy", "0–100% RH range", "I²C"],
+                  cons: [
+                    "Min 2.7V",
+                    "No built‑in heater",
+                    "Needs housing",
+                    "Some drift",
+                  ],
+                  unitPrice: 1.8,
+                  selected: false,
+                },
+                {
+                  name: "Sensirion SHT41‑AD1B‑R2",
+                  img: "/phoenixforce.github.io/assets/components/sht41.png",
+                  link: "https://sensirion.com/products/catalog/SHT41/",
+                  pros: ["±1.8% RH typical", "Low power", "Robust"],
+                  cons: [
+                    "Lead time ~8 weeks",
+                    "Heater raises power momentarily",
+                  ],
+                  unitPrice: 2.63,
+                  selected: false,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "RF & Positioning", // [RF]
+          items: [
+            {
+              key: "antenna-2g4",
+              title: "2.4 GHz Antenna",
+              owner: "[RF]",
+              options: [
+                {
+                  name: "Whip 2.4 GHz w/ U.FL→SMA (3 dBi)",
+                  img: "/phoenixforce.github.io/assets/components/whip-3dbi.png",
+                  link: "https://www.amazon.com/dp/B07S7V25QH",
+                  pros: ["Inexpensive", "Omni coverage", "Simple mounting"],
+                  cons: [
+                    "Not weatherproof long‑term",
+                    "Lower gain vs omnis/Yagi",
+                  ],
+                  unitPrice: 9.99,
+                  selected: false,
+                },
+                {
+                  name: "Alfa AOA‑2458‑79AF Omni 9 dBi (Outdoor)",
+                  img: "/phoenixforce.github.io/assets/components/alfa-9dbi.png",
+                  link: "https://www.alfa.com.tw/products_detail/aoa-2458-79af",
+                  pros: [
+                    "Higher gain",
+                    "Rugged/weatherproof",
+                    "No aiming needed",
+                  ],
+                  cons: ["Larger/heavier", "Needs mounting hardware"],
+                  unitPrice: 23.99,
+                  rationale:
+                    "Good distance boost for rover↔base without precise aiming.",
+                  selected: true,
+                },
+                {
+                  name: "Tupavco 17 dBi Yagi (2.4 GHz)",
+                  img: "/phoenixforce.github.io/assets/components/yagi-17dbi.png",
+                  link: "https://www.tupavco.com/products/yagi-wifi-antenna-24ghz-17dbi-angle-h25-v24-outdoor-directional",
+                  pros: [
+                    "Very high gain",
+                    "Excellent link quality when aligned",
+                  ],
+                  cons: ["Narrow beamwidth", "Bulky, precise aiming"],
+                  unitPrice: 41.98,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "gps",
+              title: "GPS Module",
+              owner: "[RF]",
+              options: [
+                {
+                  name: "u‑blox NEO‑6M Module",
+                  img: "/phoenixforce.github.io/assets/components/neo6m.png",
+                  link: "https://content.u-blox.com/sites/default/files/NEO-6_DataSheet_%28GPS.G6-HW-09005%29.pdf",
+                  pros: ["Common, includes antenna", "Easy UART integration"],
+                  cons: ["Module TH pins", "Basic performance"],
+                  unitPrice: 10.0,
+                  selected: false,
+                },
+                {
+                  name: "ATGM336H Module",
+                  img: "/phoenixforce.github.io/assets/components/atgm336h.png",
+                  link: "https://www.icofchina.com/atgm336h/",
+                  pros: ["Compact", "BeiDou support"],
+                  cons: ["Less documentation"],
+                  unitPrice: 17.88,
+                  selected: true,
+                },
+                {
+                  name: "u‑blox NEO‑M8N",
+                  img: "/phoenixforce.github.io/assets/components/neo-m8n.png",
+                  link: "https://content.u-blox.com/sites/default/files/NEO-M8_DataSheet_%28UBX-13003366%29.pdf",
+                  pros: [
+                    "Multi‑GNSS (GPS/GLONASS/Galileo/BeiDou)",
+                    "Better sensitivity",
+                  ],
+                  cons: ["More expensive", "Often PCB‑level design"],
+                  unitPrice: 27.0,
+                  selected: false,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Mechanical", // [MECH]
+          items: [
+            {
+              key: "chassis",
+              title: "Chassis Material",
+              owner: "[MECH]",
+              options: [
+                {
+                  name: "Aluminum Bar Frame",
+                  img: "/phoenixforce.github.io/assets/components/aluminum.png",
+                  link: "https://www.onlinemetals.com/en/buy/aluminum",
+                  pros: ["Rigid", "Durable outdoors"],
+                  cons: ["Heavier", "More expensive", "Overkill for prototype"],
+                  unitPrice: 5.5,
+                  selected: false,
+                },
+                {
+                  name: "3D Printed PLA/ASA",
+                  img: "/phoenixforce.github.io/assets/components/3dprint.png",
+                  link: "https://www.prusa3d.com/materials/",
+                  pros: ["Low cost", "Rapid iteration", "Custom geometry"],
+                  cons: [
+                    "Needs CAD time",
+                    "Material creep/UV sensitivity (PLA)",
+                  ],
+                  unitPrice: 0.0,
+                  rationale: "Fast iteration + we have filament on hand.",
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "drive-motors",
+              title: "Drive Motors",
+              owner: "[MECH]",
+              options: [
+                {
+                  name: "TT Yellow Gear Motors (3–6V, ~200RPM)",
+                  img: "/phoenixforce.github.io/assets/components/tt-yellow.png",
+                  link: "https://www.digikey.com/short/m0mzwh2r",
+                  pros: ["Very inexpensive", "Easy to mount"],
+                  cons: ["Lower torque", "Requires H‑bridge"],
+                  unitPrice: 2.95,
+                  selected: true,
+                },
+                {
+                  name: "12V Steel Gear Motor w/ Encoder (~251RPM)",
+                  img: "/phoenixforce.github.io/assets/components/12v-encoder.png",
+                  link: "https://www.digikey.com/en/products/detail/dfrobot/FIT0186/6588528",
+                  pros: ["Higher power", "Built‑in encoder"],
+                  cons: ["12V rail needed", "Custom axle/mount"],
+                  unitPrice: 16.5,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "motor-driver",
+              title: "Motor Driver",
+              owner: "[MECH]",
+              options: [
+                {
+                  name: "DRV8833 Dual H‑Bridge",
+                  img: "/phoenixforce.github.io/assets/components/drv8833.png",
+                  link: "https://www.ti.com/product/DRV8833",
+                  pros: ["Small", "Lower heat than L298N", "Header‑friendly"],
+                  cons: ["Each board only 2 motors"],
+                  unitPrice: 7.89,
+                  selected: true,
+                },
+                {
+                  name: "L298N Module",
+                  img: "/phoenixforce.github.io/assets/components/l298n.png",
+                  link: "https://www.st.com/en/motor-drivers/l298.html",
+                  pros: ["Common", "Cheap kits available"],
+                  cons: ["Inefficient, runs hot", "Bulky"],
+                  unitPrice: 5.99,
+                  selected: false,
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      // =============================================================
+      // RENDER: Build collapsible sections and cards
+      // =============================================================
+      const subsystemsRoot = document.getElementById("subsystems");
+      const categoriesRoot = document.getElementById("categoryList");
+
+      function renderSubsystems() {
+        DATA.forEach((group, gi) => {
+          const section = document.createElement("section");
+          section.className =
+            "card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section";
+          section.id = `cat-${gi}`;
+          section.dataset.title = group.category;
+
+          section.innerHTML = `
+            <div class="card-body">
+              <div class="flex items-center justify-between gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold">${group.category}</span>
+              </div>
+              <div class="mt-3 space-y-4" id="group-${gi}"></div>
+            </div>
+          `;
+
+          subsystemsRoot.appendChild(section);
+
+          // Sidebar quick jump
+          const catLink = document.createElement("a");
+          catLink.href = `#cat-${gi}`;
+          catLink.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+          catLink.textContent = group.category;
+          categoriesRoot.appendChild(catLink);
+
+          // Render items as collapsibles
+          const groupRoot = section.querySelector(`#group-${gi}`);
+          group.items.forEach((item, ii) => {
+            const wrap = document.createElement("div");
+            wrap.className =
+              "collapse collapse-arrow bg-base-100 border border-black/10 rounded-xl";
+            wrap.innerHTML = `
+              <input type="checkbox" />
+              <div class="collapse-title text-lg font-semibold">
+                ${item.title} <span class="ml-2 text-xs opacity-60">${
+              item.owner
+            }</span>
+              </div>
+              <div class="collapse-content">
+                <div class="auto-grid">
+                  ${item.options
+                    .map((opt, oi) =>
+                      cardTemplate(group.category, item, opt, gi, ii, oi)
+                    )
+                    .join("")}
+                </div>
+              </div>
+            `;
+            groupRoot.appendChild(wrap);
+          });
+        });
+      }
+
+      function cardTemplate(category, item, opt, gi, ii, oi) {
+        const id = `${gi}-${ii}-${oi}`;
+        const price =
+          typeof opt.unitPrice === "number" ? opt.unitPrice.toFixed(2) : "—";
+        const checked = opt.selected ? "checked" : "";
+        return `
+          <div class="card bg-white border border-black/10 rounded-2xl overflow-hidden">
+            <figure class="bg-white aspect-video"><img src="${opt.img}" alt="${
+          opt.name
+        }" class="object-contain w-full h-full" /></figure>
+            <div class="card-body p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-bold leading-tight">${opt.name}</h3>
+                  <p class="text-xs opacity-60">${category} • ${item.title}</p>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer gap-2" title="Mark as selected for BOM">
+                    <span class="label-text text-xs">Select</span>
+                    <input type="radio" name="select-${gi}-${ii}" class="radio radio-sm"
+                      ${checked} onchange='selectOption(${gi}, ${ii}, ${oi})' />
+                  </label>
+                </div>
+              </div>
+              <div class="mt-1 text-sm">
+                <ul class="list-disc ml-5 text-xs">
+                  ${opt.pros
+                    .slice(0, 2)
+                    .map((p) => `<li>${p}</li>`)
+                    .join("")}
+                </ul>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <span class="badge">$${price}</span>
+                <div class="flex gap-2">
+                  <a href="${
+                    opt.link
+                  }" target="_blank" class="btn btn-xs">Product</a>
+                  <button class="btn btn-xs btn-outline" onclick='openDetails(${gi}, ${ii}, ${oi})'>Learn more</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // =============================================================
+      // MODAL: Populate with detail
+      // =============================================================
+      const modal = document.getElementById("detailModal");
+      function openDetails(gi, ii, oi) {
+        const item = DATA[gi].items[ii];
+        const opt = item.options[oi];
+        document.getElementById("modalTitle").textContent = opt.name;
+        document.getElementById(
+          "modalSubtitle"
+        ).textContent = `${DATA[gi].category} • ${item.title}`;
+        document.getElementById("modalPros").innerHTML = opt.pros
+          .map((p) => `<li>${p}</li>`)
+          .join("");
+        document.getElementById("modalCons").innerHTML = (opt.cons || [])
+          .map((c) => `<li>${c}</li>`)
+          .join("");
+        document.getElementById("modalRationale").textContent =
+          opt.rationale || "(Add rationale after team discussion)";
+        const a = document.getElementById("modalLink");
+        a.textContent = opt.link;
+        a.href = opt.link;
+        modal.showModal();
+      }
+
+      // =============================================================
+      // SELECTION + BOM
+      // =============================================================
+      function selectOption(gi, ii, oi) {
+        const opts = DATA[gi].items[ii].options;
+        opts.forEach((o, idx) => (o.selected = idx === oi));
+        renderBOM();
+      }
+
+      function renderBOM() {
+        const body = document.getElementById("bomBody");
+        body.innerHTML = "";
+        let grand = 0;
+        let qtyTotal = 0;
+
+        DATA.forEach((group) => {
+          group.items.forEach((item) => {
+            const chosen = item.options.find((o) => o.selected);
+            const unit =
+              chosen && typeof chosen.unitPrice === "number"
+                ? chosen.unitPrice
+                : 0;
+            const qty = chosen && chosen.qty ? chosen.qty : 1;
+            const line = unit * qty;
+            grand += line;
+            qtyTotal += qty;
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${group.category}</td>
+              <td>${item.title}</td>
+              <td>${chosen ? chosen.name : "—"}</td>
+              <td>${
+                chosen
+                  ? `<a href='${chosen.link}' class='link link-primary' target='_blank'>Link</a>`
+                  : "—"
+              }</td>
+              <td>${
+                chosen && typeof chosen.unitPrice === "number"
+                  ? chosen.unitPrice.toFixed(2)
+                  : "—"
+              }</td>
+              <td>
+                <input type='number' min='1' value='${qty}' class='input input-xs input-bordered w-20' onchange='updateQty("${
+              item.key
+            }", this.value)' />
+              </td>
+              <td>${line.toFixed(2)}</td>
+            `;
+            body.appendChild(tr);
+          });
+        });
+
+        document.getElementById("bomGrandTotal").textContent = grand.toFixed(2);
+        document.getElementById("bomQtyTotal").textContent = qtyTotal;
+      }
+
+      function updateQty(itemKey, val) {
+        const qty = Math.max(1, parseInt(val || 1, 10));
+        for (const group of DATA) {
+          for (const item of group.items) {
+            if (item.key === itemKey) {
+              const chosen = item.options.find((o) => o.selected);
+              if (chosen) chosen.qty = qty;
+              renderBOM();
+              return;
+            }
+          }
+        }
+      }
+
+      function exportBOM() {
+        const rows = [
+          [
+            "Subsystem",
+            "Component",
+            "Option",
+            "Unit Price",
+            "Qty",
+            "Line Total",
+            "Link",
+          ],
+        ];
+        DATA.forEach((group) => {
+          group.items.forEach((item) => {
+            const chosen = item.options.find((o) => o.selected) || {};
+            const unit =
+              typeof chosen.unitPrice === "number" ? chosen.unitPrice : 0;
+            const qty = chosen.qty || 1;
+            const line = unit * qty;
+            rows.push([
+              group.category,
+              item.title,
+              chosen.name || "—",
+              unit ? unit.toFixed(2) : "—",
+              String(qty),
+              unit ? line.toFixed(2) : "—",
+              chosen.link || "",
+            ]);
+          });
+        });
+        const csv = rows
+          .map((r) =>
+            r.map((s) => `"${String(s).replaceAll('"', '""')}"`).join(",")
+          )
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "phoenix-force-bom.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      // =============================================================
+      // TOC / ScrollSpy (same pattern as block diagram page)
+      // =============================================================
+      const toc = document.getElementById("tocLinks");
+      const sections = [];
+      function buildTOC() {
+        document
+          .querySelectorAll(".anchor-section")
+          .forEach((sec) => sections.push(sec));
+        const map = new Map();
+        function addTocItem(id, text) {
+          const a = document.createElement("a");
+          a.href = "#" + id;
+          a.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+          a.textContent = text;
+          toc.appendChild(a);
+          map.set(id, a);
+        }
+        sections.forEach((sec) => addTocItem(sec.id, sec.dataset.title));
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.getAttribute("id");
+              if (map.has(id)) {
+                if (entry.isIntersecting) {
+                  map.forEach((a) => a.classList.remove("active"));
+                  map.get(id).classList.add("active");
+                }
+              }
+            });
+          },
+          { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
+        );
+        sections.forEach((el) => observer.observe(el));
+      }
+
+      // Boot
+      renderSubsystems();
+      renderBOM();
+      buildTOC();
+    </script>
+  </body>
+</html>
