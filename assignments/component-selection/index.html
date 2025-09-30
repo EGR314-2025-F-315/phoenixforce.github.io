@@ -4,7 +4,7 @@ title: Component Selection · Phoenix Force · EGR314
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -433,10 +433,11 @@ title: Component Selection · Phoenix Force · EGR314
                     "Hysteresis options",
                   ],
                   cons: ["±3°C typ accuracy", "Needs 1 resistor + 1 capacitor"],
-                  unitPrice: 1.03,
+                  unitPrice: 9.27,
                   rationale:
                     "Dual‑channel thresholds simplify over/under‑temp alerts without MCU polling.",
                   selected: true,
+                  qty: 3,
                 },
                 {
                   name: "Microchip MCP9510HT‑E/CH",
@@ -491,10 +492,11 @@ title: Component Selection · Phoenix Force · EGR314
                     "Used in wildfire detection",
                   ],
                   cons: ["Small package for hand‑soldering"],
-                  unitPrice: 8.65,
+                  unitPrice: 17.3,
                   rationale:
                     "Combines multiple measurements; reduces separate sensor count.",
                   selected: true,
+                  qty: 2,
                 },
                 {
                   name: "ScioSense ENS160‑BGLM",
@@ -572,7 +574,7 @@ title: Component Selection · Phoenix Force · EGR314
                     "Lower gain vs omnis/Yagi",
                   ],
                   unitPrice: 9.99,
-                  selected: false,
+                  selected: true,
                 },
                 {
                   name: "Alfa AOA‑2458‑79AF Omni 9 dBi (Outdoor)",
@@ -587,7 +589,7 @@ title: Component Selection · Phoenix Force · EGR314
                   unitPrice: 23.99,
                   rationale:
                     "Good distance boost for rover↔base without precise aiming.",
-                  selected: true,
+                  selected: false,
                 },
                 {
                   name: "Tupavco 17 dBi Yagi (2.4 GHz)",
@@ -614,8 +616,8 @@ title: Component Selection · Phoenix Force · EGR314
                   link: "https://content.u-blox.com/sites/default/files/NEO-6_DataSheet_%28GPS.G6-HW-09005%29.pdf",
                   pros: ["Common, includes antenna", "Easy UART integration"],
                   cons: ["Module TH pins", "Basic performance"],
-                  unitPrice: 10.0,
-                  selected: false,
+                  unitPrice: 9.99,
+                  selected: true,
                 },
                 {
                   name: "ATGM336H Module",
@@ -624,7 +626,7 @@ title: Component Selection · Phoenix Force · EGR314
                   pros: ["Compact", "BeiDou support"],
                   cons: ["Less documentation"],
                   unitPrice: 17.88,
-                  selected: true,
+                  selected: false,
                 },
                 {
                   name: "u‑blox NEO‑M8N",
@@ -712,7 +714,7 @@ title: Component Selection · Phoenix Force · EGR314
                   pros: ["Small", "Lower heat than L298N", "Header‑friendly"],
                   cons: ["Each board only 2 motors"],
                   unitPrice: 7.89,
-                  selected: true,
+                  selected: false,
                 },
                 {
                   name: "L298N Module",
@@ -720,8 +722,8 @@ title: Component Selection · Phoenix Force · EGR314
                   link: "https://www.st.com/en/motor-drivers/l298.html",
                   pros: ["Common", "Cheap kits available"],
                   cons: ["Inefficient, runs hot", "Bulky"],
-                  unitPrice: 5.99,
-                  selected: false,
+                  unitPrice: 15.99,
+                  selected: true,
                 },
               ],
             },
@@ -766,7 +768,7 @@ title: Component Selection · Phoenix Force · EGR314
           group.items.forEach((item, ii) => {
             const wrap = document.createElement("div");
             wrap.className =
-              "collapse collapse-arrow bg-base-100 border border-black/10 rounded-xl";
+              "collapse collapse-arrow bg-white border border-black/10 rounded-xl";
             wrap.innerHTML = `
               <input type="checkbox" />
               <div class="collapse-title text-lg font-semibold">
