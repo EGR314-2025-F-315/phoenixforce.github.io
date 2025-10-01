@@ -314,19 +314,21 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "temp-switch",
               title: "Temperature Switch IC",
-              owner: "[SENSORS]",
+              owner: "Amanda Pizzaro",
               options: [
                 {
                   name: "TI TMP390A2DRLR (6-pin)",
-                  img: "/phoenixforce.github.io/assets/components/tmp390.png",
-                  link: "https://www.ti.com/product/TMP390",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/010/696/TI-TMP390AxDRLT_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/TMP390A2DRLR/10434748",
                   pros: [
-                    "Ultra-low power (~0.55 µA typ)",
-                    "Dual thresholds (HOT/COLD)",
-                    "Hysteresis options",
+                    "low power consumption: 0.5 5 µA typical at 25°C",
+                    "dual channel (overtemperature 40 - 124°C and under temperature",
+                    "55 to 130°C",
+                    "hysteresis options",
+                    "temp switch w HOT and COLD",
                   ],
                   cons: ["±3°C typ accuracy", "Needs 1 resistor + 1 capacitor"],
-                  unitPrice: 9.27,
+                  unitPrice: 0.64,
                   rationale:
                     "Dual-channel thresholds simplify over/under-temp alerts without MCU polling.",
                   selected: true,
@@ -334,21 +336,21 @@ title: Component Selection · Phoenix Force · EGR314
                 },
                 {
                   name: "Microchip MCP9510HT-E/CH",
-                  img: "/phoenixforce.github.io/assets/components/mcp9510.png",
-                  link: "https://www.microchip.com/en-us/product/MCP9510",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/003/238/121/MFG_150%7EC04-028%7ECH%2COT%7E6_sml%28200x200%29.jpg",
+                  link: "https://www.digikey.com/en/products/detail/microchip-technology/MCP9510HT-E-CH/1999528",
                   pros: [
                     "-40..125°C range",
                     "Integrated comparator alert output",
                     "Configurable hysteresis",
                   ],
                   cons: ["Lower accuracy at high temps"],
-                  unitPrice: 1.05,
+                  unitPrice: 1.1,
                   selected: false,
                 },
                 {
                   name: "TI TMP708AIDBVR",
-                  img: "/phoenixforce.github.io/assets/components/tmp708.png",
-                  link: "https://www.ti.com/product/TMP708",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/300/756/409/296%7E4073253-4%7EDBV%7E5_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/TMP708AIDBVR/3053265",
                   pros: ["Low cost", "Simple configuration", "Good docs"],
                   cons: ["Average accuracy"],
                   unitPrice: 0.46,
@@ -359,12 +361,12 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "gas-sensor",
               title: "Gas / Air Quality Sensor",
-              owner: "[SENSORS]",
+              owner: "Amanda Pizzaro",
               options: [
                 {
                   name: "Sensirion SCD30 (CO₂ + RH + Temp)",
-                  img: "/phoenixforce.github.io/assets/components/scd30.png",
-                  link: "https://www.sensirion.com/en/environmental-sensors/carbon-dioxide-sensors/",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/200/443/584/MFG_SCD30_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/sensirion-ag/SCD30/8445334",
                   pros: [
                     "CO₂ + humidity + temperature in one",
                     "Well-documented",
@@ -375,40 +377,57 @@ title: Component Selection · Phoenix Force · EGR314
                 },
                 {
                   name: "Bosch BME688 (Gas + P/T/H with AI)",
-                  img: "/phoenixforce.github.io/assets/components/bme688.png",
-                  link: "https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4544/MFG_BME688.JPG?hidebanner=true",
+                  link: "https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261",
                   pros: [
                     "Low power",
                     "Multi-sensor with AI features",
                     "Used in wildfire detection",
                   ],
                   cons: ["Small package for hand-soldering"],
-                  unitPrice: 17.3,
+                  unitPrice: 8.65,
                   rationale:
                     "Combines multiple measurements; reduces separate sensor count.",
-                  selected: true,
-                  qty: 2,
+                  selected: false,
+                  qty: 3,
+                },
+                {
+                  name: "ESP8266 MQ2 5V DC (MQ-2) Gas and Smoke Sensor",
+                  img: "https://m.media-amazon.com/images/I/71MhxcpYNyL._SX522_.jpg",
+                  link: "https://a.co/d/e4hOBhI",
+                  pros: [
+                    "Low power",
+                    "Multi-sensor with AI features",
+                    "Used in wildfire detection",
+                  ],
+                  cons: ["Small package for hand-soldering"],
+                  unitPrice: 11.99,
+                  rationale:
+                    "Combines multiple measurements; reduces separate sensor count.",
+                  selected: false,
+                  qty: 1,
                 },
               ],
             },
             {
               key: "humidity-sensor",
               title: "Humidity Sensor",
-              owner: "[SENSORS]",
+              owner: "Danitza Himenez",
               options: [
                 {
                   name: "Sensirion SHT40-CD1B-R3",
-                  img: "/phoenixforce.github.io/assets/components/sht40.png",
-                  link: "https://sensirion.com/products/catalog/SHT40/",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/010/906/800/MFG_ENS160-BGLx_sml.jpg",
+                  link: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/003/223/755/MFG_1649%7E4DFN-.59-1.5X1.5%7E%7E4_sml%28200x200%29.jpg",
                   pros: ["±1.8% RH typical", "I²C, 1.08–3.6V", "Low power"],
                   cons: ["Needs membrane housing outdoors", "8-week lead time"],
                   unitPrice: 1.8,
                   selected: true,
+                  qty: 3,
                 },
                 {
                   name: "TI HDC1080DMBR",
-                  img: "/phoenixforce.github.io/assets/components/hdc1080.png",
-                  link: "https://www.ti.com/product/HDC1080",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/002/294/976/MFG_HDC1080DMBR_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/HDC1080DMBR/5878653",
                   pros: ["±2% RH mid accuracy", "0–100% RH range", "I²C"],
                   cons: [
                     "Min 2.7V",
@@ -416,7 +435,7 @@ title: Component Selection · Phoenix Force · EGR314
                     "Needs housing",
                     "Some drift",
                   ],
-                  unitPrice: 1.8,
+                  unitPrice: 2.19,
                   selected: false,
                 },
               ],
@@ -424,15 +443,17 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "camera",
               title: "Camera",
-              owner: "[SENSORS, ROVER]",
+              owner: "Vinny Panchal",
               options: [
                 {
-                  name: "Generic Camera (module)",
-                  img: "",
-                  link: "Link",
-                  pros: [],
-                  cons: [],
-                  unitPrice: 33.99,
+                  name: "FPV Camera (module)",
+                  img: "https://m.media-amazon.com/images/I/51BROK8ZdFL._AC_SX679_.jpg",
+                  link: "https://a.co/d/07ie8Dl",
+                  pros: ["Works with ESP 32"],
+                  cons: ["N/A"],
+                  rationale:
+                    "It works with ESP and is ultrawide so would be perfect for transmission",
+                  unitPrice: 8.99,
                   qty: 1,
                   selected: true,
                 },
@@ -447,12 +468,12 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "antenna-2g4",
               title: "2.4 GHz Antenna",
-              owner: "[RF]",
+              owner: "Emonie France",
               options: [
                 {
-                  name: "Whip 2.4 GHz w/ U.FL→SMA (3 dBi)",
-                  img: "/phoenixforce.github.io/assets/components/whip-3dbi.png",
-                  link: "https://www.amazon.com/dp/B07S7V25QH",
+                  name: "D1 M1 ESP8266 2.4G WiFi Antenna with U.FL to Female SMA Cable",
+                  img: "https://m.media-amazon.com/images/I/61OuTfaDBpL._AC_SX679_.jpg",
+                  link: "https://a.co/d/1rdXPty",
                   pros: ["Inexpensive", "Omni coverage", "Simple mounting"],
                   cons: [
                     "Not weatherproof long-term",
@@ -466,31 +487,32 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "gps",
               title: "GPS Module",
-              owner: "[RF]",
+              owner: "Erjan Baigenzhin",
               options: [
                 {
                   name: "u-blox NEO-6M Module",
-                  img: "/phoenixforce.github.io/assets/components/neo6m.png",
-                  link: "https://content.u-blox.com/sites/default/files/NEO-6_DataSheet_%28GPS.G6-HW-09005%29.pdf",
+                  img: "https://m.media-amazon.com/images/I/51mrQoKtduL._AC_SX679_.jpg",
+                  link: "https://a.co/d/8vv5KV7",
                   pros: ["Common, includes antenna", "Easy UART integration"],
                   cons: ["Module TH pins", "Basic performance"],
-                  unitPrice: 9.99,
+                  unitPrice: 18.99,
+                  qty: 1,
                   selected: true,
                 },
               ],
             },
             {
               key: "esp32-board",
-              title: "ESP32 (2.4 GHz) Dev Board",
-              owner: "[COMMUNICATION, HMI, ROVER]",
+              title: "ESP32 Cam (2.4 GHz) Dev Board",
+              owner: "Emonie France",
               options: [
                 {
                   name: "ESP32 Dev Board (antenna-capable)",
-                  img: "",
-                  link: "Link",
+                  img: "https://m.media-amazon.com/images/I/7127jPKzJkL._AC_SX679_.jpg",
+                  link: "https://a.co/d/4q0dHPg",
                   pros: ["Antenna compatible ESP32 board"],
                   cons: [],
-                  unitPrice: 15.19,
+                  unitPrice: 15.99,
                   qty: 1,
                   selected: true,
                 },
@@ -505,12 +527,12 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "touch-displays",
               title: "Touch Displays",
-              owner: "[HMI]",
+              owner: "Vinny Panchal",
               options: [
                 {
                   name: '7" Touch Display (ESP32 HMI)',
-                  img: "",
-                  link: "Link",
+                  img: "https://m.media-amazon.com/images/I/617pQaqmYNL._AC_SX679_.jpg",
+                  link: "https://a.co/d/8EiLBvP",
                   pros: [
                     "Built-in ESP32",
                     "Audio support",
@@ -523,8 +545,8 @@ title: Component Selection · Phoenix Force · EGR314
                 },
                 {
                   name: '5" Touch Display (ESP32 HMI)',
-                  img: "",
-                  link: "Link",
+                  img: "https://m.media-amazon.com/images/I/71irUFOlKtL._AC_SX679_.jpg",
+                  link: "https://a.co/d/441U2Xp",
                   pros: ["Built-in ESP32", "Audio", "Customizable UI"],
                   cons: ["Expensive", "Smaller & harder to touch"],
                   unitPrice: 47.99,
@@ -536,14 +558,14 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "speakers",
               title: "Speakers",
-              owner: "[HMI]",
+              owner: "Vinny Panchal",
               options: [
                 {
                   name: "3W 8Ω Speaker (2-pack)",
-                  img: "",
-                  link: "Link",
+                  img: "https://m.media-amazon.com/images/I/915nDa-0siL._AC_SX679_.jpg",
+                  link: "https://a.co/d/f6DV96a",
                   pros: ["3W 8Ω", "Smaller profile", "Easy mount", "Pack of 2"],
-                  cons: ["Only 2"],
+                  cons: ["N/A"],
                   unitPrice: 7.99,
                   qty: 1,
                   selected: true,
@@ -553,14 +575,14 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "status-led",
               title: "LED Strip",
-              owner: "[HMI]",
+              owner: "Vinny Panchal",
               options: [
                 {
                   name: "Individually Addressable LED Strip",
-                  img: "",
-                  link: "Link",
+                  img: "https://m.media-amazon.com/images/I/71GniZ4qKoS._AC_SX679_.jpg",
+                  link: "https://a.co/d/1gp2LhV",
                   pros: ["Individually addressable"],
-                  cons: [],
+                  cons: ["N/A"],
                   unitPrice: 13.99,
                   qty: 1,
                   selected: true,
@@ -576,12 +598,12 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "chassis",
               title: "Chassis Material",
-              owner: "[MECH]",
+              owner: "Amanda Pizzaro",
               options: [
                 {
                   name: "3D Printed PLA/ASA",
-                  img: "/phoenixforce.github.io/assets/components/3dprint.png",
-                  link: "https://www.prusa3d.com/materials/",
+                  img: "https://www.bridgewaterstudio.net/hubfs/Blog_Images/Campaign%2002/3d-printing-history-featured.jpg",
+                  link: "https://us.store.bambulab.com/collections/bambu-lab-3d-printer-filament",
                   pros: ["Low cost", "Rapid iteration", "Custom geometry"],
                   cons: [
                     "Needs CAD time",
@@ -595,28 +617,37 @@ title: Component Selection · Phoenix Force · EGR314
             {
               key: "drive-motors",
               title: "Drive Motors",
-              owner: "[MECH]",
+              owner: "Erjan Baigenzhin",
               options: [
                 {
                   name: "TT Yellow Gear Motors (3–6V, ~200RPM)",
-                  img: "/phoenixforce.github.io/assets/components/tt-yellow.png",
-                  link: "https://www.digikey.com/short/m0mzwh2r",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/200/491/653/3777_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/adafruit-industries-llc/3777/8687221",
                   pros: ["Very inexpensive", "Easy to mount"],
                   cons: ["Lower torque", "Requires H-bridge"],
                   unitPrice: 2.95,
                   selected: true,
+                },
+                {
+                  name: "Blue Steel gear motors",
+                  img: "https://m.media-amazon.com/images/I/51dsCtYbdFL._AC_SX679_.jpg",
+                  link: "https://a.co/d/382LnsW",
+                  pros: ["Expensive"],
+                  cons: ["Lower torque", "Requires H-bridge"],
+                  unitPrice: 23.39,
+                  selected: false,
                 },
               ],
             },
             {
               key: "motor-driver",
               title: "Motor Driver",
-              owner: "[MECH]",
+              owner: "Erjan Baigenzhin",
               options: [
                 {
                   name: "L298N Module",
-                  img: "/phoenixforce.github.io/assets/components/l298n.png",
-                  link: "https://www.st.com/en/motor-drivers/l298.html",
+                  img: "https://m.media-amazon.com/images/I/71+62HMgRML._AC_SX679_.jpg",
+                  link: "https://a.co/d/f2wVPY0",
                   pros: ["Common", "Cheap kits available"],
                   cons: ["Inefficient, runs hot", "Bulky"],
                   unitPrice: 15.99,
@@ -625,17 +656,51 @@ title: Component Selection · Phoenix Force · EGR314
               ],
             },
             {
-              key: "pcb",
-              title: "PCB Fabrication",
-              owner: "[MECH, SENSORS]",
+              key: "battery",
+              title: "Battery",
+              owner: "James Austin",
               options: [
                 {
                   name: "Custom PCB Budget",
-                  img: "",
-                  link: "",
+                  img: "https://m.media-amazon.com/images/I/71kucLpr4aL._AC_SX679_.jpg",
+                  link: "https://a.co/d/2eNwMD9",
+                  pros: ["10000mah battery", "Small form factor"],
+                  cons: ["N/A"],
+                  unitPrice: 39.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "power",
+              title: "Buck Convertor",
+              owner: "James Austin",
+              options: [
+                {
+                  name: "LM2596 Buck Convertor",
+                  img: "https://m.media-amazon.com/images/I/71uw8QRRugL._AC_SX679_.jpg",
+                  link: "https://a.co/d/9zMzR8D",
                   pros: [],
                   cons: [],
-                  unitPrice: 40.0,
+                  unitPrice: 39.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "power",
+              title: "Charging Protection Circuit",
+              owner: "James Austin",
+              options: [
+                {
+                  name: "Charging Protection Circuit",
+                  img: "https://m.media-amazon.com/images/I/514etQV3IoL._AC_SX679_.jpg",
+                  link: "https://a.co/d/hGxGqXL",
+                  pros: [],
+                  cons: [],
+                  unitPrice: 7.99,
                   qty: 1,
                   selected: true,
                 },
@@ -704,7 +769,7 @@ title: Component Selection · Phoenix Force · EGR314
 
       function cardTemplate(category, item, opt, gi, ii, oi) {
         const price =
-          typeof opt.unitPrice === "number" ? opt.unitPrice.toFixed(2) : "—";
+          typeof opt.unitPrice === "number" ? opt.unitPrice.toFixed(2) : "-";
         return `
           <div class="card bg-white border border-black/10 rounded-2xl overflow-hidden">
             <figure class="bg-white aspect-video">
@@ -767,7 +832,7 @@ title: Component Selection · Phoenix Force · EGR314
         modal.showModal();
       }
 
-      // ========= BOM (FIXED; no selection UI) =========
+      // ========= BOM =========
       function chosenOptionForItem(item) {
         return item.options.find((o) => o.selected) || item.options[0];
       }
@@ -798,13 +863,13 @@ title: Component Selection · Phoenix Force · EGR314
                   ${item.title}
                 </button>
               </td>
-              <td>${chosen.name || "—"}</td>
+              <td>${chosen.name || "-"}</td>
               <td>${
                 chosen.link
                   ? `<a href='${chosen.link}' class='link link-primary' target='_blank'>Link</a>`
-                  : "—"
+                  : "-"
               }</td>
-              <td>${unit ? unit.toFixed(2) : "—"}</td>
+              <td>${unit ? unit.toFixed(2) : "-"}</td>
               <td>
                 <input type='number' min='1' value='${qty}' class='input input-xs input-bordered w-20'
                   onchange='updateQty("${item.key}", this.value)' />
@@ -855,10 +920,10 @@ title: Component Selection · Phoenix Force · EGR314
             rows.push([
               group.category,
               item.title,
-              chosen.name || "—",
-              unit ? unit.toFixed(2) : "—",
+              chosen.name || "-",
+              unit ? unit.toFixed(2) : "-",
               String(qty),
-              unit ? line.toFixed(2) : "—",
+              unit ? line.toFixed(2) : "-",
               chosen.link || "",
             ]);
           });
