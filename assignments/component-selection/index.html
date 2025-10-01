@@ -73,41 +73,28 @@ title: Component Selection · Phoenix Force · EGR314
         border-left-color: #ef4444;
         background: #fef2f2;
       }
-
-      /* simple grid for item cards */
       .auto-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 16px;
+      }
+      .modal-figure {
+        aspect-ratio: 16 / 9;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        overflow: hidden;
+      }
+      .modal-figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     </style>
   </head>
   <body class="text-ink">
     {% include nav.html %}
 
-    <!--
-      =============================================================
-      Phoenix Force · Component Selection Page
-      Author: Vinny (scaffold + comments for teammates)
-
-      HOW TO USE THIS PAGE
-      - Each subsystem below has a collapsible section with the candidate components.
-      - Click "Learn more" on a component to open a modal with Pros/Cons, selection rationale, and a datasheet/product link.
-      - Use the radio button on a card to mark the team's chosen component. The BOM at the bottom updates automatically.
-      - Drop images for each component into /assets/components/ and update the image paths in the DATA section below.
-      - Export this page to PDF once complete (File → Print → Save as PDF).
-
-      TEAMMATE TODOS (search for your tag):
-        [POWER]  – Fill regulators, batteries, protection parts and set selection rationale.
-        [SENSORS] – Fill thermal/gas/humidity/IMU etc. Use SMD options ≥0805 for passives.
-        [RF]     – Fill Wi‑Fi/LoRa/GPS/antenna candidates; add pigtails, connectors.
-        [MECH]   – Fill chassis/hatch/mounting hardware; include motor & driver.
-
-      NOTE: This scaffold is intentionally verbose with comments so everyone can find their place quickly.
-      =============================================================
-    -->
-
-    <!-- LAYOUT: Sidebar + Main -->
     <div
       class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
     >
@@ -126,7 +113,6 @@ title: Component Selection · Phoenix Force · EGR314
           </div>
         </div>
 
-        <!-- FILTERS: quick jump by category -->
         <div
           class="mt-4 card bg-white rounded-2xl border border-black/10 shadow-soft"
         >
@@ -167,20 +153,16 @@ title: Component Selection · Phoenix Force · EGR314
           </div>
         </header>
 
-        <!-- ==================== SUBSYSTEMS ==================== -->
-        <!--
-          NOTE: The data for all components lives in the JS DATA block at the bottom.
-          The UI below is rendered dynamically from that data, grouped by category.
-        -->
+        <!-- SUBSYSTEMS -->
         <section
           id="subsystems"
           data-title="Subsystems"
           class="space-y-6 anchor-section"
         >
-          <!-- JS will inject collapsible sections here. -->
+          <!-- JS injects sections -->
         </section>
 
-        <!-- ==================== BOM ==================== -->
+        <!-- BOM -->
         <section
           id="bom"
           data-title="Bill of Materials"
@@ -188,15 +170,16 @@ title: Component Selection · Phoenix Force · EGR314
         >
           <div class="card-body">
             <div class="flex items-center justify-between">
-              <h2 class="card-title">Bill of Materials (Selected Parts)</h2>
+              <h2 class="card-title">Bill of Materials (Fixed)</h2>
               <button class="btn btn-sm" onclick="exportBOM()">
                 Export BOM (CSV)
               </button>
             </div>
             <p class="mt-1 text-sm opacity-70">
-              Only the selected option for each component is priced; alternates
-              are listed with “—”. Update quantities as needed; totals update
-              live.
+              This table is fixed. It uses the default choice defined in
+              <code>DATA</code> (option with <code>selected: true</code>,
+              falling back to the first option). Click an item name to view
+              details & image.
             </p>
 
             <div class="overflow-x-auto mt-3">
@@ -227,11 +210,16 @@ title: Component Selection · Phoenix Force · EGR314
       </main>
     </div>
 
-    <!-- ==================== MODAL SHELL ==================== -->
+    <!-- MODAL -->
     <dialog id="detailModal" class="modal">
       <div class="modal-box max-w-2xl">
         <h3 class="font-bold text-xl" id="modalTitle">Component</h3>
         <p class="text-sm opacity-60" id="modalSubtitle"></p>
+
+        <figure class="modal-figure mt-3">
+          <img id="modalImage" alt="Component image" />
+        </figure>
+
         <div class="divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -261,9 +249,13 @@ title: Component Selection · Phoenix Force · EGR314
     </dialog>
 
     <script>
+      /* ========= DATA (unchanged; trimmed for brevity in this snippet) =========
+         Use the same DATA you already have, including your added items.
+         The BOM now just reads the 'selected' defaults. 
+      */
       const DATA = [
         {
-          category: "Power", // [POWER]
+          category: "Power",
           items: [
             {
               key: "5v-regulator",
@@ -279,12 +271,12 @@ title: Component Selection · Phoenix Force · EGR314
                     "Good efficiency for VBAT → 5V",
                   ],
                   cons: [
-                    "Module form factor (through‑hole pins)",
+                    "Module form factor (through-hole pins)",
                     "Not ideal for custom PCB",
                   ],
                   unitPrice: 2.15,
                   rationale:
-                    "Decent stop‑gap for prototyping; will replace with SMD buck for PCB run.",
+                    "Decent stop-gap for prototyping; will replace with SMD buck for PCB run.",
                   selected: true,
                 },
                 {
@@ -300,7 +292,7 @@ title: Component Selection · Phoenix Force · EGR314
                   selected: false,
                 },
                 {
-                  name: "AMS1117‑5.0 LDO (reference)",
+                  name: "AMS1117-5.0 LDO (reference)",
                   img: "/phoenixforce.github.io/assets/components/ams1117.png",
                   link: "https://www.advanced-monolithic.com/pdf/ds1117.pdf",
                   pros: ["Simple", "Low noise"],
@@ -317,36 +309,35 @@ title: Component Selection · Phoenix Force · EGR314
         },
 
         {
-          category: "Sensors", // [SENSORS]
+          category: "Sensors",
           items: [
-            // ===== Temperature Switch (from research sheet) =====
             {
               key: "temp-switch",
               title: "Temperature Switch IC",
               owner: "[SENSORS]",
               options: [
                 {
-                  name: "TI TMP390A2DRLR (6‑pin)",
+                  name: "TI TMP390A2DRLR (6-pin)",
                   img: "/phoenixforce.github.io/assets/components/tmp390.png",
                   link: "https://www.ti.com/product/TMP390",
                   pros: [
-                    "Ultra‑low power (~0.55 µA typ)",
+                    "Ultra-low power (~0.55 µA typ)",
                     "Dual thresholds (HOT/COLD)",
                     "Hysteresis options",
                   ],
                   cons: ["±3°C typ accuracy", "Needs 1 resistor + 1 capacitor"],
                   unitPrice: 9.27,
                   rationale:
-                    "Dual‑channel thresholds simplify over/under‑temp alerts without MCU polling.",
+                    "Dual-channel thresholds simplify over/under-temp alerts without MCU polling.",
                   selected: true,
                   qty: 3,
                 },
                 {
-                  name: "Microchip MCP9510HT‑E/CH",
+                  name: "Microchip MCP9510HT-E/CH",
                   img: "/phoenixforce.github.io/assets/components/mcp9510.png",
                   link: "https://www.microchip.com/en-us/product/MCP9510",
                   pros: [
-                    "‑40..125°C range",
+                    "-40..125°C range",
                     "Integrated comparator alert output",
                     "Configurable hysteresis",
                   ],
@@ -365,8 +356,6 @@ title: Component Selection · Phoenix Force · EGR314
                 },
               ],
             },
-
-            // ===== Gas / Air Quality =====
             {
               key: "gas-sensor",
               title: "Gas / Air Quality Sensor",
@@ -378,9 +367,9 @@ title: Component Selection · Phoenix Force · EGR314
                   link: "https://www.sensirion.com/en/environmental-sensors/carbon-dioxide-sensors/",
                   pros: [
                     "CO₂ + humidity + temperature in one",
-                    "Well‑documented",
+                    "Well-documented",
                   ],
-                  cons: ["Expensive", "Module is through‑hole"],
+                  cons: ["Expensive", "Module is through-hole"],
                   unitPrice: 33.29,
                   selected: false,
                 },
@@ -390,40 +379,29 @@ title: Component Selection · Phoenix Force · EGR314
                   link: "https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/",
                   pros: [
                     "Low power",
-                    "Multi‑sensor with AI features",
+                    "Multi-sensor with AI features",
                     "Used in wildfire detection",
                   ],
-                  cons: ["Small package for hand‑soldering"],
+                  cons: ["Small package for hand-soldering"],
                   unitPrice: 17.3,
                   rationale:
                     "Combines multiple measurements; reduces separate sensor count.",
                   selected: true,
                   qty: 2,
                 },
-                {
-                  name: "ScioSense ENS160‑BGLM",
-                  img: "/phoenixforce.github.io/assets/components/ens160.png",
-                  link: "https://www.sciosense.com/products/environmental-sensors/ens160/",
-                  pros: ["Gas + humidity + temp", "Immune to humidity/ozone"],
-                  cons: ["Primarily marketed for indoor AQI"],
-                  unitPrice: 6.76,
-                  selected: false,
-                },
               ],
             },
-
-            // ===== Humidity =====
             {
               key: "humidity-sensor",
               title: "Humidity Sensor",
               owner: "[SENSORS]",
               options: [
                 {
-                  name: "Sensirion SHT40‑CD1B‑R3",
+                  name: "Sensirion SHT40-CD1B-R3",
                   img: "/phoenixforce.github.io/assets/components/sht40.png",
                   link: "https://sensirion.com/products/catalog/SHT40/",
                   pros: ["±1.8% RH typical", "I²C, 1.08–3.6V", "Low power"],
-                  cons: ["Needs membrane housing outdoors", "8‑week lead time"],
+                  cons: ["Needs membrane housing outdoors", "8-week lead time"],
                   unitPrice: 1.8,
                   selected: true,
                 },
@@ -434,24 +412,29 @@ title: Component Selection · Phoenix Force · EGR314
                   pros: ["±2% RH mid accuracy", "0–100% RH range", "I²C"],
                   cons: [
                     "Min 2.7V",
-                    "No built‑in heater",
+                    "No built-in heater",
                     "Needs housing",
                     "Some drift",
                   ],
                   unitPrice: 1.8,
                   selected: false,
                 },
+              ],
+            },
+            {
+              key: "camera",
+              title: "Camera",
+              owner: "[SENSORS, ROVER]",
+              options: [
                 {
-                  name: "Sensirion SHT41‑AD1B‑R2",
-                  img: "/phoenixforce.github.io/assets/components/sht41.png",
-                  link: "https://sensirion.com/products/catalog/SHT41/",
-                  pros: ["±1.8% RH typical", "Low power", "Robust"],
-                  cons: [
-                    "Lead time ~8 weeks",
-                    "Heater raises power momentarily",
-                  ],
-                  unitPrice: 2.63,
-                  selected: false,
+                  name: "Generic Camera (module)",
+                  img: "",
+                  link: "Link",
+                  pros: [],
+                  cons: [],
+                  unitPrice: 33.99,
+                  qty: 1,
+                  selected: true,
                 },
               ],
             },
@@ -459,7 +442,7 @@ title: Component Selection · Phoenix Force · EGR314
         },
 
         {
-          category: "RF & Positioning", // [RF]
+          category: "RF & Positioning",
           items: [
             {
               key: "antenna-2g4",
@@ -472,38 +455,11 @@ title: Component Selection · Phoenix Force · EGR314
                   link: "https://www.amazon.com/dp/B07S7V25QH",
                   pros: ["Inexpensive", "Omni coverage", "Simple mounting"],
                   cons: [
-                    "Not weatherproof long‑term",
+                    "Not weatherproof long-term",
                     "Lower gain vs omnis/Yagi",
                   ],
                   unitPrice: 9.99,
                   selected: true,
-                },
-                {
-                  name: "Alfa AOA‑2458‑79AF Omni 9 dBi (Outdoor)",
-                  img: "/phoenixforce.github.io/assets/components/alfa-9dbi.png",
-                  link: "https://www.alfa.com.tw/products_detail/aoa-2458-79af",
-                  pros: [
-                    "Higher gain",
-                    "Rugged/weatherproof",
-                    "No aiming needed",
-                  ],
-                  cons: ["Larger/heavier", "Needs mounting hardware"],
-                  unitPrice: 23.99,
-                  rationale:
-                    "Good distance boost for rover↔base without precise aiming.",
-                  selected: false,
-                },
-                {
-                  name: "Tupavco 17 dBi Yagi (2.4 GHz)",
-                  img: "/phoenixforce.github.io/assets/components/yagi-17dbi.png",
-                  link: "https://www.tupavco.com/products/yagi-wifi-antenna-24ghz-17dbi-angle-h25-v24-outdoor-directional",
-                  pros: [
-                    "Very high gain",
-                    "Excellent link quality when aligned",
-                  ],
-                  cons: ["Narrow beamwidth", "Bulky, precise aiming"],
-                  unitPrice: 41.98,
-                  selected: false,
                 },
               ],
             },
@@ -513,7 +469,7 @@ title: Component Selection · Phoenix Force · EGR314
               owner: "[RF]",
               options: [
                 {
-                  name: "u‑blox NEO‑6M Module",
+                  name: "u-blox NEO-6M Module",
                   img: "/phoenixforce.github.io/assets/components/neo6m.png",
                   link: "https://content.u-blox.com/sites/default/files/NEO-6_DataSheet_%28GPS.G6-HW-09005%29.pdf",
                   pros: ["Common, includes antenna", "Easy UART integration"],
@@ -521,26 +477,22 @@ title: Component Selection · Phoenix Force · EGR314
                   unitPrice: 9.99,
                   selected: true,
                 },
+              ],
+            },
+            {
+              key: "esp32-board",
+              title: "ESP32 (2.4 GHz) Dev Board",
+              owner: "[COMMUNICATION, HMI, ROVER]",
+              options: [
                 {
-                  name: "ATGM336H Module",
-                  img: "/phoenixforce.github.io/assets/components/atgm336h.png",
-                  link: "https://www.icofchina.com/atgm336h/",
-                  pros: ["Compact", "BeiDou support"],
-                  cons: ["Less documentation"],
-                  unitPrice: 17.88,
-                  selected: false,
-                },
-                {
-                  name: "u‑blox NEO‑M8N",
-                  img: "/phoenixforce.github.io/assets/components/neo-m8n.png",
-                  link: "https://content.u-blox.com/sites/default/files/NEO-M8_DataSheet_%28UBX-13003366%29.pdf",
-                  pros: [
-                    "Multi‑GNSS (GPS/GLONASS/Galileo/BeiDou)",
-                    "Better sensitivity",
-                  ],
-                  cons: ["More expensive", "Often PCB‑level design"],
-                  unitPrice: 27.0,
-                  selected: false,
+                  name: "ESP32 Dev Board (antenna-capable)",
+                  img: "",
+                  link: "Link",
+                  pros: ["Antenna compatible ESP32 board"],
+                  cons: [],
+                  unitPrice: 15.19,
+                  qty: 1,
+                  selected: true,
                 },
               ],
             },
@@ -548,22 +500,84 @@ title: Component Selection · Phoenix Force · EGR314
         },
 
         {
-          category: "Mechanical", // [MECH]
+          category: "Screen / HMI",
+          items: [
+            {
+              key: "touch-displays",
+              title: "Touch Displays",
+              owner: "[HMI]",
+              options: [
+                {
+                  name: '7" Touch Display (ESP32 HMI)',
+                  img: "",
+                  link: "Link",
+                  pros: [
+                    "Built-in ESP32",
+                    "Audio support",
+                    "Customizable interface tool",
+                  ],
+                  cons: ["Expensive"],
+                  unitPrice: 52.99,
+                  qty: 1,
+                  selected: true,
+                },
+                {
+                  name: '5" Touch Display (ESP32 HMI)',
+                  img: "",
+                  link: "Link",
+                  pros: ["Built-in ESP32", "Audio", "Customizable UI"],
+                  cons: ["Expensive", "Smaller & harder to touch"],
+                  unitPrice: 47.99,
+                  qty: 1,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "speakers",
+              title: "Speakers",
+              owner: "[HMI]",
+              options: [
+                {
+                  name: "3W 8Ω Speaker (2-pack)",
+                  img: "",
+                  link: "Link",
+                  pros: ["3W 8Ω", "Smaller profile", "Easy mount", "Pack of 2"],
+                  cons: ["Only 2"],
+                  unitPrice: 7.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "status-led",
+              title: "LED Strip",
+              owner: "[HMI]",
+              options: [
+                {
+                  name: "Individually Addressable LED Strip",
+                  img: "",
+                  link: "Link",
+                  pros: ["Individually addressable"],
+                  cons: [],
+                  unitPrice: 13.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Mechanical",
           items: [
             {
               key: "chassis",
               title: "Chassis Material",
               owner: "[MECH]",
               options: [
-                {
-                  name: "Aluminum Bar Frame",
-                  img: "/phoenixforce.github.io/assets/components/aluminum.png",
-                  link: "https://www.onlinemetals.com/en/buy/aluminum",
-                  pros: ["Rigid", "Durable outdoors"],
-                  cons: ["Heavier", "More expensive", "Overkill for prototype"],
-                  unitPrice: 5.5,
-                  selected: false,
-                },
                 {
                   name: "3D Printed PLA/ASA",
                   img: "/phoenixforce.github.io/assets/components/3dprint.png",
@@ -574,7 +588,6 @@ title: Component Selection · Phoenix Force · EGR314
                     "Material creep/UV sensitivity (PLA)",
                   ],
                   unitPrice: 0.0,
-                  rationale: "Fast iteration + we have filament on hand.",
                   selected: true,
                 },
               ],
@@ -589,18 +602,9 @@ title: Component Selection · Phoenix Force · EGR314
                   img: "/phoenixforce.github.io/assets/components/tt-yellow.png",
                   link: "https://www.digikey.com/short/m0mzwh2r",
                   pros: ["Very inexpensive", "Easy to mount"],
-                  cons: ["Lower torque", "Requires H‑bridge"],
+                  cons: ["Lower torque", "Requires H-bridge"],
                   unitPrice: 2.95,
                   selected: true,
-                },
-                {
-                  name: "12V Steel Gear Motor w/ Encoder (~251RPM)",
-                  img: "/phoenixforce.github.io/assets/components/12v-encoder.png",
-                  link: "https://www.digikey.com/en/products/detail/dfrobot/FIT0186/6588528",
-                  pros: ["Higher power", "Built‑in encoder"],
-                  cons: ["12V rail needed", "Custom axle/mount"],
-                  unitPrice: 16.5,
-                  selected: false,
                 },
               ],
             },
@@ -609,15 +613,6 @@ title: Component Selection · Phoenix Force · EGR314
               title: "Motor Driver",
               owner: "[MECH]",
               options: [
-                {
-                  name: "DRV8833 Dual H‑Bridge",
-                  img: "/phoenixforce.github.io/assets/components/drv8833.png",
-                  link: "https://www.ti.com/product/DRV8833",
-                  pros: ["Small", "Lower heat than L298N", "Header‑friendly"],
-                  cons: ["Each board only 2 motors"],
-                  unitPrice: 7.89,
-                  selected: false,
-                },
                 {
                   name: "L298N Module",
                   img: "/phoenixforce.github.io/assets/components/l298n.png",
@@ -629,13 +624,28 @@ title: Component Selection · Phoenix Force · EGR314
                 },
               ],
             },
+            {
+              key: "pcb",
+              title: "PCB Fabrication",
+              owner: "[MECH, SENSORS]",
+              options: [
+                {
+                  name: "Custom PCB Budget",
+                  img: "",
+                  link: "",
+                  pros: [],
+                  cons: [],
+                  unitPrice: 40.0,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
           ],
         },
       ];
 
-      // =============================================================
-      // RENDER: Build collapsible sections and cards
-      // =============================================================
+      // ========= RENDER SUBSYSTEM CARDS (no selection controls) =========
       const subsystemsRoot = document.getElementById("subsystems");
       const categoriesRoot = document.getElementById("categoryList");
 
@@ -655,7 +665,6 @@ title: Component Selection · Phoenix Force · EGR314
               <div class="mt-3 space-y-4" id="group-${gi}"></div>
             </div>
           `;
-
           subsystemsRoot.appendChild(section);
 
           // Sidebar quick jump
@@ -665,7 +674,7 @@ title: Component Selection · Phoenix Force · EGR314
           catLink.textContent = group.category;
           categoriesRoot.appendChild(catLink);
 
-          // Render items as collapsibles
+          // Items + options (pure info cards)
           const groupRoot = section.querySelector(`#group-${gi}`);
           group.items.forEach((item, ii) => {
             const wrap = document.createElement("div");
@@ -694,54 +703,43 @@ title: Component Selection · Phoenix Force · EGR314
       }
 
       function cardTemplate(category, item, opt, gi, ii, oi) {
-        const id = `${gi}-${ii}-${oi}`;
         const price =
           typeof opt.unitPrice === "number" ? opt.unitPrice.toFixed(2) : "—";
-        const checked = opt.selected ? "checked" : "";
         return `
           <div class="card bg-white border border-black/10 rounded-2xl overflow-hidden">
-            <figure class="bg-white aspect-video"><img src="${opt.img}" alt="${
+            <figure class="bg-white aspect-video">
+              <img src="${opt.img || ""}" alt="${
           opt.name
-        }" class="object-contain w-full h-full" /></figure>
+        }" class="object-contain w-full h-full" />
+            </figure>
             <div class="card-body p-4">
               <div class="flex items-start justify-between gap-3">
                 <div>
                   <h3 class="font-bold leading-tight">${opt.name}</h3>
                   <p class="text-xs opacity-60">${category} • ${item.title}</p>
                 </div>
-                <div class="form-control">
-                  <label class="label cursor-pointer gap-2" title="Mark as selected for BOM">
-                    <span class="label-text text-xs">Select</span>
-                    <input type="radio" name="select-${gi}-${ii}" class="radio radio-sm"
-                      ${checked} onchange='selectOption(${gi}, ${ii}, ${oi})' />
-                  </label>
-                </div>
+                <span class="badge">$${price}</span>
               </div>
               <div class="mt-1 text-sm">
                 <ul class="list-disc ml-5 text-xs">
-                  ${opt.pros
+                  ${(opt.pros || [])
                     .slice(0, 2)
                     .map((p) => `<li>${p}</li>`)
                     .join("")}
                 </ul>
               </div>
               <div class="flex items-center justify-between mt-3">
-                <span class="badge">$${price}</span>
-                <div class="flex gap-2">
-                  <a href="${
-                    opt.link
-                  }" target="_blank" class="btn btn-xs">Product</a>
-                  <button class="btn btn-xs btn-outline" onclick='openDetails(${gi}, ${ii}, ${oi})'>Learn more</button>
-                </div>
+                <a href="${
+                  opt.link || "#"
+                }" target="_blank" class="btn btn-xs">Product</a>
+                <button class="btn btn-xs btn-outline" onclick='openDetails(${gi}, ${ii}, ${oi})'>Learn more</button>
               </div>
             </div>
           </div>
         `;
       }
 
-      // =============================================================
-      // MODAL: Populate with detail
-      // =============================================================
+      // ========= MODAL =========
       const modal = document.getElementById("detailModal");
       function openDetails(gi, ii, oi) {
         const item = DATA[gi].items[ii];
@@ -750,7 +748,7 @@ title: Component Selection · Phoenix Force · EGR314
         document.getElementById(
           "modalSubtitle"
         ).textContent = `${DATA[gi].category} • ${item.title}`;
-        document.getElementById("modalPros").innerHTML = opt.pros
+        document.getElementById("modalPros").innerHTML = (opt.pros || [])
           .map((p) => `<li>${p}</li>`)
           .join("");
         document.getElementById("modalCons").innerHTML = (opt.cons || [])
@@ -759,18 +757,19 @@ title: Component Selection · Phoenix Force · EGR314
         document.getElementById("modalRationale").textContent =
           opt.rationale || "(Add rationale after team discussion)";
         const a = document.getElementById("modalLink");
-        a.textContent = opt.link;
-        a.href = opt.link;
+        a.textContent = opt.link || "";
+        a.href = opt.link || "#";
+
+        const img = document.getElementById("modalImage");
+        img.src = opt.img || "";
+        img.alt = opt.name || "Component image";
+
         modal.showModal();
       }
 
-      // =============================================================
-      // SELECTION + BOM
-      // =============================================================
-      function selectOption(gi, ii, oi) {
-        const opts = DATA[gi].items[ii].options;
-        opts.forEach((o, idx) => (o.selected = idx === oi));
-        renderBOM();
+      // ========= BOM (FIXED; no selection UI) =========
+      function chosenOptionForItem(item) {
+        return item.options.find((o) => o.selected) || item.options[0];
       }
 
       function renderBOM() {
@@ -779,14 +778,12 @@ title: Component Selection · Phoenix Force · EGR314
         let grand = 0;
         let qtyTotal = 0;
 
-        DATA.forEach((group) => {
-          group.items.forEach((item) => {
-            const chosen = item.options.find((o) => o.selected);
+        DATA.forEach((group, gi) => {
+          group.items.forEach((item, ii) => {
+            const chosen = chosenOptionForItem(item) || {};
             const unit =
-              chosen && typeof chosen.unitPrice === "number"
-                ? chosen.unitPrice
-                : 0;
-            const qty = chosen && chosen.qty ? chosen.qty : 1;
+              typeof chosen.unitPrice === "number" ? chosen.unitPrice : 0;
+            const qty = chosen.qty ? chosen.qty : 1;
             const line = unit * qty;
             grand += line;
             qtyTotal += qty;
@@ -794,22 +791,23 @@ title: Component Selection · Phoenix Force · EGR314
             const tr = document.createElement("tr");
             tr.innerHTML = `
               <td>${group.category}</td>
-              <td>${item.title}</td>
-              <td>${chosen ? chosen.name : "—"}</td>
+              <td>
+                <button class="link link-hover" onclick="openDetails(${gi}, ${ii}, ${item.options.indexOf(
+              chosen
+            )})">
+                  ${item.title}
+                </button>
+              </td>
+              <td>${chosen.name || "—"}</td>
               <td>${
-                chosen
+                chosen.link
                   ? `<a href='${chosen.link}' class='link link-primary' target='_blank'>Link</a>`
                   : "—"
               }</td>
-              <td>${
-                chosen && typeof chosen.unitPrice === "number"
-                  ? chosen.unitPrice.toFixed(2)
-                  : "—"
-              }</td>
+              <td>${unit ? unit.toFixed(2) : "—"}</td>
               <td>
-                <input type='number' min='1' value='${qty}' class='input input-xs input-bordered w-20' onchange='updateQty("${
-              item.key
-            }", this.value)' />
+                <input type='number' min='1' value='${qty}' class='input input-xs input-bordered w-20'
+                  onchange='updateQty("${item.key}", this.value)' />
               </td>
               <td>${line.toFixed(2)}</td>
             `;
@@ -826,7 +824,7 @@ title: Component Selection · Phoenix Force · EGR314
         for (const group of DATA) {
           for (const item of group.items) {
             if (item.key === itemKey) {
-              const chosen = item.options.find((o) => o.selected);
+              const chosen = chosenOptionForItem(item);
               if (chosen) chosen.qty = qty;
               renderBOM();
               return;
@@ -849,7 +847,7 @@ title: Component Selection · Phoenix Force · EGR314
         ];
         DATA.forEach((group) => {
           group.items.forEach((item) => {
-            const chosen = item.options.find((o) => o.selected) || {};
+            const chosen = chosenOptionForItem(item) || {};
             const unit =
               typeof chosen.unitPrice === "number" ? chosen.unitPrice : 0;
             const qty = chosen.qty || 1;
@@ -865,6 +863,7 @@ title: Component Selection · Phoenix Force · EGR314
             ]);
           });
         });
+
         const csv = rows
           .map((r) =>
             r.map((s) => `"${String(s).replaceAll('"', '""')}"`).join(",")
@@ -879,9 +878,7 @@ title: Component Selection · Phoenix Force · EGR314
         URL.revokeObjectURL(url);
       }
 
-      // =============================================================
-      // TOC / ScrollSpy (same pattern as block diagram page)
-      // =============================================================
+      // ========= TOC / ScrollSpy =========
       const toc = document.getElementById("tocLinks");
       const sections = [];
       function buildTOC() {
