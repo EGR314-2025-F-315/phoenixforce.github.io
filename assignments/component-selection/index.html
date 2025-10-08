@@ -175,7 +175,7 @@ title: Component Selection · Phoenix Force · EGR314
                 <!-- Download the original XLSX from /assets -->
                 <a
                   class="btn btn-sm"
-                  href="/assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"
+                  href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"
                   download
                 >
                   Download BOM (.xlsx)
@@ -231,7 +231,7 @@ title: Component Selection · Phoenix Force · EGR314
         <script>
           // ===== Config =====
           const BOM_XLSX_URL =
-            "/assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"; // <-- adjust if your path/filename differs
+            "https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"; // <-- adjust if your path/filename differs
           // Acceptable column name variants (case/space-insensitive)
           const COL_MAP = {
             subsystem: ["subsystem", "system", "category"],
@@ -290,7 +290,7 @@ title: Component Selection · Phoenix Force · EGR314
           async function loadBOM() {
             try {
               el.status.textContent =
-                "Loading BOM from /assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx…";
+                "Loading BOM from https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx…";
               const res = await fetch(BOM_XLSX_URL, { cache: "no-store" });
               if (!res.ok)
                 throw new Error(`HTTP ${res.status} fetching ${BOM_XLSX_URL}`);
@@ -437,7 +437,7 @@ title: Component Selection · Phoenix Force · EGR314
             } catch (err) {
               console.error(err);
               el.status.innerHTML =
-                "⚠️ <b>BOM load failed.</b> Please confirm that <code>/assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx</code> exists. " +
+                "⚠️ <b>BOM load failed.</b> Please confirm that <code>https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx</code> exists. " +
                 "Error: " +
                 escapeHtml(err.message || err);
             }
