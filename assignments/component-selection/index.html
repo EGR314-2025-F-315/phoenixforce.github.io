@@ -169,14 +169,21 @@ title: Component Selection · Phoenix Force · EGR314
           class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
         >
           <div class="card-body">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
               <h2 class="card-title">Bill of Materials</h2>
-              <button class="btn btn-sm" onclick="exportBOM()">
-                Export BOM (CSV)
-              </button>
+              <div class="flex items-center gap-2">
+                <!-- Download the original XLSX from /assets -->
+                <a class="btn btn-sm" href="/assets/bom.xlsx" download>
+                  Download BOM (.xlsx)
+                </a>
+                <button class="btn btn-sm" onclick="exportBOM()">
+                  Export BOM (CSV)
+                </button>
+              </div>
             </div>
+
             <p class="mt-1 text-sm opacity-70">
-              Click an item name to view details & image.
+              Click an item name to view details &amp; image.
             </p>
 
             <div class="overflow-x-auto mt-3">
@@ -192,7 +199,9 @@ title: Component Selection · Phoenix Force · EGR314
                     <th>Line Total ($)</th>
                   </tr>
                 </thead>
-                <tbody id="bomBody"></tbody>
+                <tbody id="bomBody">
+                  <!-- Filled dynamically from /assets/bom.xlsx -->
+                </tbody>
                 <tfoot>
                   <tr>
                     <th colspan="5" class="text-right">Grand Total ($)</th>
@@ -202,8 +211,274 @@ title: Component Selection · Phoenix Force · EGR314
                 </tfoot>
               </table>
             </div>
+
+            <!-- Optional: status area for load errors -->
+            <div id="bomStatus" class="text-sm mt-2 opacity-70"></div>
           </div>
         </section>
+
+        <!-- SheetJS (XLSX) to read /assets/bom.xlsx in the browser -->
+        <script
+          src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"
+          integrity="sha384-u5n3i4r5pI8m1r+0gQmX+oSjjK6l+o5L3n2yV78o9+4kqYz+Ue3Oaq3VqUo5m7oR"
+          crossorigin="anonymous"
+        ></script>
+
+        <script>
+          // ===== Config =====
+          const BOM_XLSX_URL = "/assets/bom.xlsx"; // <-- adjust if your path/filename differs
+          // Acceptable column name variants (case/space-insensitive)
+          const COL_MAP = {
+            subsystem: ["subsystem", "system", "category"],
+            component: ["component", "item", "part", "name"],
+            chosen: ["chosen option", "option", "model", "sku", "chosen"],
+            vendor: ["vendor link", "link", "url", "product url", "vendor"],
+            unitprice: [
+              "unit price ($)",
+              "unit price usd",
+              "unit price",
+              "price",
+              "cost",
+            ],
+            qty: ["qty", "quantity", "count"],
+          };
+
+          const el = {
+            body: document.getElementById("bomBody"),
+            qtyTotal: document.getElementById("bomQtyTotal"),
+            grandTotal: document.getElementById("bomGrandTotal"),
+            status: document.getElementById("bomStatus"),
+          };
+
+          function normalizeHeader(h) {
+            return String(h || "")
+              .trim()
+              .toLowerCase()
+              .replace(/\s+/g, " ")
+              .replace(/[\s_]+/g, " ");
+          }
+
+          function findHeader(headerRow, wantedList) {
+            // Find first header that matches any of the wanted variants
+            const normalized = headerRow.map(normalizeHeader);
+            for (const wanted of wantedList) {
+              const w = normalizeHeader(wanted);
+              const idx = normalized.indexOf(w);
+              if (idx !== -1) return idx;
+            }
+            return -1;
+          }
+
+          function money(n) {
+            const v = Number(n);
+            return isFinite(v) ? v.toFixed(2) : "";
+          }
+
+          function escapeHtml(s) {
+            return String(s ?? "")
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;");
+          }
+
+          async function loadBOM() {
+            try {
+              el.status.textContent = "Loading BOM from /assets/bom.xlsx…";
+              const res = await fetch(BOM_XLSX_URL, { cache: "no-store" });
+              if (!res.ok)
+                throw new Error(`HTTP ${res.status} fetching ${BOM_XLSX_URL}`);
+              const buf = await res.arrayBuffer();
+
+              const wb = XLSX.read(buf, { type: "array" });
+              const firstSheetName = wb.SheetNames[0];
+              const ws = wb.Sheets[firstSheetName];
+
+              // Get sheet as 2D array (include header row)
+              const rows = XLSX.utils.sheet_to_json(ws, {
+                header: 1,
+                blankrows: false,
+              });
+              if (!rows.length) throw new Error("BOM sheet is empty");
+
+              // Map headers
+              const headers = rows[0];
+              const dataRows = rows.slice(1);
+
+              const idx = {
+                subsystem: findHeader(headers, COL_MAP.subsystem),
+                component: findHeader(headers, COL_MAP.component),
+                chosen: findHeader(headers, COL_MAP.chosen),
+                vendor: findHeader(headers, COL_MAP.vendor),
+                unitprice: findHeader(headers, COL_MAP.unitprice),
+                qty: findHeader(headers, COL_MAP.qty),
+              };
+
+              // Basic validation
+              const missing = Object.entries(idx)
+                .filter(([, v]) => v === -1)
+                .map(([k]) => k);
+              if (missing.length) {
+                el.status.innerHTML =
+                  "Some expected columns were not found in the BOM file: <b>" +
+                  missing.join(", ") +
+                  "</b>. I will still try to render what is available.";
+              } else {
+                el.status.textContent = "";
+              }
+
+              // Build rows
+              let qtyTotal = 0;
+              let grandTotal = 0;
+              const frag = document.createDocumentFragment();
+
+              for (const r of dataRows) {
+                // Skip completely empty lines
+                if (
+                  !r ||
+                  r.every(
+                    (cell) =>
+                      cell === null ||
+                      cell === undefined ||
+                      String(cell).trim() === ""
+                  )
+                ) {
+                  continue;
+                }
+
+                const subsystem = idx.subsystem !== -1 ? r[idx.subsystem] : "";
+                const component = idx.component !== -1 ? r[idx.component] : "";
+                const chosen = idx.chosen !== -1 ? r[idx.chosen] : "";
+                const vendorLink = idx.vendor !== -1 ? r[idx.vendor] : "";
+                const unitPriceNum =
+                  idx.unitprice !== -1 ? Number(r[idx.unitprice]) : NaN;
+                const qtyNum = idx.qty !== -1 ? Number(r[idx.qty]) : 1;
+
+                const lineTotal =
+                  (isFinite(unitPriceNum) ? unitPriceNum : 0) *
+                  (isFinite(qtyNum) ? qtyNum : 0);
+
+                if (isFinite(qtyNum)) qtyTotal += qtyNum;
+                if (isFinite(lineTotal)) grandTotal += lineTotal;
+
+                const tr = document.createElement("tr");
+
+                const tdSubsystem = document.createElement("td");
+                tdSubsystem.textContent = subsystem ?? "";
+                tr.appendChild(tdSubsystem);
+
+                const tdComponent = document.createElement("td");
+                if (
+                  vendorLink &&
+                  String(vendorLink).trim().toLowerCase() !== "nan"
+                ) {
+                  const a = document.createElement("a");
+                  a.href = String(vendorLink);
+                  a.target = "_blank";
+                  a.rel = "noopener";
+                  a.textContent = String(component ?? "");
+                  tdComponent.appendChild(a);
+                } else {
+                  tdComponent.textContent = component ?? "";
+                }
+                tr.appendChild(tdComponent);
+
+                const tdChosen = document.createElement("td");
+                tdChosen.textContent = chosen ?? "";
+                tr.appendChild(tdChosen);
+
+                const tdVendor = document.createElement("td");
+                if (
+                  vendorLink &&
+                  String(vendorLink).trim() !== "" &&
+                  String(vendorLink).trim().toLowerCase() !== "nan"
+                ) {
+                  const a = document.createElement("a");
+                  a.href = String(vendorLink);
+                  a.target = "_blank";
+                  a.rel = "noopener";
+                  a.textContent = "Link";
+                  tdVendor.appendChild(a);
+                } else {
+                  tdVendor.textContent = "";
+                }
+                tr.appendChild(tdVendor);
+
+                const tdUnit = document.createElement("td");
+                tdUnit.className = "text-right";
+                tdUnit.textContent = isFinite(unitPriceNum)
+                  ? money(unitPriceNum)
+                  : "";
+                tr.appendChild(tdUnit);
+
+                const tdQty = document.createElement("td");
+                tdQty.className = "text-right";
+                tdQty.textContent = isFinite(qtyNum) ? String(qtyNum) : "";
+                tr.appendChild(tdQty);
+
+                const tdLine = document.createElement("td");
+                tdLine.className = "text-right";
+                tdLine.textContent = money(lineTotal);
+                tr.appendChild(tdLine);
+
+                frag.appendChild(tr);
+              }
+
+              el.body.innerHTML = "";
+              el.body.appendChild(frag);
+              el.qtyTotal.textContent = String(qtyTotal);
+              el.grandTotal.textContent = money(grandTotal);
+            } catch (err) {
+              console.error(err);
+              el.status.innerHTML =
+                "⚠️ <b>BOM load failed.</b> Please confirm that <code>/assets/bom.xlsx</code> exists. " +
+                "Error: " +
+                escapeHtml(err.message || err);
+            }
+          }
+
+          // CSV export of the currently rendered table
+          function exportBOM() {
+            const table = document.getElementById("bomTable");
+            if (!table) return;
+            let csv = [];
+            const rows = table.querySelectorAll("tr");
+            for (const row of rows) {
+              const cells = row.querySelectorAll("th, td");
+              const line = [];
+              for (const cell of cells) {
+                // Extract visible text; if it has a link, use its text
+                const link = cell.querySelector("a");
+                const text = link
+                  ? link.textContent.trim()
+                  : cell.textContent.trim();
+                // Escape CSV
+                let v = text.replace(/"/g, '""');
+                if (/[",\n]/.test(v)) v = `"${v}"`;
+                line.push(v);
+              }
+              csv.push(line.join(","));
+            }
+            const blob = new Blob([csv.join("\n")], {
+              type: "text/csv;charset=utf-8;",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            const ts = new Date()
+              .toISOString()
+              .slice(0, 19)
+              .replace(/[:T]/g, "-");
+            a.download = `BOM-${ts}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+          }
+
+          // Kick off load on DOM ready
+          document.addEventListener("DOMContentLoaded", loadBOM);
+        </script>
       </main>
     </div>
 
