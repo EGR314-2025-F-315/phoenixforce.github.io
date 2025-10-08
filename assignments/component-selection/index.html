@@ -226,7 +226,7 @@ title: Component Selection · Phoenix Force · EGR314
 
         <script>
           // ===== Config =====
-          const BOM_XLSX_URL = "/assets/bom.xlsx"; // <-- adjust if your path/filename differs
+          const BOM_XLSX_URL = "/assets/BOM.xlsx"; // <-- adjust if your path/filename differs
           // Acceptable column name variants (case/space-insensitive)
           const COL_MAP = {
             subsystem: ["subsystem", "system", "category"],
@@ -284,7 +284,7 @@ title: Component Selection · Phoenix Force · EGR314
 
           async function loadBOM() {
             try {
-              el.status.textContent = "Loading BOM from /assets/bom.xlsx…";
+              el.status.textContent = "Loading BOM from /assets/BOM.xlsx…";
               const res = await fetch(BOM_XLSX_URL, { cache: "no-store" });
               if (!res.ok)
                 throw new Error(`HTTP ${res.status} fetching ${BOM_XLSX_URL}`);
