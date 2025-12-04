@@ -1,0 +1,477 @@
+---
+layout: none
+title: System Verification · Phoenix Force · EGR314
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>System Verification · Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .toc a.active {
+        background: rgba(0, 0, 0, 0.06);
+        font-weight: 700;
+      }
+      .callout {
+        border-left-width: 6px;
+      }
+      .callout.info {
+        border-left-color: #60a5fa;
+        background: #eff6ff;
+      }
+      .callout.warn {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .callout.success {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+      }
+      .callout.danger {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+      }
+      .auto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    {% include nav.html %}
+
+    <div
+      class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+    >
+      <!-- Sidebar / TOC -->
+      <aside class="hidden lg:block sticky top-20 self-start">
+        <div
+          class="toc card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h2
+              class="font-extrabold text-sm uppercase tracking-widest opacity-70 mb-2"
+            >
+              On this page
+            </h2>
+            <nav class="space-y-1 text-sm" id="tocLinks"></nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="space-y-8">
+        <!-- HEADER -->
+        <header
+          class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden anchor-section"
+          id="intro"
+          data-title="Overview"
+        >
+          <div
+            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+          ></div>
+          <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+          <div class="relative px-6 py-10 md:px-10 md:py-12">
+            <p
+              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
+            >
+              Assignments
+            </p>
+            <h1
+              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+            >
+              System Verification
+            </h1>
+            <p class="mt-3 text-ink/75 max-w-3xl mx-auto">
+              Team System Verification update for Phoenix Force · TerraGuard
+              Rover — EGR 314 (Fall 2025). How our two-PCB system communicates,
+              reacts to sensor data, and what each teammate delivered.
+            </p>
+          </div>
+        </header>
+
+        <!-- Communication -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="communication"
+          data-title="Communication Method"
+        >
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Wireless AP</span
+              >
+              <h2 class="card-title">Communication Method</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Dedicated AP network hosted by the rover; the screen connects as a
+              station. Traffic uses HTTP GET over Wi‑Fi—no ESP-NOW or ESP-Mesh.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="callout info rounded-2xl p-4 space-y-1">
+                <p class="font-semibold">Rover AP (ESP32-WROOM-32U)</p>
+                <ul class="list-disc ml-5 text-sm">
+                  <li>SSID: TerraGuard-AP</li>
+                  <li>Password: phoenixforce</li>
+                  <li>IP: 192.168.4.1</li>
+                  <li>Serves /metrics (JSON) and /stream (MJPEG)</li>
+                </ul>
+              </div>
+              <div class="callout success rounded-2xl p-4 space-y-1">
+                <p class="font-semibold">Screen Module (ESP32-S3)</p>
+                <ul class="list-disc ml-5 text-sm">
+                  <li>Joins AP as STA</li>
+                  <li>Polls rover via periodic HTTP GET</li>
+                  <li>Receives metrics + MJPEG frames</li>
+                  <li>Two-way flow: continuous client requests + rover streams</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Feedback -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="feedback"
+          data-title="Feedback-Controlled Responses"
+        >
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Sensor → Output</span
+              >
+              <h2 class="card-title">Feedback-Controlled Responses</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
+                <h3 class="font-semibold text-lg">Rover PCB</h3>
+                <p class="text-sm opacity-75">Sensors:</p>
+                <ul class="list-disc ml-5 text-sm">
+                  <li>BME688 (air quality: temp, humidity, gas resistance)</li>
+                  <li>MQ-2 Gas &amp; Smoke sensor</li>
+                  <li>GPS (NEO-6M)</li>
+                  <li>Camera (stream)</li>
+                </ul>
+                <p class="text-sm opacity-75">Behavior:</p>
+                <ul class="list-disc ml-5 text-sm">
+                  <li>
+                    Gas readings → classify (clean, VOCs, smoke/CO, methane,
+                    butane, danger)
+                  </li>
+                  <li>Air-quality state drives LED pattern logic</li>
+                  <li>AP loss → hot-pink LED state</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
+                <h3 class="font-semibold text-lg">Screen PCB</h3>
+                <p class="text-sm opacity-75">
+                  Local outputs driven by rover data:
+                </p>
+                <ul class="list-disc ml-5 text-sm">
+                  <li>Not connected to AP → LED strip shows pink pattern</li>
+                  <li>Good air → green LEDs</li>
+                  <li>Moderate/warning → yellow LEDs</li>
+                  <li>Poor air/danger → red LEDs</li>
+                  <li>Dangerous gas or AP loss → speaker alert</li>
+                </ul>
+                <p class="text-sm opacity-75">
+                  Satisfies sensor input to actuator output requirement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Actuators -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="actuators"
+          data-title="Actuators Demonstrated"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Outputs</span
+              >
+              <h2 class="card-title">Actuators Demonstrated</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold text-lg mb-2">Rover PCB</h3>
+                <ul class="list-disc ml-5 text-sm space-y-1">
+                  <li>WS2812B LED strip (status/air-quality)</li>
+                  <li>Motor driver</li>
+                  <li>GPS module outputs location telemetry</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold text-lg mb-2">Screen PCB</h3>
+                <ul class="list-disc ml-5 text-sm space-y-1">
+                  <li>LED strip with color-coded feedback</li>
+                  <li>Speaker alerts for danger/AP loss</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Power -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="power"
+          data-title="Power Distribution"
+        >
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Power</span
+              >
+              <h2 class="card-title">Power Distribution</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Only the rover PCB contains shared power rails; the screen runs on
+              its own battery.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
+                <h3 class="font-semibold text-lg">Rover Power System</h3>
+                <ul class="list-disc ml-5 text-sm space-y-1">
+                  <li>Battery pack → charger → 5V regulator → 3.3V regulator</li>
+                  <li>
+                    Rails power ESP32-WROOM-32U, BME688, MQ-2, GPS, LED strip,
+                    motor driver
+                  </li>
+                  <li>
+                    3.3V sensor rail and 5V LED rail demonstrable via multimeter
+                  </li>
+                </ul>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
+                <h3 class="font-semibold text-lg">Screen Power</h3>
+                <ul class="list-disc ml-5 text-sm space-y-1">
+                  <li>Local battery only; no shared rails with rover</li>
+                  <li>Excluded from subsystem power checks</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Subsystems -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="subsystems"
+          data-title="Subsystems on Final PCB"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Final PCB</span
+              >
+              <h2 class="card-title">Subsystems Present on the Rover</h2>
+            </div>
+            <div class="auto-grid">
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">ESP32-WROOM-32U Communication Core</h3>
+                <p class="text-sm opacity-75">
+                  Hosts AP, metrics endpoint, and camera streaming server.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">BME688 Environmental Sensor</h3>
+                <p class="text-sm opacity-75">
+                  Temperature, humidity, gas resistance, and air-quality data.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">MQ-2 Gas &amp; Smoke Sensor</h3>
+                <p class="text-sm opacity-75">
+                  Detects smoke, CO, methane, propane/butane.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">GPS Subsystem (NEO-6M)</h3>
+                <p class="text-sm opacity-75">Provides location and satellite data.</p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">Motor Driver Subsystem</h3>
+                <p class="text-sm opacity-75">
+                  Part of the mechanical drive system (Erjan).
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4">
+                <h3 class="font-semibold">Power Regulation Subsystem</h3>
+                <p class="text-sm opacity-75">
+                  Battery, charger, 5V regulator, 3.3V regulator.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contributions -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="contributions"
+          data-title="Individual Contributions"
+        >
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Team</span
+              >
+              <h2 class="card-title">Individual Team Contributions</h2>
+            </div>
+            <div class="auto-grid">
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Vinny Panchal</h3>
+                <p class="text-sm opacity-75">
+                  Screen/HMI development, LVGL UI, metrics polling, MJPEG viewer,
+                  LED + speaker feedback, AP integration, diagrams, integration
+                  support.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Emonie France</h3>
+                <p class="text-sm opacity-75">
+                  Dual-antenna setup and placement; ensured AP reliability with
+                  range/stability testing.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Amanda Pizarro</h3>
+                <p class="text-sm opacity-75">
+                  Gas sensing integration (BME688), initial gas-reading logic,
+                  classification ranges.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Danitza Jimenez</h3>
+                <p class="text-sm opacity-75">
+                  Data smoothing/validation for gas readings; interpreting
+                  environmental outputs.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">James Austin</h3>
+                <p class="text-sm opacity-75">
+                  Designed and assembled rover power system; charger, regulators,
+                  rails; verified voltages on final PCB.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Erjan Baigenzhin</h3>
+                <p class="text-sm opacity-75">
+                  GPS integration and UART configuration; motor driver subsystem;
+                  drive testing and motor functionality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Demo Summary -->
+        <section
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+          id="demo"
+          data-title="Demonstration Summary"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Demo</span
+              >
+              <h2 class="card-title">Demonstration Summary</h2>
+            </div>
+            <ul class="list-disc ml-5 text-sm space-y-1">
+              <li>Wireless communication over rover AP</li>
+              <li>Real-time metrics and MJPEG stream to screen</li>
+              <li>Screen LED feedback responds to rover sensor values</li>
+              <li>Motor driver operation</li>
+              <li>Power rails measured on rover PCB</li>
+              <li>All rover PCB subsystems functioning as designed</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Build TOC from anchor sections and highlight active item on scroll.
+      const toc = document.getElementById("tocLinks");
+      const sections = Array.from(document.querySelectorAll(".anchor-section"));
+      const map = new Map();
+
+      function addTocItem(id, text) {
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+        a.textContent = text;
+        toc.appendChild(a);
+        map.set(id, a);
+      }
+
+      sections.forEach((sec) => addTocItem(sec.id, sec.dataset.title));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (map.has(id)) {
+              if (entry.isIntersecting) {
+                map.forEach((a) => a.classList.remove("active"));
+                map.get(id).classList.add("active");
+              }
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
+      );
+      sections.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
