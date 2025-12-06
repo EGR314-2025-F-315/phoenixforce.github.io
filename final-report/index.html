@@ -120,163 +120,157 @@ title: Final Report · Phoenix Force · EGR314
           id="overview"
           data-title="Overview"
         >
-          <div
-            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
-          ></div>
+          <div class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"></div>
           <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
           <div class="relative px-6 py-10 md:px-10 md:py-12">
-            <p
-              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
-            >
-              Final Deliverable
-            </p>
-            <h1
-              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
-            >
+            <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">Final Deliverable</p>
+            <h1 class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1">
               Team Final Report
             </h1>
             <p class="mt-3 text-ink/75 max-w-3xl mx-auto">
-              Phoenix Force · TerraGuard Rover — EGR 314 (Fall 2025). System
-              verification results, architecture, and lessons learned across the
-              rover and screen PCBs.
+              Phoenix Force TerraGuard Rover, EGR 314 (Fall 2025). One page with every artifact: report, code, diagrams, media, and lessons.
             </p>
           </div>
         </header>
 
-        <!-- Full PDF -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="full-report"
-          data-title="Full Report"
-        >
+        <!-- Quick Links -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="links" data-title="Quick Links">
           <div class="card-body space-y-4">
-            <div class="flex items-center justify-between gap-3 flex-wrap">
-              <div class="flex items-center gap-2">
-                <span class="badge bg-black/5 border border-black/10 font-bold"
-                  >Report</span
-                >
-                <h2 class="card-title">Team Final Report (PDF)</h2>
-              </div>
-              <div class="flex items-center gap-2">
-                <a
-                  class="btn btn-sm"
-                  href="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf"
-                  download
-                  >Download PDF</a
-                >
-                <a
-                  class="btn btn-sm btn-outline"
-                  href="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf"
-                  target="_blank"
-                  >Open in new tab</a
-                >
-              </div>
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Jump</span>
+              <h2 class="card-title">Key pages</h2>
             </div>
-            <p class="text-sm opacity-75">
-              The complete writeup (scope, architecture, testing, and results)
-              is available below. Use the buttons above for a copy.
-            </p>
-            <div class="pdf-embed">
-              <iframe
-                title="Team Final Report PDF"
-                src="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf#view=FitH"
-              ></iframe>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+              <a class="btn btn-outline" href="/phoenixforce.github.io/assignments/system-verification/">System Verification</a>
+              <a class="btn btn-outline" href="/phoenixforce.github.io/assignments/block-diagram/">Block Diagram</a>
+              <a class="btn btn-outline" href="/phoenixforce.github.io/assignments/component-selection/">Component Selection</a>
+              <a class="btn btn-outline" href="/phoenixforce.github.io/innovation-poster/">Innovation Poster</a>
+              <a class="btn btn-outline" href="/phoenixforce.github.io/resources/">Resources</a>
+              <a class="btn btn-outline" href="/phoenixforce.github.io/reflection/">Reflection</a>
             </div>
           </div>
         </section>
 
-        <!-- Executive Summary -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="summary"
-          data-title="Executive Summary"
-        >
+        <!-- Full PDF -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="full-report" data-title="Full Report">
+          <div class="card-body space-y-4">
+            <div class="flex items-center justify-between gap-3 flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold">Report</span>
+                <h2 class="card-title">Team Final Report (PDF)</h2>
+              </div>
+              <div class="flex items-center gap-2">
+                <a class="btn btn-sm" href="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf" download>Download PDF</a>
+                <a class="btn btn-sm btn-outline" href="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf" target="_blank">Open in new tab</a>
+              </div>
+            </div>
+            <p class="text-sm opacity-75">
+              Full text is embedded below. Everything else on this page mirrors and expands the deliverable for a single-stop view.
+            </p>
+            <div class="pdf-embed">
+              <iframe title="Team Final Report PDF" src="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf#view=FitH"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="summary" data-title="Summary">
           <div class="card-body space-y-4">
             <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Summary</span
-              >
-              <h2 class="card-title">Executive Summary</h2>
+              <span class="badge bg-black/5 border border-black/10 font-bold">Summary</span>
+              <h2 class="card-title">Project snapshot</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="callout success rounded-2xl p-4 space-y-2">
                 <p class="font-semibold">Mission</p>
                 <p class="text-sm opacity-75">
-                  TerraGuard rover + screen HMI that monitors air quality, gas
-                  signatures, and location, while streaming video over a
-                  rover-hosted Wi‑Fi AP.
+                  TerraGuard rover and screen host their own Wi‑Fi AP, stream metrics and MJPEG video, and alert through LEDs and speaker when gas readings look risky. Built to work offline and remain glove-friendly.
                 </p>
                 <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Two-PCB system: rover (sensing/compute) + screen (HMI).</li>
-                  <li>All data flows via rover access point using HTTP.</li>
-                  <li>LEDs/speaker provide clear status for safety conditions.</li>
+                  <li>Two boards: rover (sensing and compute) and screen (HMI).</li>
+                  <li>HTTP GET polling to rover-hosted AP at 192.168.4.1.</li>
+                  <li>LEDs and speaker on both boards for clear alerts.</li>
                 </ul>
               </div>
               <div class="callout info rounded-2xl p-4 space-y-2">
                 <p class="font-semibold">Highlights</p>
                 <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Reliable AP link with continuous metrics + MJPEG stream.</li>
-                  <li>Feedback loops: gas readings drive LEDs and alerts.</li>
-                  <li>Power rails validated on final rover PCB.</li>
-                  <li>Team roles span RF, sensing, power, drive, and HMI.</li>
+                  <li>Stable AP link with continuous metrics and MJPEG stream.</li>
+                  <li>Gas classifications drive LEDs and audio on both boards.</li>
+                  <li>Power rails verified; GPS and drive tested on final PCB.</li>
+                  <li>Poster, UI mockups, and comm sequence captured below.</li>
                 </ul>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-black/10 overflow-hidden">
+              <img src="/phoenixforce.github.io/assets/hero_photo.jpeg" alt="Final build" class="w-full object-cover" />
+            </div>
+          </div>
+        </section>
+
+        <!-- System -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="system" data-title="System & Diagrams">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold">System</span>
+              <h2 class="card-title">Architecture, protocol, and sequence</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-black/10 p-3">
+                <h3 class="font-semibold mb-2">Block diagram (final)</h3>
+                <img src="/phoenixforce.github.io/assets/Block_Diagram.png" alt="Block diagram" class="rounded-xl border border-black/10" />
+                <p class="text-sm mt-2">HTTP GET to /metrics and /coords; MJPEG stream at /stream; AP hosted by rover.</p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-3">
+                <h3 class="font-semibold mb-2">Communication sequence</h3>
+                <img src="/phoenixforce.github.io/assets/comm_sequence.png" alt="Communication sequence" class="rounded-xl border border-black/10" />
+                <p class="text-sm mt-2">Screen drives periodic pulls; rover responds with metrics and frames, keeping UI responsive even when frames drop.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Architecture -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="architecture"
-          data-title="System Architecture"
-        >
+        <!-- UI -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="ui" data-title="HMI Mockups">
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">UI</span>
+              <h2 class="card-title">HMI design process</h2>
+            </div>
+            <p class="text-sm opacity-75">Early LVGL mockups for the screen module informed layout and color cues for gas states.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="/phoenixforce.github.io/assets/main_display_mockup.png" alt="Main display mockup" class="rounded-2xl border border-black/10" />
+              <img src="/phoenixforce.github.io/assets/drive_interface_mockup.png" alt="Drive interface mockup" class="rounded-2xl border border-black/10" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Hardware -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="hardware" data-title="Hardware">
           <div class="card-body space-y-4">
-            <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Architecture</span
-              >
-              <h2 class="card-title">System Architecture</h2>
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Hardware</span>
+              <h2 class="card-title">Schematic and PCB</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
-                <h3 class="font-semibold text-lg">Communication</h3>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>ESP32-WROOM-32U hosts AP (TerraGuard-AP, 192.168.4.1).</li>
-                  <li>Screen ESP32-S3 joins as STA; polls via HTTP GET.</li>
-                  <li>Endpoints: /metrics (JSON telemetry) + /stream (MJPEG).</li>
-                  <li>Two-way flow: rover serves, screen drives periodic pulls.</li>
-                </ul>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
-                <h3 class="font-semibold text-lg">Hardware Stack</h3>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Rover PCB: ESP32-WROOM-32U, BME688, MQ-2, GPS (NEO-6M), camera.</li>
-                  <li>Actuators: WS2812B LEDs, motor driver, status indicators.</li>
-                  <li>Screen PCB: 7&quot; ESP32-S3 HMI, LED strip, speaker alerts.</li>
-                  <li>Power: battery → charger → 5V → 3.3V regulators (rover).</li>
-                </ul>
-              </div>
+              <img src="/phoenixforce.github.io/assets/schematic.png" alt="Schematic" class="rounded-2xl border border-black/10" />
+              <img src="/phoenixforce.github.io/assets/pcb_kicad_pcb_editor.png" alt="PCB editor view" class="rounded-2xl border border-black/10" />
+              <img src="/phoenixforce.github.io/assets/PCB_FRONT.png" alt="PCB front" class="rounded-2xl border border-black/10" />
+              <img src="/phoenixforce.github.io/assets/PCB_BACK.png" alt="PCB back" class="rounded-2xl border border-black/10" />
+              <img src="/phoenixforce.github.io/assets/PCB_FRONT_REAL_PIC.png" alt="Assembled PCB photo" class="rounded-2xl border border-black/10" />
             </div>
           </div>
         </section>
 
-        <!-- Power Budget -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="power"
-          data-title="Power Budget"
-        >
+        <!-- Power -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="power" data-title="Power Budget">
           <div class="card-body space-y-4">
             <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Power</span
-              >
+              <span class="badge bg-black/5 border border-black/10 font-bold">Power</span>
               <h2 class="card-title">Power budget</h2>
             </div>
             <p class="text-sm opacity-75">
-              Based on the final schematic: single 7.4 V pack feeds 5 V and 3.3
-              V rails. We sized rails to keep at least ~25% headroom.
+              Single 7.4 V pack feeds 5 V and 3.3 V rails with at least 25 percent headroom.
             </p>
             <div class="overflow-x-auto">
               <table class="table table-sm">
@@ -295,204 +289,117 @@ title: Final Report · Phoenix Force · EGR314
                     <td>L298N motor driver</td>
                     <td>800</td>
                     <td>L7805CV (1500 mA)</td>
-                    <td>~500 mA remaining</td>
+                    <td>About 500 mA remaining</td>
                   </tr>
                   <tr>
                     <td>3.3 V</td>
                     <td>ESP32-WROOM, BME688, MQ-2 logic, camera, GPS, programmer</td>
-                    <td>~567</td>
+                    <td>About 567</td>
                     <td>LM3940 (1000 mA)</td>
-                    <td>~433 mA remaining</td>
+                    <td>About 433 mA remaining</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p class="text-sm">
-              Battery sizing: 7.4 V 10,000 mAh pack at ~454 mA estimated draw
-              → ~22 hours theoretical (before converter losses). Power budget
-              guided trace sizing and placement of the LED strip on 5 V instead
-              of 3.3 V to keep noise off the MCU rail.
+              Battery: 7.4 V 10,000 mAh pack at roughly 454 mA estimated draw gives about 22 hours theoretical before converter losses. Power budget guided trace sizing and kept LEDs on 5 V to isolate the MCU rail.
             </p>
           </div>
         </section>
 
-        <!-- Verification & Results -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="verification"
-          data-title="Verification & Results"
-        >
-          <div class="card-body space-y-4">
-            <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Testing</span
-              >
-              <h2 class="card-title">Verification &amp; Results</h2>
+        <!-- Components -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="components" data-title="Components">
+          <div class="card-body">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">BOM</span>
+              <h2 class="card-title">Final major components</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="callout success rounded-2xl p-4 space-y-2">
-                <p class="font-semibold">Demonstrations</p>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Wireless comms over rover AP with live metrics + video.</li>
-                  <li>LEDs on rover and screen react to gas classifications.</li>
-                  <li>Speaker alarms for dangerous gas or AP loss.</li>
-                  <li>Motor driver operation verified on final PCB.</li>
-                  <li>Power rails measured at 5V and 3.3V with multimeter.</li>
-                </ul>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-2">
-                <h3 class="font-semibold text-lg">Observations</h3>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Stable AP uptime with continuous pull pattern from screen.</li>
-                  <li>Gas classification maps to red/yellow/green/pink states.</li>
-                  <li>GPS telemetry integrated for location awareness.</li>
-                  <li>Thermal/power within expected ranges under load.</li>
-                </ul>
-              </div>
+            <p class="text-sm opacity-75 mt-2">Summary of the key parts on the final build. Passive parts omitted.</p>
+            <div class="overflow-x-auto mt-3">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Subsystem</th>
+                    <th>Part</th>
+                    <th>Link</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Compute</td><td>ESP32-WROOM-32U</td><td><a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32U/9385967" target="_blank" class="link">Link</a></td><td>Rover MCU and AP host</td></tr>
+                  <tr><td>HMI</td><td>ESP32-S3 7" Elecrow Display</td><td><a href="https://www.elecrow.com/7-inch-esp32-display-800x480-lvgl.html" target="_blank" class="link">Link</a></td><td>Screen module with speaker and LEDs</td></tr>
+                  <tr><td>Sensing</td><td>BME688</td><td><a href="https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261" target="_blank" class="link">Link</a></td><td>Air quality and gas resistance</td></tr>
+                  <tr><td>Sensing</td><td>MQ-2 Gas/Smoke Module</td><td><a href="https://a.co/d/e4hOBhI" target="_blank" class="link">Link</a></td><td>Fast gas thresholding</td></tr>
+                  <tr><td>Position</td><td>u-blox NEO-6M GPS</td><td><a href="https://a.co/d/8vv5KV7" target="_blank" class="link">Link</a></td><td>UART GPS for coords</td></tr>
+                  <tr><td>Actuation</td><td>L298N Motor Driver</td><td><a href="https://a.co/d/f2wVPY0" target="_blank" class="link">Link</a></td><td>Dual H-bridge</td></tr>
+                  <tr><td>Indicators</td><td>WS2812B LED Strip</td><td><a href="https://a.co/d/1gp2LhV" target="_blank" class="link">Link</a></td><td>Status and air-quality feedback</td></tr>
+                  <tr><td>Power</td><td>L7805CV and LM3940</td><td><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/591234" target="_blank" class="link">Link</a></td><td>5 V and 3.3 V rails from 7.4 V pack</td></tr>
+                  <tr><td>Energy</td><td>7.4 V Li-ion pack</td><td><a href="https://a.co/d/2eNwMD9" target="_blank" class="link">Link</a></td><td>Main rover supply</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
 
-        <!-- Risks & Future Work -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="risks"
-          data-title="Risks & Next Steps"
-        >
-          <div class="card-body space-y-4">
-            <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Outlook</span
-              >
-              <h2 class="card-title">Risks &amp; Next Steps</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="callout warn rounded-2xl p-4 space-y-2">
-                <p class="font-semibold">Risks</p>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Environmental variability affecting gas sensor accuracy.</li>
-                  <li>AP interference or range limitations in crowded RF spaces.</li>
-                  <li>Thermals on regulators/driver under sustained load.</li>
-                </ul>
-              </div>
-              <div class="callout info rounded-2xl p-4 space-y-2">
-                <p class="font-semibold">Future Improvements</p>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                  <li>Adaptive gas calibration routines for changing conditions.</li>
-                  <li>Optional command channel from screen → rover for controls.</li>
-                  <li>Richer UI overlays for GPS traces and alert history.</li>
-                  <li>Hardening enclosure for outdoor deployment.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contributions -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="contributions"
-          data-title="Team Contributions"
-        >
-          <div class="card-body space-y-4">
-            <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Team</span
-              >
-              <h2 class="card-title">Team Contributions</h2>
-            </div>
-            <div class="auto-grid">
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">Vinny Panchal</h3>
-                <p class="text-sm opacity-75">
-                  Screen/HMI development, LVGL UI, metrics polling, MJPEG viewer,
-                  LED/speaker feedback, AP integration, diagrams, integration support.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">Emonie France</h3>
-                <p class="text-sm opacity-75">
-                  Dual-antenna setup and placement; ensured AP reliability via
-                  range/stability testing.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">Amanda Pizarro</h3>
-                <p class="text-sm opacity-75">
-                  Gas sensing integration (BME688); initial gas-reading logic and
-                  classification ranges.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">Danitza Jimenez</h3>
-                <p class="text-sm opacity-75">
-                  Data smoothing/validation for gas readings; interpreting
-                  environmental outputs.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">James Austin</h3>
-                <p class="text-sm opacity-75">
-                  Designed and assembled rover power system; charger, regulators,
-                  rails; verified voltages on final PCB.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
-                <h3 class="font-semibold">Erjan Baigenzhin</h3>
-                <p class="text-sm opacity-75">
-                  GPS integration and UART configuration; motor driver subsystem;
-                  drive testing and motor functionality.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Resources -->
-        <section
-          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
-          id="resources"
-          data-title="Resources"
-        >
+        <!-- Code & Downloads -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="code" data-title="Code & Downloads">
           <div class="card-body space-y-3">
-            <div class="flex items-center gap-3">
-              <span class="badge bg-black/5 border border-black/10 font-bold"
-                >Links</span
-              >
-              <h2 class="card-title">Resources</h2>
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Code</span>
+              <h2 class="card-title">Firmware and files</h2>
             </div>
-            <ul class="list-disc ml-5 text-sm space-y-1">
-              <li>
-                Final Report PDF:
-                <a
-                  class="link link-primary"
-                  href="/phoenixforce.github.io/assets/Team%20Final%20Report.pdf"
-                  target="_blank"
-                  >assets/Team Final Report.pdf</a
-                >
-              </li>
-              <li>
-                System Verification:
-                <a class="link" href="/phoenixforce.github.io/assignments/system-verification/"
-                  >assignments/system-verification/</a
-                >
-              </li>
-              <li>
-                Component Selection:
-                <a class="link" href="/phoenixforce.github.io/assignments/component-selection/"
-                  >assignments/component-selection/</a
-                >
-              </li>
-              <li>
-                Design Ideation:
-                <a class="link" href="/phoenixforce.github.io/assignments/design-ideation/"
-                  >assignments/design-ideation/</a
-                >
-              </li>
-            </ul>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a class="btn btn-block" href="/phoenixforce.github.io/assets/terra-guard-code.zip" download>ESP32 Code (zip)</a>
+              <a class="btn btn-block btn-outline" href="/phoenixforce.github.io/assets/BOM.xlsx" download>Final BOM (xlsx)</a>
+              <a class="btn btn-block btn-outline" href="/phoenixforce.github.io/assets/EGR%20314%20Poster.pdf" target="_blank">Innovation Poster (PDF)</a>
+            </div>
+            <p class="text-sm opacity-75">Code pulled live from the repo so it stays current.</p>
+            <details class="rounded-xl border border-black/10 bg-black/5 p-3">
+              <summary class="font-semibold cursor-pointer">sketch_nov24a.ino — Rover</summary>
+              <pre class="mt-3 overflow-x-auto text-xs bg-white rounded-lg border border-black/10"><code id="code-rover"></code></pre>
+            </details>
+            <details class="rounded-xl border border-black/10 bg-black/5 p-3">
+              <summary class="font-semibold cursor-pointer">TerraGuard_HMI.ino — Screen</summary>
+              <pre class="mt-3 overflow-x-auto text-xs bg-white rounded-lg border border-black/10"><code id="code-hmi"></code></pre>
+            </details>
+          </div>
+        </section>
+
+        <!-- Poster -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="poster" data-title="Poster">
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Showcase</span>
+              <h2 class="card-title">Innovation Showcase Poster</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Built in Photoshop for ASU Innovation Showcase. Sedona-inspired backdrop with rover heading toward a fire; floating glass panes carry each required content block.
+            </p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <a class="btn btn-sm" href="/phoenixforce.github.io/assets/EGR%20314%20Poster.pdf" target="_blank">Open PDF</a>
+              <a class="btn btn-sm btn-outline" href="/phoenixforce.github.io/assets/innovation-poster.jpg" download>Download JPG</a>
+            </div>
+            <div class="rounded-2xl border border-black/10 overflow-hidden">
+              <img src="/phoenixforce.github.io/assets/innovation-poster.jpg" alt="Innovation poster" class="w-full" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="reflection" data-title="Reflection">
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Retro</span>
+              <h2 class="card-title">Lessons and Version 2.0</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Top lessons: pick one ECAD tool, budget integration time, document endpoints, and keep LEDs and audio mirrored on both boards. Version 2.0: add command channel, shrink payloads, add RF shielding and test pads, and include current sensing.
+            </p>
+            <a class="link link-primary" href="/phoenixforce.github.io/reflection/">See full reflection →</a>
           </div>
         </section>
       </main>
+
     </div>
 
     <script>
@@ -527,6 +434,18 @@ title: Final Report · Phoenix Force · EGR314
         { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
       );
       sections.forEach((el) => observer.observe(el));
+
+      async function loadCode(id, path) {
+        try {
+          const res = await fetch(path);
+          const text = await res.text();
+          document.getElementById(id).textContent = text;
+        } catch (e) {
+          document.getElementById(id).textContent = "Unable to load code.";
+        }
+      }
+      loadCode("code-rover", "/phoenixforce.github.io/code/sketch_nov24a.ino");
+      loadCode("code-hmi", "/phoenixforce.github.io/code/TerraGuard_HMI.ino");
     </script>
   </body>
 </html>
