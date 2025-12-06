@@ -307,6 +307,23 @@ title: Final Report · Phoenix Force · EGR314
           </div>
         </section>
 
+        <!-- Challenges -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="challenges" data-title="Challenges">
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Notes</span>
+              <h2 class="card-title">Challenges and what we learned</h2>
+            </div>
+            <ul class="list-disc ml-5 text-sm space-y-1">
+              <li>Subsystems worked alone, but integration and compile/link issues took the most time; we kept a single code owner to stabilize merges.</li>
+              <li>Mixing KiCad and Altium slowed layout; we standardized on one ECAD tool and will keep that discipline going forward.</li>
+              <li>PCB feedback: tighten trace routing and keep consistent widths; captured for the next spin.</li>
+              <li>Communication kept simple—HTTP GET over rover AP—because it was the most debuggable under deadline.</li>
+              <li>Poster was built in Photoshop to match ASU Innovation Showcase specs, with a Sedona-style backdrop and floating glass panes to echo the “panes of information” ask.</li>
+            </ul>
+          </div>
+        </section>
+
         <!-- Components -->
         <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="components" data-title="Components">
           <div class="card-body">
@@ -396,6 +413,54 @@ title: Final Report · Phoenix Force · EGR314
               Top lessons: pick one ECAD tool, budget integration time, document endpoints, and keep LEDs and audio mirrored on both boards. Version 2.0: add command channel, shrink payloads, add RF shielding and test pads, and include current sensing.
             </p>
             <a class="link link-primary" href="/phoenixforce.github.io/reflection/">See full reflection →</a>
+          </div>
+        </section>
+
+        <!-- Contributions -->
+        <section class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section" id="contributions" data-title="Team Contributions">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="badge bg-black/5 border border-black/10 font-bold">Team</span>
+              <h2 class="card-title">Team contributions</h2>
+            </div>
+            <div class="auto-grid">
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Vinny Panchal</h3>
+                <p class="text-sm opacity-75">
+                  Firmware for rover and screen, LVGL UI, MJPEG handling, PCB design, poster layout, site build, and integration support across subsystems.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Emonie France</h3>
+                <p class="text-sm opacity-75">
+                  Poster content, build support for rover and screen, printing and presentation prep, and debugging help.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Erjan Baigenzhin</h3>
+                <p class="text-sm opacity-75">
+                  GPS integration and soldering multiple boards; assisted with drive testing.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Amanda Pizarro</h3>
+                <p class="text-sm opacity-75">
+                  Gas sensing support and reviews on sensor integration.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">James Austin</h3>
+                <p class="text-sm opacity-75">
+                  Power subsystem bring-up and verification of rails.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-black/10 p-4 space-y-1">
+                <h3 class="font-semibold">Danitza Jimenez</h3>
+                <p class="text-sm opacity-75">
+                  Power budget, block diagram support, CAD models, and 3D printing for needed parts.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
