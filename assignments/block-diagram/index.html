@@ -128,6 +128,89 @@ title: Block Diagram · Phoenix Force · EGR314
           </div>
         </header>
 
+        <section
+          id="final-diagram"
+          data-title="Final Block Diagram"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Final</span
+              >
+              <h2 class="card-title">Final block diagram & rationale</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Diagram represents the shipped rover + screen PCBs: rover hosts AP
+              and sensing; screen rides as a station for UI/alerts. We grouped
+              comms, sensing, drive, and power to keep routing contained and to
+              align with product requirements for fast alerts and offline
+              operation.
+            </p>
+            <img
+              src="/phoenixforce.github.io/assets/Block_Diagram.png"
+              alt="Final block diagram"
+              class="rounded-2xl border border-black/10"
+            />
+            <p class="text-sm">
+              Decision notes: HTTP GET polling keeps firewall/simple debugging,
+              MJPEG stream stays on the rover, and LEDs/speaker live on both
+              boards so alerts are visible even if the rover is out of view. GPS
+              and gas sensors stay on the rover to avoid UI latency.
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="protocol"
+          data-title="Protocol & Messages"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Protocol</span
+              >
+              <h2 class="card-title">Communication flow & message structure</h2>
+            </div>
+            <ul class="list-disc ml-5 text-sm space-y-1">
+              <li>AP: rover ESP32-WROOM-32U hosts TerraGuard-AP @ 192.168.4.1.</li>
+              <li>Screen ESP32-S3 polls via HTTP GET to /metrics (JSON) and /coords.</li>
+              <li>MJPEG stream at /stream; HMI double-buffers frames to LVGL.</li>
+              <li>Drive/controls stay local; future v2 channel reserved for commands.</li>
+              <li>Message keys: temp_c, humidity, gas_kohms, gas_type, air_quality, lat, lon, sats.</li>
+            </ul>
+            <p class="text-sm opacity-75">
+              Sequence discussion: screen pings every second for metrics/coords
+              and keeps a frame timeout for the stream. This keeps user needs
+              (live air-quality + video) satisfied without blocking UI even when
+              frames drop.
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="software-deltas"
+          data-title="Software Changes"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Top 5</span
+              >
+              <h2 class="card-title">Biggest software changes since proposal</h2>
+            </div>
+            <ol class="list-decimal ml-5 text-sm space-y-1">
+              <li>Swapped ESP-NOW plan for HTTP GET to simplify debugging and align with AP hosting.</li>
+              <li>Added MJPEG frame buffering on the HMI to smooth dropped frames from the rover.</li>
+              <li>Introduced /coords endpoint to keep GPS data off the stream path and lighten the JSON.</li>
+              <li>Refactored LED feedback: both boards now mirror gas states so alerts are visible anywhere.</li>
+              <li>Split metrics polling and stream handling into separate timers to prevent UI stalling.</li>
+            </ol>
+          </div>
+        </section>
+
         <!-- Objectives -->
         <section
           id="objectives"

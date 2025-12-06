@@ -122,10 +122,63 @@ title: Team Organization · Phoenix Force · EGR314
               Charter & Product Mission
             </h1>
             <p class="mt-3 text-ink/75">
-              Extra detail that supports our Team Organization page-notes.
+              Finalized team structure, mission, and contacts for TerraGuard.
             </p>
           </div>
         </header>
+
+        <!-- Final Team Snapshot -->
+        <section
+          id="contacts"
+          data-title="Team & Contacts"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="badge bg-black/5 border border-black/10 font-bold"
+                >Roster</span
+              >
+              <h2 class="card-title">Team & Contacts</h2>
+            </div>
+            <p class="text-sm opacity-75">
+              Final mission: ship a two-board rover + HMI that hosts its own AP,
+              streams metrics/video, and alerts on gas/air-quality events in
+              field conditions.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">Vinny Panchal</div>
+                <div class="opacity-70">vinny.panchal@asu.edu</div>
+                <div class="mt-1">HMI, firmware, PCB design, poster, site.</div>
+              </div>
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">Emonie France</div>
+                <div class="opacity-70">efrance3@asu.edu</div>
+                <div class="mt-1">Poster content, build help, debugging, RF.</div>
+              </div>
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">Amanda Pizarro</div>
+                <div class="opacity-70">apizarr2@asu.edu</div>
+                <div class="mt-1">Gas sensing support and reviews.</div>
+              </div>
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">Erjan Baigenzhin</div>
+                <div class="opacity-70">ebaigenz@asu.edu</div>
+                <div class="mt-1">GPS integration, soldering, drive testing.</div>
+              </div>
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">James Austin</div>
+                <div class="opacity-70">jausti26@asu.edu</div>
+                <div class="mt-1">Power subsystem bring-up.</div>
+              </div>
+              <div class="rounded-xl border border-black/10 p-3">
+                <div class="font-semibold">Danitza Jimenez</div>
+                <div class="opacity-70"> </div>
+                <div class="mt-1">Power budget, CAD/3D prints, block diagrams.</div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- Charter -->
         <section
@@ -153,20 +206,15 @@ title: Team Organization · Phoenix Force · EGR314
             </blockquote>
             <h3 class="mt-6 font-extrabold">Context (How we own this)</h3>
             <p class="mt-1">
-              In a rapid kickoff, each teammate shared personal goals (learning,
-              impact, execution discipline, career growth). We clustered them,
-              dot-voted, and pressure-tested the top outcomes against course
-              constraints and our assumed product (rugged, embedded wildfire
-              assistant). We translated those into measurable targets (≤1&nbsp;s
-              alert latency, 99% message delivery on an internet-optional link,
-              &gt;95% lab detection accuracy) and mapped ownership to the four
-              pillars: communication, HMI, sensing/actuation, and systems/test.
+              Final design leans on a rover-hosted AP, HTTP GET polling, and two
+              visual stacks (on-robot LEDs + HMI LEDs/speaker). Success criteria
+              remain: &lt;1&nbsp;s alert latency, reliable comms without public
+              internet, and clear UI in gloves/bright light.
             </p>
             <p class="mt-2">
-              We set a clear Definition of Done (clean build from clone, test
-              results logged, wiring/enclosure updated, 60-second demo clip) and
-              agreed to review this charter at milestones. Changes require team
-              consent to keep scope, quality, and velocity aligned.
+              Definition of done: clean flash from clone, metrics + stream
+              reachable at 192.168.4.1, LEDs/speaker reflect gas states, GPS
+              responds, and poster/site aligned with the shipped build.
             </p>
           </div>
         </section>

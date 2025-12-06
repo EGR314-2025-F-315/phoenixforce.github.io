@@ -153,6 +153,158 @@ title: Component Selection · Phoenix Force · EGR314
           </div>
         </header>
 
+        <section
+          id="final-components"
+          data-title="Final Components"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold"
+                  >Final</span
+                >
+                <h2 class="card-title">Summary of final major components</h2>
+              </div>
+            </div>
+            <p class="text-sm opacity-75 mt-2">
+              Final bill of materials used in the fabricated rover + screen
+              PCBs. Passive parts omitted.
+            </p>
+            <div class="overflow-x-auto mt-3">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Subsystem</th>
+                    <th>Part</th>
+                    <th>Link</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Compute</td>
+                    <td>ESP32-WROOM-32U</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32U/9385967"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Rover MCU + AP host</td>
+                  </tr>
+                  <tr>
+                    <td>HMI</td>
+                    <td>ESP32-S3 7&quot; Elecrow Display</td>
+                    <td>
+                      <a
+                        href="https://www.elecrow.com/7-inch-esp32-display-800x480-lvgl.html"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Screen module + speaker + LEDs</td>
+                  </tr>
+                  <tr>
+                    <td>Sensing</td>
+                    <td>BME688</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Air quality + gas resistance</td>
+                  </tr>
+                  <tr>
+                    <td>Sensing</td>
+                    <td>MQ-2 Gas/Smoke Module</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/e4hOBhI"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Fast gas thresholding</td>
+                  </tr>
+                  <tr>
+                    <td>Position</td>
+                    <td>u-blox NEO-6M GPS</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/8vv5KV7"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>UART GPS for coords</td>
+                  </tr>
+                  <tr>
+                    <td>Actuation</td>
+                    <td>L298N Motor Driver</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/f2wVPY0"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Dual H-bridge</td>
+                  </tr>
+                  <tr>
+                    <td>Indicators</td>
+                    <td>WS2812B LED Strip</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/1gp2LhV"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Status/air-quality feedback</td>
+                  </tr>
+                  <tr>
+                    <td>Power</td>
+                    <td>L7805CV + LM3940</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/591234"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>5 V + 3.3 V rails from 7.4 V pack</td>
+                  </tr>
+                  <tr>
+                    <td>Energy</td>
+                    <td>7.4 V Li-ion pack</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/2eNwMD9"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Main rover supply</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         <!-- SUBSYSTEMS -->
         <section
           id="subsystems"
