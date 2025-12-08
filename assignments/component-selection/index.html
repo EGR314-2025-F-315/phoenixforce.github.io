@@ -1,0 +1,1385 @@
+---
+layout: none
+title: Component Selection · Phoenix Force · EGR314
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Component Selection · Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .toc a.active {
+        background: rgba(0, 0, 0, 0.06);
+        font-weight: 700;
+      }
+      .callout {
+        border-left-width: 6px;
+      }
+      .callout.info {
+        border-left-color: #60a5fa;
+        background: #eff6ff;
+      }
+      .callout.warn {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .callout.success {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+      }
+      .callout.danger {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+      }
+      .auto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .modal-figure {
+        aspect-ratio: 16 / 9;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        overflow: hidden;
+      }
+      .modal-figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    {% include nav.html %}
+
+    <div
+      class="max-w-7xl mx-auto px-4 lg:px-6 pt-8 pb-16 grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+    >
+      <!-- Sidebar / TOC -->
+      <aside class="hidden lg:block sticky top-20 self-start">
+        <div
+          class="toc card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h2
+              class="font-extrabold text-sm uppercase tracking-widest opacity-70 mb-2"
+            >
+              On this page
+            </h2>
+            <nav class="space-y-1 text-sm" id="tocLinks"></nav>
+          </div>
+        </div>
+
+        <div
+          class="mt-4 card bg-white rounded-2xl border border-black/10 shadow-soft"
+        >
+          <div class="card-body p-4">
+            <h3 class="font-bold text-sm uppercase tracking-widest opacity-70">
+              Categories
+            </h3>
+            <div id="categoryList" class="mt-2 space-y-1"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main id="pageRoot" class="space-y-8">
+        <!-- HEADER -->
+        <header
+          class="relative w-full text-center rounded-3xl border border-black/10 shadow-soft overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+          ></div>
+          <div class="absolute inset-0 bg-white/75 backdrop-blur-sm"></div>
+          <div class="relative px-6 py-10 md:px-10 md:py-12">
+            <p
+              class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold"
+            >
+              Assignments
+            </p>
+            <h1
+              class="font-display text-4xl lg:text-5xl font-black leading-tight mt-1"
+            >
+              Component Selection
+            </h1>
+            <p class="mt-3 text-ink/75">
+              Compare options for each subsystem, record rationale, and build
+              the Bill of Materials (BOM).
+            </p>
+          </div>
+        </header>
+
+        <section
+          id="final-components"
+          data-title="Final Components"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold"
+                  >Final</span
+                >
+                <h2 class="card-title">Summary of final major components</h2>
+              </div>
+            </div>
+            <p class="text-sm opacity-75 mt-2">
+              Final bill of materials used in the fabricated rover + screen
+              PCBs. Passive parts omitted.
+            </p>
+            <div class="overflow-x-auto mt-3">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Subsystem</th>
+                    <th>Part</th>
+                    <th>Link</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Compute</td>
+                    <td>ESP32-WROOM-32U</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32U/9385967"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Rover MCU + AP host</td>
+                  </tr>
+                  <tr>
+                    <td>HMI</td>
+                    <td>ESP32-S3 7&quot; Elecrow Display</td>
+                    <td>
+                      <a
+                        href="https://www.elecrow.com/7-inch-esp32-display-800x480-lvgl.html"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Screen module + speaker + LEDs</td>
+                  </tr>
+                  <tr>
+                    <td>Sensing</td>
+                    <td>BME688</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Air quality + gas resistance</td>
+                  </tr>
+                  <tr>
+                    <td>Sensing</td>
+                    <td>MQ-2 Gas/Smoke Module</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/e4hOBhI"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Fast gas thresholding</td>
+                  </tr>
+                  <tr>
+                    <td>Position</td>
+                    <td>u-blox NEO-6M GPS</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/8vv5KV7"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>UART GPS for coords</td>
+                  </tr>
+                  <tr>
+                    <td>Actuation</td>
+                    <td>L298N Motor Driver</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/f2wVPY0"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Dual H-bridge</td>
+                  </tr>
+                  <tr>
+                    <td>Indicators</td>
+                    <td>WS2812B LED Strip</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/1gp2LhV"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Status/air-quality feedback</td>
+                  </tr>
+                  <tr>
+                    <td>Power</td>
+                    <td>L7805CV + LM3940</td>
+                    <td>
+                      <a
+                        href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/591234"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>5 V + 3.3 V rails from 7.4 V pack</td>
+                  </tr>
+                  <tr>
+                    <td>Energy</td>
+                    <td>7.4 V Li-ion pack</td>
+                    <td>
+                      <a
+                        href="https://a.co/d/2eNwMD9"
+                        target="_blank"
+                        class="link"
+                        >Link</a
+                      >
+                    </td>
+                    <td>Main rover supply</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBSYSTEMS -->
+        <section
+          id="subsystems"
+          data-title="Subsystems"
+          class="space-y-6 anchor-section"
+        >
+          <!-- JS injects sections -->
+        </section>
+
+        <!-- BOM -->
+        <section
+          id="bom"
+          data-title="Bill of Materials"
+          class="card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section"
+        >
+          <div class="card-body">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <h2 class="card-title">Bill of Materials</h2>
+              <div class="flex items-center gap-2">
+                <!-- Download the original XLSX from /assets -->
+                <a
+                  class="btn btn-sm"
+                  href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"
+                  download
+                >
+                  Download BOM (.xlsx)
+                </a>
+                <button class="btn btn-sm" onclick="exportBOM()">
+                  Export BOM (CSV)
+                </button>
+              </div>
+            </div>
+
+            <p class="mt-1 text-sm opacity-70">
+              Click an item name to view details &amp; image.
+            </p>
+
+            <div class="overflow-x-auto mt-3">
+              <table class="table table-sm" id="bomTable">
+                <thead>
+                  <tr>
+                    <th>Subsystem</th>
+                    <th>Component</th>
+                    <th>Chosen Option</th>
+                    <th>Vendor Link</th>
+                    <th>Unit Price ($)</th>
+                    <th>Qty</th>
+                    <th>Line Total ($)</th>
+                  </tr>
+                </thead>
+                <tbody id="bomBody">
+                  <!-- Filled dynamically from /assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx -->
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="5" class="text-right">Grand Total ($)</th>
+                    <th id="bomQtyTotal">0</th>
+                    <th id="bomGrandTotal">0.00</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Optional: status area for load errors -->
+            <div id="bomStatus" class="text-sm mt-2 opacity-70"></div>
+          </div>
+        </section>
+
+        <!-- SheetJS (XLSX) to read /assets/https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx in the browser -->
+        <script
+          src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"
+          integrity="sha384-u5n3i4r5pI8m1r+0gQmX+oSjjK6l+o5L3n2yV78o9+4kqYz+Ue3Oaq3VqUo5m7oR"
+          crossorigin="anonymous"
+        ></script>
+
+        <script>
+          // ===== Config =====
+          const BOM_XLSX_URL =
+            "https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx"; // <-- adjust if your path/filename differs
+          // Acceptable column name variants (case/space-insensitive)
+          const COL_MAP = {
+            subsystem: ["subsystem", "system", "category"],
+            component: ["component", "item", "part", "name"],
+            chosen: ["chosen option", "option", "model", "sku", "chosen"],
+            vendor: ["vendor link", "link", "url", "product url", "vendor"],
+            unitprice: [
+              "unit price ($)",
+              "unit price usd",
+              "unit price",
+              "price",
+              "cost",
+            ],
+            qty: ["qty", "quantity", "count"],
+          };
+
+          const el = {
+            body: document.getElementById("bomBody"),
+            qtyTotal: document.getElementById("bomQtyTotal"),
+            grandTotal: document.getElementById("bomGrandTotal"),
+            status: document.getElementById("bomStatus"),
+          };
+
+          function normalizeHeader(h) {
+            return String(h || "")
+              .trim()
+              .toLowerCase()
+              .replace(/\s+/g, " ")
+              .replace(/[\s_]+/g, " ");
+          }
+
+          function findHeader(headerRow, wantedList) {
+            // Find first header that matches any of the wanted variants
+            const normalized = headerRow.map(normalizeHeader);
+            for (const wanted of wantedList) {
+              const w = normalizeHeader(wanted);
+              const idx = normalized.indexOf(w);
+              if (idx !== -1) return idx;
+            }
+            return -1;
+          }
+
+          function money(n) {
+            const v = Number(n);
+            return isFinite(v) ? v.toFixed(2) : "";
+          }
+
+          function escapeHtml(s) {
+            return String(s ?? "")
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;");
+          }
+
+          async function loadBOM() {
+            try {
+              el.status.textContent =
+                "Loading BOM from https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx…";
+              const res = await fetch(BOM_XLSX_URL, { cache: "no-store" });
+              if (!res.ok)
+                throw new Error(`HTTP ${res.status} fetching ${BOM_XLSX_URL}`);
+              const buf = await res.arrayBuffer();
+
+              const wb = XLSX.read(buf, { type: "array" });
+              const firstSheetName = wb.SheetNames[0];
+              const ws = wb.Sheets[firstSheetName];
+
+              // Get sheet as 2D array (include header row)
+              const rows = XLSX.utils.sheet_to_json(ws, {
+                header: 1,
+                blankrows: false,
+              });
+              if (!rows.length) throw new Error("BOM sheet is empty");
+
+              // Map headers
+              const headers = rows[0];
+              const dataRows = rows.slice(1);
+
+              const idx = {
+                subsystem: findHeader(headers, COL_MAP.subsystem),
+                component: findHeader(headers, COL_MAP.component),
+                chosen: findHeader(headers, COL_MAP.chosen),
+                vendor: findHeader(headers, COL_MAP.vendor),
+                unitprice: findHeader(headers, COL_MAP.unitprice),
+                qty: findHeader(headers, COL_MAP.qty),
+              };
+
+              // Basic validation
+              const missing = Object.entries(idx)
+                .filter(([, v]) => v === -1)
+                .map(([k]) => k);
+              if (missing.length) {
+                el.status.innerHTML =
+                  "Some expected columns were not found in the BOM file: <b>" +
+                  missing.join(", ") +
+                  "</b>. I will still try to render what is available.";
+              } else {
+                el.status.textContent = "";
+              }
+
+              // Build rows
+              let qtyTotal = 0;
+              let grandTotal = 0;
+              const frag = document.createDocumentFragment();
+
+              for (const r of dataRows) {
+                // Skip completely empty lines
+                if (
+                  !r ||
+                  r.every(
+                    (cell) =>
+                      cell === null ||
+                      cell === undefined ||
+                      String(cell).trim() === ""
+                  )
+                ) {
+                  continue;
+                }
+
+                const subsystem = idx.subsystem !== -1 ? r[idx.subsystem] : "";
+                const component = idx.component !== -1 ? r[idx.component] : "";
+                const chosen = idx.chosen !== -1 ? r[idx.chosen] : "";
+                const vendorLink = idx.vendor !== -1 ? r[idx.vendor] : "";
+                const unitPriceNum =
+                  idx.unitprice !== -1 ? Number(r[idx.unitprice]) : NaN;
+                const qtyNum = idx.qty !== -1 ? Number(r[idx.qty]) : 1;
+
+                const lineTotal =
+                  (isFinite(unitPriceNum) ? unitPriceNum : 0) *
+                  (isFinite(qtyNum) ? qtyNum : 0);
+
+                if (isFinite(qtyNum)) qtyTotal += qtyNum;
+                if (isFinite(lineTotal)) grandTotal += lineTotal;
+
+                const tr = document.createElement("tr");
+
+                const tdSubsystem = document.createElement("td");
+                tdSubsystem.textContent = subsystem ?? "";
+                tr.appendChild(tdSubsystem);
+
+                const tdComponent = document.createElement("td");
+                if (
+                  vendorLink &&
+                  String(vendorLink).trim().toLowerCase() !== "nan"
+                ) {
+                  const a = document.createElement("a");
+                  a.href = String(vendorLink);
+                  a.target = "_blank";
+                  a.rel = "noopener";
+                  a.textContent = String(component ?? "");
+                  tdComponent.appendChild(a);
+                } else {
+                  tdComponent.textContent = component ?? "";
+                }
+                tr.appendChild(tdComponent);
+
+                const tdChosen = document.createElement("td");
+                tdChosen.textContent = chosen ?? "";
+                tr.appendChild(tdChosen);
+
+                const tdVendor = document.createElement("td");
+                if (
+                  vendorLink &&
+                  String(vendorLink).trim() !== "" &&
+                  String(vendorLink).trim().toLowerCase() !== "nan"
+                ) {
+                  const a = document.createElement("a");
+                  a.href = String(vendorLink);
+                  a.target = "_blank";
+                  a.rel = "noopener";
+                  a.textContent = "Link";
+                  tdVendor.appendChild(a);
+                } else {
+                  tdVendor.textContent = "";
+                }
+                tr.appendChild(tdVendor);
+
+                const tdUnit = document.createElement("td");
+                tdUnit.className = "text-right";
+                tdUnit.textContent = isFinite(unitPriceNum)
+                  ? money(unitPriceNum)
+                  : "";
+                tr.appendChild(tdUnit);
+
+                const tdQty = document.createElement("td");
+                tdQty.className = "text-right";
+                tdQty.textContent = isFinite(qtyNum) ? String(qtyNum) : "";
+                tr.appendChild(tdQty);
+
+                const tdLine = document.createElement("td");
+                tdLine.className = "text-right";
+                tdLine.textContent = money(lineTotal);
+                tr.appendChild(tdLine);
+
+                frag.appendChild(tr);
+              }
+
+              el.body.innerHTML = "";
+              el.body.appendChild(frag);
+              el.qtyTotal.textContent = String(qtyTotal);
+              el.grandTotal.textContent = money(grandTotal);
+            } catch (err) {
+              console.error(err);
+              el.status.innerHTML =
+                "⚠️ <b>BOM load failed.</b> Please confirm that <code>https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/BOM.xlsx</code> exists. " +
+                "Error: " +
+                escapeHtml(err.message || err);
+            }
+          }
+
+          // CSV export of the currently rendered table
+          function exportBOM() {
+            const table = document.getElementById("bomTable");
+            if (!table) return;
+            let csv = [];
+            const rows = table.querySelectorAll("tr");
+            for (const row of rows) {
+              const cells = row.querySelectorAll("th, td");
+              const line = [];
+              for (const cell of cells) {
+                // Extract visible text; if it has a link, use its text
+                const link = cell.querySelector("a");
+                const text = link
+                  ? link.textContent.trim()
+                  : cell.textContent.trim();
+                // Escape CSV
+                let v = text.replace(/"/g, '""');
+                if (/[",\n]/.test(v)) v = `"${v}"`;
+                line.push(v);
+              }
+              csv.push(line.join(","));
+            }
+            const blob = new Blob([csv.join("\n")], {
+              type: "text/csv;charset=utf-8;",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            const ts = new Date()
+              .toISOString()
+              .slice(0, 19)
+              .replace(/[:T]/g, "-");
+            a.download = `BOM-${ts}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+          }
+
+          // Kick off load on DOM ready
+          document.addEventListener("DOMContentLoaded", loadBOM);
+        </script>
+      </main>
+    </div>
+
+    <!-- MODAL -->
+    <dialog id="detailModal" class="modal">
+      <div class="modal-box max-w-2xl">
+        <h3 class="font-bold text-xl" id="modalTitle">Component</h3>
+        <p class="text-sm opacity-60" id="modalSubtitle"></p>
+
+        <figure class="modal-figure mt-3">
+          <img id="modalImage" alt="Component image" />
+        </figure>
+
+        <div class="divider"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-semibold">Pros</h4>
+            <ul class="list-disc ml-5 text-sm" id="modalPros"></ul>
+          </div>
+          <div>
+            <h4 class="font-semibold">Cons</h4>
+            <ul class="list-disc ml-5 text-sm" id="modalCons"></ul>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold">Rationale</h4>
+          <p class="text-sm" id="modalRationale"></p>
+          <a
+            id="modalLink"
+            target="_blank"
+            class="link link-primary text-sm"
+          ></a>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      /* ========= DATA (unchanged; trimmed for brevity in this snippet) =========
+         Use the same DATA you already have, including your added items.
+         The BOM now just reads the 'selected' defaults. 
+      */
+      const DATA = [
+        {
+          category: "Power",
+          items: [
+            {
+              key: "battery",
+              title: "Battery",
+              owner: "James Austin",
+              options: [
+                {
+                  name: "Custom PCB Budget",
+                  img: "https://m.media-amazon.com/images/I/71kucLpr4aL._AC_SX679_.jpg",
+                  link: "https://a.co/d/2eNwMD9",
+                  pros: [
+                    "10,000 mAh capacity for long runtimes",
+                    "Built-in charging & protection (plug-and-play)",
+                    "Compact, easy to mount with straps/brackets",
+                    "Common 5 V output (USB-A/USB-C)",
+                  ],
+                  cons: [
+                    "5 V only - needs buck/boost for other rails",
+                    "May not support pass-through (power while charging)",
+                  ],
+                  unitPrice: 39.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "power",
+              title: "Buck Convertor",
+              owner: "James Austin",
+              options: [
+                {
+                  name: "LM2596 Buck Convertor",
+                  img: "https://m.media-amazon.com/images/I/71uw8QRRugL._AC_SX679_.jpg",
+                  link: "https://a.co/d/9zMzR8D",
+                  pros: [
+                    "Adjustable output (potentiometer) for flexible rails",
+                    "Handles ~2–3 A with decent efficiency",
+                    "Simple wiring; common, well-documented module",
+                  ],
+                  cons: ["Heats up at higher currents; may need heatsinking"],
+                  unitPrice: 39.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "power",
+              title: "Charging Protection Circuit",
+              owner: "James Austin",
+              options: [
+                {
+                  name: "Charging Protection Circuit",
+                  img: "https://m.media-amazon.com/images/I/514etQV3IoL._AC_SX679_.jpg",
+                  link: "https://a.co/d/hGxGqXL",
+                  pros: [
+                    "Over-charge/over-discharge and short-circuit protection",
+                    "Simple integration; clearly labeled I/O pads",
+                    "LED indicators for charge/ready on many boards",
+                    "Low cost for single-cell Li-ion setups",
+                  ],
+                  cons: ["Thermal considerations in enclosed spaces"],
+                  unitPrice: 7.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Sensors",
+          items: [
+            {
+              key: "temp-switch",
+              title: "Temperature Switch IC",
+              owner: "Amanda Pizzaro",
+              options: [
+                {
+                  name: "TI TMP390A2DRLR (6-pin)",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/010/696/TI-TMP390AxDRLT_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/TMP390A2DRLR/10434748",
+                  pros: [
+                    "low power consumption: 0.5 5 µA typical at 25°C",
+                    "dual channel (overtemperature 40 - 124°C and under temperature",
+                    "55 to 130°C",
+                    "hysteresis options",
+                    "temp switch w HOT and COLD",
+                  ],
+                  cons: ["±3°C typ accuracy", "Needs 1 resistor + 1 capacitor"],
+                  unitPrice: 0.64,
+                  rationale:
+                    "Dual-channel thresholds simplify over/under-temp alerts without MCU polling.",
+                  selected: true,
+                  qty: 3,
+                },
+                {
+                  name: "Microchip MCP9510HT-E/CH",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/003/238/121/MFG_150%7EC04-028%7ECH%2COT%7E6_sml%28200x200%29.jpg",
+                  link: "https://www.digikey.com/en/products/detail/microchip-technology/MCP9510HT-E-CH/1999528",
+                  pros: [
+                    "-40..125°C range",
+                    "Integrated comparator alert output",
+                    "Configurable hysteresis",
+                  ],
+                  cons: ["Lower accuracy at high temps"],
+                  unitPrice: 1.1,
+                  selected: false,
+                },
+                {
+                  name: "TI TMP708AIDBVR",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/300/756/409/296%7E4073253-4%7EDBV%7E5_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/TMP708AIDBVR/3053265",
+                  pros: ["Low cost", "Simple configuration", "Good docs"],
+                  cons: ["Average accuracy"],
+                  unitPrice: 0.46,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "gas-sensor",
+              title: "Gas / Air Quality Sensor",
+              owner: "Amanda Pizzaro",
+              options: [
+                {
+                  name: "Sensirion SCD30 (CO₂ + RH + Temp)",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/200/443/584/MFG_SCD30_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/sensirion-ag/SCD30/8445334",
+                  pros: [
+                    "CO₂ + humidity + temperature in one",
+                    "Well-documented",
+                  ],
+                  cons: ["Expensive", "Module is through-hole"],
+                  unitPrice: 33.29,
+                  selected: false,
+                },
+                {
+                  name: "Bosch BME688 (Gas + P/T/H with AI)",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4544/MFG_BME688.JPG?hidebanner=true",
+                  link: "https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261",
+                  pros: [
+                    "Low power",
+                    "Multi-sensor with AI features",
+                    "Used in wildfire detection",
+                  ],
+                  cons: ["Small package for hand-soldering"],
+                  unitPrice: 8.65,
+                  rationale:
+                    "Combines multiple measurements; reduces separate sensor count.",
+                  selected: false,
+                  qty: 3,
+                },
+                {
+                  name: "ESP8266 MQ2 5V DC (MQ-2) Gas and Smoke Sensor",
+                  img: "https://m.media-amazon.com/images/I/71MhxcpYNyL._SX522_.jpg",
+                  link: "https://a.co/d/e4hOBhI",
+                  pros: [
+                    "Low power",
+                    "Multi-sensor with AI features",
+                    "Used in wildfire detection",
+                  ],
+                  cons: ["Small package for hand-soldering"],
+                  unitPrice: 11.99,
+                  rationale:
+                    "Combines multiple measurements; reduces separate sensor count.",
+                  selected: false,
+                  qty: 1,
+                },
+              ],
+            },
+            {
+              key: "humidity-sensor",
+              title: "Humidity Sensor",
+              owner: "Danitza Himenez",
+              options: [
+                {
+                  name: "Sensirion SHT40-CD1B-R3",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/010/906/800/MFG_ENS160-BGLx_sml.jpg",
+                  link: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/003/223/755/MFG_1649%7E4DFN-.59-1.5X1.5%7E%7E4_sml%28200x200%29.jpg",
+                  pros: ["±1.8% RH typical", "I²C, 1.08–3.6V", "Low power"],
+                  cons: ["Needs membrane housing outdoors", "8-week lead time"],
+                  unitPrice: 1.8,
+                  selected: true,
+                  qty: 3,
+                },
+                {
+                  name: "TI HDC1080DMBR",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/002/294/976/MFG_HDC1080DMBR_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/texas-instruments/HDC1080DMBR/5878653",
+                  pros: ["±2% RH mid accuracy", "0–100% RH range", "I²C"],
+                  cons: [
+                    "Min 2.7V",
+                    "No built-in heater",
+                    "Needs housing",
+                    "Some drift",
+                  ],
+                  unitPrice: 2.19,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "camera",
+              title: "Camera",
+              owner: "Vinny Panchal",
+              options: [
+                {
+                  name: "FPV Camera (module)",
+                  img: "https://m.media-amazon.com/images/I/51BROK8ZdFL._AC_SX679_.jpg",
+                  link: "https://a.co/d/07ie8Dl",
+                  pros: ["Works with ESP 32"],
+                  cons: ["N/A"],
+                  rationale:
+                    "It works with ESP and is ultrawide so would be perfect for transmission",
+                  unitPrice: 8.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "RF & Positioning",
+          items: [
+            {
+              key: "antenna-2g4",
+              title: "2.4 GHz Antenna",
+              owner: "Emonie France",
+              options: [
+                {
+                  name: "D1 M1 ESP8266 2.4G WiFi Antenna with U.FL to Female SMA Cable",
+                  img: "https://m.media-amazon.com/images/I/61OuTfaDBpL._AC_SX679_.jpg",
+                  link: "https://a.co/d/1rdXPty",
+                  pros: ["Inexpensive", "Omni coverage", "Simple mounting"],
+                  cons: [
+                    "Not weatherproof long-term",
+                    "Lower gain vs omnis/Yagi",
+                  ],
+                  unitPrice: 9.99,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "gps",
+              title: "GPS Module",
+              owner: "Erjan Baigenzhin",
+              options: [
+                {
+                  name: "u-blox NEO-6M Module",
+                  img: "https://m.media-amazon.com/images/I/51mrQoKtduL._AC_SX679_.jpg",
+                  link: "https://a.co/d/8vv5KV7",
+                  pros: ["Common, includes antenna", "Easy UART integration"],
+                  cons: ["Module TH pins", "Basic performance"],
+                  unitPrice: 18.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "esp32-board",
+              title: "ESP32 Cam (2.4 GHz) Dev Board",
+              owner: "Emonie France",
+              options: [
+                {
+                  name: "ESP32 Dev Board (antenna-capable)",
+                  img: "https://m.media-amazon.com/images/I/7127jPKzJkL._AC_SX679_.jpg",
+                  link: "https://a.co/d/4q0dHPg",
+                  pros: ["Antenna compatible ESP32 board"],
+                  cons: [],
+                  unitPrice: 15.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Screen / HMI",
+          items: [
+            {
+              key: "touch-displays",
+              title: "Touch Displays",
+              owner: "Vinny Panchal",
+              options: [
+                {
+                  name: '7" Touch Display (ESP32 HMI)',
+                  img: "https://m.media-amazon.com/images/I/617pQaqmYNL._AC_SX679_.jpg",
+                  link: "https://a.co/d/8EiLBvP",
+                  pros: [
+                    "Built-in ESP32",
+                    "Audio support",
+                    "Customizable interface tool",
+                  ],
+                  cons: ["Expensive"],
+                  unitPrice: 52.99,
+                  qty: 1,
+                  selected: true,
+                },
+                {
+                  name: '5" Touch Display (ESP32 HMI)',
+                  img: "https://m.media-amazon.com/images/I/71irUFOlKtL._AC_SX679_.jpg",
+                  link: "https://a.co/d/441U2Xp",
+                  pros: ["Built-in ESP32", "Audio", "Customizable UI"],
+                  cons: ["Expensive", "Smaller & harder to touch"],
+                  unitPrice: 47.99,
+                  qty: 1,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "speakers",
+              title: "Speakers",
+              owner: "Vinny Panchal",
+              options: [
+                {
+                  name: "3W 8Ω Speaker (2-pack)",
+                  img: "https://m.media-amazon.com/images/I/915nDa-0siL._AC_SX679_.jpg",
+                  link: "https://a.co/d/f6DV96a",
+                  pros: ["3W 8Ω", "Smaller profile", "Easy mount", "Pack of 2"],
+                  cons: ["N/A"],
+                  unitPrice: 7.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "status-led",
+              title: "LED Strip",
+              owner: "Vinny Panchal",
+              options: [
+                {
+                  name: "Individually Addressable LED Strip",
+                  img: "https://m.media-amazon.com/images/I/71GniZ4qKoS._AC_SX679_.jpg",
+                  link: "https://a.co/d/1gp2LhV",
+                  pros: ["Individually addressable"],
+                  cons: ["N/A"],
+                  unitPrice: 13.99,
+                  qty: 1,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          category: "Mechanical",
+          items: [
+            {
+              key: "chassis",
+              title: "Chassis Material",
+              owner: "Amanda Pizzaro",
+              options: [
+                {
+                  name: "3D Printed PLA/ASA",
+                  img: "https://www.bridgewaterstudio.net/hubfs/Blog_Images/Campaign%2002/3d-printing-history-featured.jpg",
+                  link: "https://us.store.bambulab.com/collections/bambu-lab-3d-printer-filament",
+                  pros: ["Low cost", "Rapid iteration", "Custom geometry"],
+                  cons: [
+                    "Needs CAD time",
+                    "Material creep/UV sensitivity (PLA)",
+                  ],
+                  unitPrice: 0.0,
+                  selected: true,
+                },
+              ],
+            },
+            {
+              key: "drive-motors",
+              title: "Drive Motors",
+              owner: "Erjan Baigenzhin",
+              options: [
+                {
+                  name: "TT Yellow Gear Motors (3–6V, ~200RPM)",
+                  img: "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/1/200/491/653/3777_sml.jpg",
+                  link: "https://www.digikey.com/en/products/detail/adafruit-industries-llc/3777/8687221",
+                  pros: ["Very inexpensive", "Easy to mount"],
+                  cons: ["Lower torque", "Requires H-bridge"],
+                  unitPrice: 2.95,
+                  selected: true,
+                },
+                {
+                  name: "Blue Steel gear motors",
+                  img: "https://m.media-amazon.com/images/I/51dsCtYbdFL._AC_SX679_.jpg",
+                  link: "https://a.co/d/382LnsW",
+                  pros: ["Expensive"],
+                  cons: ["Lower torque", "Requires H-bridge"],
+                  unitPrice: 23.39,
+                  selected: false,
+                },
+              ],
+            },
+            {
+              key: "motor-driver",
+              title: "Motor Driver",
+              owner: "Erjan Baigenzhin",
+              options: [
+                {
+                  name: "L298N Module",
+                  img: "https://m.media-amazon.com/images/I/71+62HMgRML._AC_SX679_.jpg",
+                  link: "https://a.co/d/f2wVPY0",
+                  pros: ["Common", "Cheap kits available"],
+                  cons: ["Inefficient, runs hot", "Bulky"],
+                  unitPrice: 15.99,
+                  selected: true,
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      // ========= RENDER SUBSYSTEM CARDS (no selection controls) =========
+      const subsystemsRoot = document.getElementById("subsystems");
+      const categoriesRoot = document.getElementById("categoryList");
+
+      function renderSubsystems() {
+        DATA.forEach((group, gi) => {
+          const section = document.createElement("section");
+          section.className =
+            "card bg-white rounded-3xl border border-black/10 shadow-soft anchor-section";
+          section.id = `cat-${gi}`;
+          section.dataset.title = group.category;
+
+          section.innerHTML = `
+            <div class="card-body">
+              <div class="flex items-center justify-between gap-2">
+                <span class="badge bg-black/5 border border-black/10 font-bold">${group.category}</span>
+              </div>
+              <div class="mt-3 space-y-4" id="group-${gi}"></div>
+            </div>
+          `;
+          subsystemsRoot.appendChild(section);
+
+          // Sidebar quick jump
+          const catLink = document.createElement("a");
+          catLink.href = `#cat-${gi}`;
+          catLink.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+          catLink.textContent = group.category;
+          categoriesRoot.appendChild(catLink);
+
+          // Items + options (pure info cards)
+          const groupRoot = section.querySelector(`#group-${gi}`);
+          group.items.forEach((item, ii) => {
+            const wrap = document.createElement("div");
+            wrap.className =
+              "collapse collapse-arrow bg-white border border-black/10 rounded-xl";
+            wrap.innerHTML = `
+              <input type="checkbox" />
+              <div class="collapse-title text-lg font-semibold">
+                ${item.title} <span class="ml-2 text-xs opacity-60">${
+              item.owner
+            }</span>
+              </div>
+              <div class="collapse-content">
+                <div class="auto-grid">
+                  ${item.options
+                    .map((opt, oi) =>
+                      cardTemplate(group.category, item, opt, gi, ii, oi)
+                    )
+                    .join("")}
+                </div>
+              </div>
+            `;
+            groupRoot.appendChild(wrap);
+          });
+        });
+      }
+
+      function cardTemplate(category, item, opt, gi, ii, oi) {
+        const price =
+          typeof opt.unitPrice === "number" ? opt.unitPrice.toFixed(2) : "-";
+        return `
+          <div class="card bg-white border border-black/10 rounded-2xl overflow-hidden">
+            <figure class="bg-white aspect-video">
+              <img src="${opt.img || ""}" alt="${
+          opt.name
+        }" class="object-contain w-full h-full" />
+            </figure>
+            <div class="card-body p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-bold leading-tight">${opt.name}</h3>
+                  <p class="text-xs opacity-60">${category} • ${item.title}</p>
+                </div>
+                <span class="badge">$${price}</span>
+              </div>
+              <div class="mt-1 text-sm">
+                <ul class="list-disc ml-5 text-xs">
+                  ${(opt.pros || [])
+                    .slice(0, 2)
+                    .map((p) => `<li>${p}</li>`)
+                    .join("")}
+                </ul>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <a href="${
+                  opt.link || "#"
+                }" target="_blank" class="btn btn-xs">Product</a>
+                <button class="btn btn-xs btn-outline" onclick='openDetails(${gi}, ${ii}, ${oi})'>Learn more</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // ========= MODAL =========
+      const modal = document.getElementById("detailModal");
+      function openDetails(gi, ii, oi) {
+        const item = DATA[gi].items[ii];
+        const opt = item.options[oi];
+        document.getElementById("modalTitle").textContent = opt.name;
+        document.getElementById(
+          "modalSubtitle"
+        ).textContent = `${DATA[gi].category} • ${item.title}`;
+        document.getElementById("modalPros").innerHTML = (opt.pros || [])
+          .map((p) => `<li>${p}</li>`)
+          .join("");
+        document.getElementById("modalCons").innerHTML = (opt.cons || [])
+          .map((c) => `<li>${c}</li>`)
+          .join("");
+        document.getElementById("modalRationale").textContent =
+          opt.rationale || "-";
+        const a = document.getElementById("modalLink");
+        a.textContent = opt.link || "";
+        a.href = opt.link || "#";
+
+        const img = document.getElementById("modalImage");
+        img.src = opt.img || "";
+        img.alt = opt.name || "Component image";
+
+        modal.showModal();
+      }
+
+      // ========= BOM =========
+      function chosenOptionForItem(item) {
+        return item.options.find((o) => o.selected) || item.options[0];
+      }
+
+      function renderBOM() {
+        const body = document.getElementById("bomBody");
+        body.innerHTML = "";
+        let grand = 0;
+        let qtyTotal = 0;
+
+        DATA.forEach((group, gi) => {
+          group.items.forEach((item, ii) => {
+            const chosen = chosenOptionForItem(item) || {};
+            const unit =
+              typeof chosen.unitPrice === "number" ? chosen.unitPrice : 0;
+            const qty = chosen.qty ? chosen.qty : 1;
+            const line = unit * qty;
+            grand += line;
+            qtyTotal += qty;
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${group.category}</td>
+              <td>
+                <button class="link link-hover" onclick="openDetails(${gi}, ${ii}, ${item.options.indexOf(
+              chosen
+            )})">
+                  ${item.title}
+                </button>
+              </td>
+              <td>${chosen.name || "-"}</td>
+              <td>${
+                chosen.link
+                  ? `<a href='${chosen.link}' class='link link-primary' target='_blank'>Link</a>`
+                  : "-"
+              }</td>
+              <td>${unit ? unit.toFixed(2) : "-"}</td>
+              <td>
+                <input type='number' min='1' value='${qty}' class='input input-xs input-bordered w-20'
+                  onchange='updateQty("${item.key}", this.value)' />
+              </td>
+              <td>${line.toFixed(2)}</td>
+            `;
+            body.appendChild(tr);
+          });
+        });
+
+        document.getElementById("bomGrandTotal").textContent = grand.toFixed(2);
+        document.getElementById("bomQtyTotal").textContent = qtyTotal;
+      }
+
+      function updateQty(itemKey, val) {
+        const qty = Math.max(1, parseInt(val || 1, 10));
+        for (const group of DATA) {
+          for (const item of group.items) {
+            if (item.key === itemKey) {
+              const chosen = chosenOptionForItem(item);
+              if (chosen) chosen.qty = qty;
+              renderBOM();
+              return;
+            }
+          }
+        }
+      }
+
+      function exportBOM() {
+        const rows = [
+          [
+            "Subsystem",
+            "Component",
+            "Option",
+            "Unit Price",
+            "Qty",
+            "Line Total",
+            "Link",
+          ],
+        ];
+        DATA.forEach((group) => {
+          group.items.forEach((item) => {
+            const chosen = chosenOptionForItem(item) || {};
+            const unit =
+              typeof chosen.unitPrice === "number" ? chosen.unitPrice : 0;
+            const qty = chosen.qty || 1;
+            const line = unit * qty;
+            rows.push([
+              group.category,
+              item.title,
+              chosen.name || "-",
+              unit ? unit.toFixed(2) : "-",
+              String(qty),
+              unit ? line.toFixed(2) : "-",
+              chosen.link || "",
+            ]);
+          });
+        });
+
+        const csv = rows
+          .map((r) =>
+            r.map((s) => `"${String(s).replaceAll('"', '""')}"`).join(",")
+          )
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "phoenix-force-bom.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      // ========= TOC / ScrollSpy =========
+      const toc = document.getElementById("tocLinks");
+      const sections = [];
+      function buildTOC() {
+        document
+          .querySelectorAll(".anchor-section")
+          .forEach((sec) => sections.push(sec));
+        const map = new Map();
+        function addTocItem(id, text) {
+          const a = document.createElement("a");
+          a.href = "#" + id;
+          a.className = "block px-2 py-1 rounded-md hover:bg-black/5";
+          a.textContent = text;
+          toc.appendChild(a);
+          map.set(id, a);
+        }
+        sections.forEach((sec) => addTocItem(sec.id, sec.dataset.title));
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.getAttribute("id");
+              if (map.has(id)) {
+                if (entry.isIntersecting) {
+                  map.forEach((a) => a.classList.remove("active"));
+                  map.get(id).classList.add("active");
+                }
+              }
+            });
+          },
+          { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
+        );
+        sections.forEach((el) => observer.observe(el));
+      }
+
+      // Boot
+      renderSubsystems();
+      renderBOM();
+      buildTOC();
+    </script>
+  </body>
+</html>
