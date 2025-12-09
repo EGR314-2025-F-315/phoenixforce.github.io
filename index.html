@@ -796,7 +796,7 @@ title: Project Home · Phoenix Force · EGR314
           </p>
           <div class="rounded-2xl border border-black/10 overflow-hidden">
             <img
-              src="/phoenixforce.github.io/assets/Rover_model.png"
+              src="/phoenixforce.github.io/assets/Rover_render.png"
               alt="Rover CAD model"
               class="w-full object-cover"
             />
@@ -825,7 +825,14 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            Two core codebases ship the system. <strong>sketch_nov24a.ino</strong> runs on the rover (ESP32-CAM): it hosts the Wi‑Fi AP, streams MJPEG video, reads BME688 + MQ-2 + ultrasonic + GPS + MPU6050, enforces safety thresholds, and drives the L298N motors. <strong>TerraGuard_HMI.ino</strong> runs on the commander screen (CrowPanel ESP32-S3): it joins the AP, polls telemetry, displays live video in LVGL, plays audio and LED cues, and sends drive commands over HTTP back to the rover.
+            Two core codebases ship the system.
+            <strong>sketch_nov24a.ino</strong> runs on the rover (ESP32-CAM): it
+            hosts the Wi‑Fi AP, streams MJPEG video, reads BME688 + MQ-2 +
+            ultrasonic + GPS + MPU6050, enforces safety thresholds, and drives
+            the L298N motors. <strong>TerraGuard_HMI.ino</strong> runs on the
+            commander screen (CrowPanel ESP32-S3): it joins the AP, polls
+            telemetry, displays live video in LVGL, plays audio and LED cues,
+            and sends drive commands over HTTP back to the rover.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
