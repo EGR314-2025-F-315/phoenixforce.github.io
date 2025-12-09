@@ -52,52 +52,81 @@ title: Project Home · Phoenix Force · EGR314
   <body class="text-ink">
     {% include nav.html %}
 
-    <header class="max-w-6xl mx-auto px-4 lg:px-6 pt-10">
+    <header class="relative w-full overflow-hidden">
       <div
-        class="relative w-full rounded-3xl border border-black/10 shadow-soft overflow-hidden"
-      >
-        <div
-          class="absolute inset-0 bg-[url('https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero_group_image.jpeg')] bg-cover bg-center"
-        ></div>
-        <div class="absolute inset-0 bg-black/35"></div>
-        <div
-          class="relative px-6 py-12 md:px-10 md:py-16 text-white text-center space-y-3"
-        >
+        class="absolute inset-0 bg-[url('https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero_group_image.jpeg')] bg-cover bg-center"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/65"
+      ></div>
+      <div class="max-w-6xl mx-auto px-4 lg:px-6 py-16 md:py-24 relative">
+        <div class="max-w-3xl space-y-4 text-white">
           <p class="uppercase tracking-[0.18em] text-xs font-extrabold">
-            Phoenix Force · TerraGuard Rover
+            Phoenix Force · TerraGuard
           </p>
           <h1
-            class="font-display text-4xl lg:text-5xl font-black leading-tight"
+            class="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight"
           >
-            Wildfire response rover and screen
+            Wildfire-ready rover with real-time sensing and a glove-friendly HMI
           </h1>
-          <p class="max-w-3xl mx-auto text-white/85">
-            Homepage: A picture https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero_group_image.jpeg and then it will have the Team.
+          <p class="text-white/85 text-lg">
+            A self-contained rover + commander screen that spins up its own
+            access point, streams video and metrics, and alerts crews before
+            small hot spots become full wildfires.
           </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#mission"
+              class="btn btn-primary bg-rose border-none text-white"
+              >See the mission</a
+            >
+            <a
+              href="/phoenixforce.github.io/team-organization/"
+              class="btn btn-outline text-white border-white/60 hover:bg-white/10"
+              >Team organization</a
+            >
+          </div>
         </div>
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 lg:px-6 pb-14 space-y-6 mt-8">
+    <main class="max-w-6xl mx-auto px-4 lg:px-6 pb-14 space-y-8 mt-8">
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="team"
       >
         <div class="card-body space-y-3">
           <div class="flex items-center gap-2">
             <span class="badge bg-black/5 border border-black/10 font-bold"
               >Team</span
             >
-            <h2 class="card-title font-display text-2xl font-black">Team</h2>
+            <h2 class="card-title font-display text-2xl font-black">
+              Meet Phoenix Force
+            </h2>
           </div>
           <p class="text-ink/80">
             Vinny Panchal, Emonie France, Amanda Pizarro, Danitza Jimenez, James
-            Austin, and Erjan Baigenzhin
+            Austin, and Erjan Baigenzhin built TerraGuard to help crews act
+            faster and safer around wildfire risk.
           </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/team-organization/"
+              class="btn btn-outline"
+              >Open team page</a
+            >
+            <a
+              href="/phoenixforce.github.io/innovation-poster/"
+              class="btn"
+              >See showcase poster</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="intro"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -105,44 +134,31 @@ title: Project Home · Phoenix Force · EGR314
               >Introduction</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Introduction
+              Why TerraGuard exists
             </h2>
           </div>
           <p class="text-ink/80">
-            Wildfires are becoming more common and more severe, and one of the
-            biggest challenges for responders is catching early hot spots before
-            they grow into large fires. Many of these early warning signs happen
-            in remote areas where people aren’t always able to check in person.
-            Our project focuses on solving this problem by creating TerraGuard,
-            an autonomous rover that can patrol an area and collect real-time
-            environmental data that may point to potential wildfire activity.
-            The main purpose of the system is to help detect changes in
-            temperature, smoke, air quality, and other conditions so responders
-            can react faster and more safely. The target users for this system
-            are firefighters, fire-watch teams, and emergency response groups
-            who need reliable information from the field without having to
-            physically be in dangerous areas. We also considered secondary users
-            like researchers and community partners who could use the data for
-            studying fire behavior or improving prevention strategies. These
-            users need technology that is easy to understand, simple to operate,
-            and durable enough for outdoor environments. The scope of our
-            project includes designing and prototyping a complete embedded
-            system using sensors, a microcontroller, wireless communication, and
-            a mobile rover platform. TerraGuard uses HTTPS to send and receive
-            data to and from the base station, where alerts can be viewed in
-            real time. If the rover detects something past a safe threshold, it
-            triggers LEDs and a speaker to warn responders. Our prototype
-            includes multiple environmental sensors, a GPS module, and a camera
-            mounted on a mobile rover. The system reads data, checks it against
-            preset safety limits, and communicates the information through a
-            mesh network. Each team member received $60 toward the project,
-            giving us a total budget of $360 to build and test the rover.
+            Wildfires are becoming more common and more severe, and the biggest
+            challenge is catching early hot spots before they grow. Many of the
+            warning signs happen in remote terrain where people can’t check in
+            person. TerraGuard is our answer: a rover that patrols, senses
+            temperature, smoke, air quality, humidity, pressure, and shares
+            live video so responders can react faster and safer.
+          </p>
+          <p class="text-ink/80">
+            Primary users are firefighters, fire-watch crews, and emergency
+            responders. Secondary users include researchers and community
+            partners who need simple, durable, and reliable data from the field.
+            The rover raises alerts with LEDs and a speaker when readings cross
+            thresholds, and everything is built to be understandable at a
+            glance—even with gloves on.
           </p>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="mission"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -150,92 +166,75 @@ title: Project Home · Phoenix Force · EGR314
               >Mission & Charter</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Mission statement and charter
+              Mission and charter
             </h2>
           </div>
-          <div class="space-y-3">
-            <h3 class="font-semibold text-lg">Team Charter Statement</h3>
-            <p class="text-ink/80">
-              Phoenix Force commits to building a reliable and realistic
-              wildfire-detection prototype that can identify early warning
-              signs, communicate without public Wi-Fi, and present clear alerts
-              through a simple, glove-friendly interface. Our team aims to meet
-              measurable engineering goals such as low-latency alerts, accurate
-              sensor performance, and consistent communication reliability. We
-              agree to document our decisions, justify our trade-offs, and
-              deliver a final package that demonstrates our technical growth and
-              reflects a meaningful engineering effort.
-            </p>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="p-4 rounded-2xl bg-black/5 border border-black/10">
+              <h3 class="font-semibold text-lg">Team Charter</h3>
+              <p class="mt-2 text-ink/80">
+                Build a reliable, realistic wildfire-detection prototype that
+                works without public Wi‑Fi and surfaces clear, glove-friendly
+                alerts. Hit measurable goals—low-latency warnings, accurate
+                sensing, and consistent communication—and document trade-offs
+                along the way.
+              </p>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/5 border border-black/10">
+              <h3 class="font-semibold text-lg">Product Mission</h3>
+              <p class="mt-2 text-ink/80">
+                Design a rugged, easy-to-use rover that senses early changes,
+                sends dependable real-time information, and stays connected even
+                when no public networks exist—so crews can decide faster and
+                safer.
+              </p>
+            </div>
           </div>
-          <div class="space-y-3">
-            <h3 class="font-semibold text-lg">Product Mission Statement</h3>
-            <p class="text-ink/80">
-              Our mission is to design a rugged, easy-to-use wildfire-response
-              rover that senses early changes in the environment, delivers clear
-              alerts, and stays connected even in areas without public networks.
-              The goal is to help wildfire crews make faster, safer decisions by
-              giving them straightforward and dependable real-time information.
-            </p>
+          <div class="flex gap-3 flex-wrap">
+            <a
+              href="/phoenixforce.github.io/team-organization/"
+              class="btn btn-outline"
+              >Team organization page</a
+            >
           </div>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/team-organization/"
-            >And then a link to https://egr314-2025-f-315.github.io/phoenixforce.github.io/team-organization/
-            since more information could be found there.</a
-          >
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="decisions"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
             <span class="badge bg-black/5 border border-black/10 font-bold"
-              >Decision-Making Process</span
+              >Decision-Making</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Decision-Making Process
+              Decision-making process
             </h2>
           </div>
           <p class="text-ink/80">
-            At the start of the project, our team brainstormed over a hundred
-            different ideas. We eventually narrowed them down to a top fifteen
-            list that included things like a thermal-camera drone, smoke
-            sensors, LoRa mesh communication, rugged weather stations,
-            swappable-battery systems, and even a hybrid firefighting drone.
-            While going through these ideas, we noticed that many of them
-            pointed toward the same need, which was early wildfire detection
-            with good mobility and reliable communication. Instead of choosing a
-            fully stationary weather station or going with an expensive UAV
-            platform, our team decided to combine the idea of a mobile sensing
-            unit with a simple HMI. We felt this gave us a unique direction
-            while still being realistic for our skill level and budget. We also
-            chose a rover instead of a drone because drones are much more
-            difficult to operate, cost more to maintain, and have very short
-            battery life. A rover can carry more sensors, run longer, and avoid
-            flight restrictions, which made it the better choice for us.
-            Instructor feedback also played a big role in shaping our concept.
-            We were asked to put our concept generation directly on the website
-            instead of only submitting a document. The suggestion to use
-            pop-ups or tabs pushed us to make the site more interactive. We were
-            also told to cite any AI-generated images and to add callouts to our
-            product sketch so viewers could easily tell what each subsystem was.
-            This helped us clean up our presentation and make our design
-            clearer. The biggest pivot we made was shifting from drone-based
-            sensing to a ground-based rover that collects temperature,
-            heat-pattern, air-quality, humidity, and pressure data. Once we
-            decided on this approach, we focused on adding mesh-network
-            communication and a separate screen module for displaying alerts.
-            This final concept fit the course requirements, stayed within our
-            budget, and gave us something original that was not copied from
-            online projects.
+            We brainstormed 100+ ideas and narrowed to 15: thermal drones, smoke
+            sensors, LoRa mesh, rugged weather stations, swappable batteries,
+            hybrid firefighting drones. The common thread was early wildfire
+            detection with mobility and reliable comms. We chose a rover over a
+            drone for cost, endurance, payload, and easier ops, then paired it
+            with a simple HMI for clarity.
+          </p>
+          <p class="text-ink/80">
+            Instructor feedback pushed us to publish concept generation on-site,
+            add callouts to sketches, cite AI imagery, and use interactive
+            tabs/pop-ups. The biggest pivot was dropping a drone for a ground
+            rover with mesh networking, HTTP control, and on-screen alerts—an
+            approach that met requirements, stayed in budget, and remained
+            original.
           </p>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="system"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -243,61 +242,32 @@ title: Project Home · Phoenix Force · EGR314
               >System Overview</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              III. SYSTEM OVERVIEW
+              Final system architecture
             </h2>
           </div>
           <p class="text-ink/80">
-            A. Final System Architecture Overview Our final system is made up of
-            two main parts that work together: the Rover Unit and the Commander
-            Screen Unit. The Rover Unit uses an ESP32-CAM as the main
-            controller, and it is responsible for collecting all sensor data and
-            streaming live video. It reads information from the BME688 for
-            temperature and humidity, the MQ-2 sensor for smoke and flammable
-            gases, the ultrasonic sensor for distance measurements, the GPS
-            module for coordinates, and the MPU6050 for tilt and terrain
-            feedback. The L298N motor driver is also connected to the rover so
-            it can handle forward, reverse, and turning commands. All of these
-            components run through the ESP32-CAM, which processes the data and
-            manages how the rover responds. A key part of how the system works
-            is that the Rover ESP32 creates its own Wi-Fi Access Point. This
-            allows the system to work even in remote areas because it does not
-            depend on outside Wi-Fi or internet. The Commander Screen Unit,
-            which uses a CrowPanel ESP32-S3 display, connects directly to this
-            Access Point. After it connects, the screen starts polling the rover
-            for updated sensor readings while also displaying the MJPEG video
-            stream. The user interface was built in LVGL, and it shows the main
-            metrics including gas readings, GPS position, humidity and
-            temperature, and ultrasonic distance. The screen also plays audio
-            alerts and changes LED effects when there is a warning such as high
-            gas levels, an obstacle too close to the rover, or poor camera
-            visibility. Movement commands go back to the rover through simple
-            HTTP requests sent from the screen. When the user presses a button
-            on the interface, the Commander sends a command to the rover using
-            the same Access Point connection. The rover then activates the
-            correct motor pins. We also added safety checks so the rover can
-            cancel movement on its own if something dangerous is detected. For
-            example, if the ultrasonic sensor detects an obstacle in the stop
-            zone, the rover refuses to move and notifies the screen. Overall,
-            the two units form a closed system where the rover continuously
-            sends data and video to the screen while the screen sends control
-            commands back. Because everything runs through the rover’s Access
-            Point, the system stays self-contained and reliable in the field.
-            This made it possible for us to create a real-time monitoring rover
-            that supports environmental sensing, obstacle detection, and user
-            control in a simple and effective way.
+            Two units work together: the Rover (ESP32‑CAM) and the Commander
+            Screen (CrowPanel ESP32‑S3). The rover reads BME688, MQ-2, GPS,
+            ultrasonic, MPU6050, drives motors via L298N, and hosts an AP. The
+            screen joins that AP, polls for metrics, and shows MJPEG video via
+            an LVGL interface with audio/LED alerts. Commands flow back over
+            HTTP; safety checks stop motion when obstacles or high gas levels
+            appear. Everything remains closed-loop on the rover’s AP for field
+            reliability.
           </p>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/design-ideation/"
-            >And then a link to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/design-ideation/
-            as this talks more indepth about the same</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/assignments/design-ideation/"
+              class="btn btn-outline"
+              >Design ideation details</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="block"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -305,55 +275,31 @@ title: Project Home · Phoenix Force · EGR314
               >Block Diagram</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Block Diagram Rationale
+              Block diagram rationale
             </h2>
           </div>
           <p class="text-ink/80">
-            We structured our block diagram in a way that separates each major
-            subsystem so we could clearly understand how the rover, power
-            system, and screen module all connect. At the time we created it, we
-            already had our main idea but not the full execution plan, so the
-            goal was to map out how every part would communicate and share
-            power. Breaking the system into three main sections helped us
-            organize our thinking: the rover electronics, the power subsystem,
-            and the screen/HMI module. This made it easier for the team to see
-            which parts depended on each other and which components needed
-            dedicated pins, power rails, or communication lines. This structure
-            also lines up with the product requirements for EGR 314. We needed
-            at least one complex actuator subsystem, so the L298 motor driver
-            and motors satisfy that requirement. We also needed serial sensors
-            and analog sensing, which we met through the BME688 (I²C) and the
-            gas sensors. The Rover ESP32 and the Screen ESP32 communicate over
-            UART and mesh networking, which meets the microcontroller
-            communication requirements. Keeping the block diagram simple and
-            modular allowed us to plan for our PCB design, pin mapping, voltage
-            regulation, and the final 100 × 100 mm board limit. Responsibilities
-            were divided based on each person’s subsystem in the diagram. Erjan
-            took the GPS and motor driver, Amanda and Danitza handled the BME688
-            and gas sensor branches, Emonie handled the external antennas, James
-            handled the entire power subsystem, and Vinny handled the screen
-            module and RX/TX communication. The block diagram layout made it
-            clear who owned what and how all the pieces would come together. We
-            also improved the diagram based on instructor feedback. We were
-            asked to add the minimum and maximum voltages for each subsystem so
-            we could decide whether a 12V, 9V, or 7V battery would be needed,
-            and this pushed us to look deeper into voltage regulation and power
-            routing. We were also told to upload the updated diagram to our
-            website, which helped us clean up the labels and present the diagram
-            in a clearer and more readable way.
+            We split the architecture into three modules—rover electronics,
+            power, and screen/HMI—to clarify pins, rails, and comms. It satisfied
+            EGR 314 requirements (actuator via L298N, I²C + analog sensing,
+            microcontroller comms via UART/mesh) and guided PCB size, pin
+            mapping, and voltage regulation. Ownership: Erjan (GPS + motors),
+            Amanda + Danitza (BME688 + gas), Emonie (antennas), James (power),
+            Vinny (screen + RX/TX).
           </p>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/block-diagram/"
-            >And then have a link at to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/block-diagram/
-            as this has more information about the block diagram.</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/assignments/block-diagram/"
+              class="btn btn-outline"
+              >See block diagram page</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="comms"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -365,9 +311,9 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            I then want to talk more about our communication sequence and then
-            have the picture https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/comm_sequence.png
-            and talk more about it.
+            The commander polls telemetry and video over the rover’s AP, and
+            sends drive commands back via HTTP. LEDs and audio cues fire locally
+            on both units for immediate state feedback.
           </p>
           <img
             src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/comm_sequence.png"
@@ -379,6 +325,7 @@ title: Project Home · Phoenix Force · EGR314
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="components"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -386,26 +333,28 @@ title: Project Home · Phoenix Force · EGR314
               >Component Selection</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Component selection
+              Component selection highlights
             </h2>
           </div>
           <p class="text-ink/80">
-            I then want to talk about the component selection That based on our
-            block diagram we researched parts that would be versatile and fit
-            the best for our project and we picked certain things and then it
-            should have a link to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/component-selection/
+            Parts were chosen for durability and fit: ESP32‑CAM for vision +
+            control, CrowPanel ESP32‑S3 for HMI, BME688 + MQ-2 for air quality,
+            GY‑NEO6MV2 for GPS, L298N for drive control, WS2812B LEDs for clear
+            state, and a rugged 7.4V pack feeding 5V/3.3V rails.
           </p>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/component-selection/"
-            >https://egr314-2025-f-315.github.io/phoenixforce.github.io/assignments/component-selection/</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/assignments/component-selection/"
+              class="btn btn-outline"
+              >Full component selection</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="power"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -413,744 +362,106 @@ title: Project Home · Phoenix Force · EGR314
               >Power Budget</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Power Budget
+              Power budget snapshot
             </h2>
           </div>
-          <pre
-            class="bg-black/5 border border-black/10 rounded-2xl p-4 text-sm whitespace-pre-wrap"
-          >Power Budget
-Team Number:
-315
-
-
-
-
-
-
-
-
-
-Project Name:
-Terragaurd Rover
-
-
-
-
-
-
-
-
-
-
-Team Member Names:
-Vinny Panchal, Emonie France, Amanda Pizarro, Danitza Jimenez, James Austin, and Erjan Baigenzhin
-
-
-
-
-
-
-
-
-
-Version:
-Final
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-A. List ALL major components (active devices, integrated circuits, etc.) except for power sources, voltage regulators, resistors, capacitors, or passive elements
-All Major Components
-Component Name
-Part Number
-Supply
-Voltage
-Range
-#
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-
-
-Gas Sensor
-MQ-2
-+3.3 - 5V
-1
-n/a
-40
-mA
-
-
-Camera
-KC04
-+5 - 12V
-1
-n/a
-6
-mA
-
-
-ESP32 programing
-S006
-+3.3 - 5V
-1
-
-
-80
-mA
-
-
-Motor Driver
-L298N
-+5 - 35V
-4
-n/a
-800
-mA
-
-
-Temp/Pressure Sensor
-BME688
-+1.2 - 3.6V
-1
-n/a
-0.9
-mA
-
-
-GPS module
-GY-NEO6MV2
-+3.3 - 5V
-1
-n/a
-67
-mA
-
-
-Touch Display
-ELECROW ESP32 Display 800×480
-5V
-1
-n/a
-2000
-mA
-
-
-LED Strip
-SEZO WS2812B ECO LED Strip
-5V
-1
-n/a
-18000
-mA
-
-
-Antenna
-B00ZBJNO9O
-+3.3 - 5V
-2
-n/a
-0
-mA
-
-
-GPS module
-GY-NEO6MV2 NEO-6M GPS
-+3.3 - 5V
-1
-n/a
-45
-mA
-
-
-ESP32 microcontroller
-ESP32-S3-1U
-+3.3 - 5V
-1
-n/a
-260
-mA
-B. Assign each major component above to ONE power rail below. Try to minimize the number of different power rails in the design.
-Add additional power rails or change the power rail voltages if needed.
-+5V Power Rail
-Component Name
-Part Number
-Supply
-Voltage
-Range
-#
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-
-
-Motor Driver
-L298N
-+5 - 35V
-4
-n/a
-800
-mA
-
-
-
-
-
-
-
-n/a
-
-
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Subtotal
-800
-mA
-
-
-Safety Margin
-25%
-
-
-
-
-Total Current Required on +5V Rail
-1000
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-c2. Regulator or Source Choice
-+7.4V Regulator
-L7805CV
-+3.3 - 40V
-1
-1500
-1500
-mA
-
-
-Total Remaining Current Available on +5V Rail
-500
-mA
-
-
-
-
-
-
-
-
-
-
-
-
--7.4V Power Rail
-Component Name
-Part Number
-Supply
-Voltage
-Range
-#
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-
-
-
-
-
-(range)
-1
-100
-0
-mA
-
-
-
-
-
-
-
-0
-mA
-
-
-
-
-
-
-
-0
-mA
-
-
-
-
-
-
-
-0
-mA
-
-
-Subtotal
-0
-mA
-
-
-Safety Margin
-25%
-
-
-
-
-Total Current Required on -5V Rail
-0
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-c3. Regulator or Source Choice
-
-
-
-
-(range)
-1
-
-
-0
-mA
-
-
-Total Remaining Current Available on -7.4V Rail
-0
-mA
-+3.3V Power Rail
-Component Name
-Part Number
-Supply
-Voltage
-Range
-#
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-
-
-Gas Sensor
-MQ-2
-+3.3 - 5V
-1
-
-
-40
-mA
-
-
-ESP32 microcontroller
-ESP32-S3-1U
-+3.3 - 5V
-1
-
-
-260
-mA
-
-
-
-
-
-1
-
-
-mA
-
-
-Temp/Pressure Sensor
-BME688
-+1.2 - 3.6V
-1
-
-
-0.9
-mA
-
-
-Camera
-KC04
-+5 - 12V
-1
-
-
-6
-mA
-
-
-GPS module
-GY-NEO6MV2
-+3.3 - 5V
-1
-
-
-67
-mA
-
-
-ESP32 programing
-S006
-+3.3 - 5V
-1
-
-
-80
-mA
-
-
-Subtotal
-453.9
-mA
-
-
-Safety Margin
-25%
-
-
-
-
-Total Current Required on +3.3V Rail
-567.375
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-c4. Regulator or Source Choice
-+7.4V Regulator
-LM3940
-
-
-1
-1000
-1000
-mA
-
-
-Total Remaining Current Available on 3.3V Rail
-432.625
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-C. For each power rail above, select a specific voltage regulator using the same process as for major component selection. Confirm that the Total Remaining Current Available on each rail above is not negative.
-
-
-D. Select a specific external power source (wall supply or battery) for your system, and confirm that it can supply all of the regulators for all of the power rails simultaneously. If you need multiple power sources, list each separately below and indicate which regulators will be connected to each supply. Confirm that the Total Remaining Current Available on each power source below is not negative.
-External Power Source 1
-Component Name
-Part Number
-Supply
-Voltage
-Range
-Output Voltage
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-Power Source 1 Selection
-Rover Battery
-zeee 7.4V 2S
-7.4V
-
-
-
-260
-mA
-
-
-
-
-
-
-
-
-
-
-Power Rails Connected to External Power Source 1
-
-
-
-
-
-
-mA
-
-
-
-
-
-
-
-1
-145
-145
-mA
-
-
-
-
-
-1
-0
-0
-mA
-
-
-
-Total Remaining Current Available on External Power Source 1
-115
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-External Power Source 2
-Component Name
-Part Number
-Supply
-Voltage
-Range
-Output Voltage
-Absolute
-Maximum
-Current (mA)
-Total
-Current
-(mA)
-Unit
-Power Source 2 Selection
-18650 Rechargeable Battery
-PAOWANG
-3.6-4.2V
-
-
-
-3500
-mA
-
-
-
-
-
-
-
-
-
-
-Power Rails Connected to External Power Source 2
-
-
-
-
-
-
-mA
-
-
-
-
-
-
-
-
-453.9
-453.9
-mA
-
-
-
-
-
-
-1
-
-
-
-
-
-
-Total Remaining Current Available on External Power Source 2
-3046.1
-mA
-
-
-
-
-
-
-
-
-
-
-
-
-
-E. Calculate Battery Life (if applicable). For each battery, also check the worst-case lifetime of the battery by indicating the capacity in mAh.
-
-
-
-
-
-Component Name
-Part Number
-Supply
-Voltage
-Range
-
-
-Capacity
-(mAh)
-Required
-By
-Regulators
-
-
-
-
-Battery
-(full part number)
-7.4
-
-
-10000
-453.9
-
-
-
-
-
-
-
-
-Battery Life
-22.03128442
-hours
-Notes
-
-
-
-
-
-External Supply Voltage should be determined by the dropout voltage for highest-voltage regulator (e.g., +14V for a +12V regulator).
-If you have multiple units in your design (e.g., a base unit and remote unit) then you need a separate power budget for each unit</pre>
+          <p class="text-ink/80">
+            Simplified view of the final power budget (full sheet lives in
+            Component Selection).
+          </p>
+          <div class="overflow-x-auto">
+            <table class="table w-full text-sm">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Voltage</th>
+                  <th>Current (mA)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ESP32-S3 + programming</td>
+                  <td>3.3V</td>
+                  <td>340</td>
+                </tr>
+                <tr>
+                  <td>BME688 + MQ-2</td>
+                  <td>3.3V</td>
+                  <td>41</td>
+                </tr>
+                <tr>
+                  <td>GPS (NEO-6M)</td>
+                  <td>3.3V</td>
+                  <td>67</td>
+                </tr>
+                <tr>
+                  <td>ESP32-CAM + camera</td>
+                  <td>5V</td>
+                  <td>86</td>
+                </tr>
+                <tr>
+                  <td>L298N + motors (est.)</td>
+                  <td>5V</td>
+                  <td>800</td>
+                </tr>
+                <tr>
+                  <td>Touch display</td>
+                  <td>5V</td>
+                  <td>2000</td>
+                </tr>
+                <tr>
+                  <td>WS2812B LED strip</td>
+                  <td>5V</td>
+                  <td>18000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="table w-full text-sm">
+              <thead>
+                <tr>
+                  <th>Rail</th>
+                  <th>Regulator</th>
+                  <th>Budgeted</th>
+                  <th>Headroom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>5V</td>
+                  <td>L7805CV from 7.4V</td>
+                  <td>1000 mA</td>
+                  <td>500 mA remaining</td>
+                </tr>
+                <tr>
+                  <td>3.3V</td>
+                  <td>LM3940 from 7.4V</td>
+                  <td>567 mA</td>
+                  <td>433 mA remaining</td>
+                </tr>
+                <tr>
+                  <td>Source</td>
+                  <td>7.4V 2S pack + 18650</td>
+                  <td>~454 mA draw</td>
+                  <td>Battery life ≈ 22 hrs (calc.)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/assignments/component-selection/"
+              class="btn btn-outline"
+              >See full power sheet</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="pcb"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -1162,10 +473,9 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
             </h2>
           </div>
           <p class="text-ink/80">
-            Then i want to talk about Schematic, Where we have the schematic
-            image and we talk more in depth about it and then talk about the pcb
-            AND have the pcb images as well and then link to the page
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/pcb
+            Full schematic plus routed board and renders. The rover PCB stays
+            within the 100×100 mm target while breaking out power, sensors, and
+            motor control.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <img
@@ -1189,16 +499,19 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
               class="rounded-2xl border border-black/10"
             />
           </div>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/pcb"
-            >https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/pcb</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/components/pcb"
+              class="btn btn-outline"
+              >PCB page</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="hmi"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -1210,10 +523,10 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
             </h2>
           </div>
           <p class="text-ink/80">
-            I then want to talk about the HMI design process and how we created
-            the mockups and then coded it in C++
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/main_display_mockup.png
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/drive_interface_mockup.png
+            We mocked the main dashboard and drive interface first, then coded
+            the C++/LVGL implementation on the CrowPanel ESP32-S3. Focus: large,
+            glove-friendly buttons, gas and distance visibility, and mirrored
+            LED/speaker cues.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <img
@@ -1232,6 +545,7 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="cad"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -1239,28 +553,26 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
               >CAD Models</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              CAD models and design process
+              CAD models and design
             </h2>
           </div>
           <p class="text-ink/80">
-            I also want to talk about the cad models and then talk about the
-            design process and then have a link to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/cad-model
-            for more information This 3D model represents our custom designed
-            autonomous rover, inspired by the NASA MARS rovers. The goal was to
-            develop a low cost and fully capable moving around without tipping
-            by adding a rocker bogie suspension.
+            Custom rover CAD inspired by NASA Mars rovers, with a rocker-bogie
+            suspension to stay stable on uneven ground while keeping costs low.
           </p>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/cad-model"
-            >https://egr314-2025-f-315.github.io/phoenixforce.github.io/components/cad-model</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/components/cad-model"
+              class="btn btn-outline"
+              >View CAD page</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="showcase"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -1272,26 +584,27 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
             </h2>
           </div>
           <p class="text-ink/80">
-            I also want to have the picture of our innovation showcase and then
-            talk about the innovation showcase itself. And then have a link to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/innovation-poster/
-            for more information.
+            Showcase poster that walked viewers through sensing, comms, drive,
+            and interface at the ASU event.
           </p>
           <img
             src="/phoenixforce.github.io/assets/innovation-poster.jpg"
             alt="Innovation showcase"
             class="rounded-2xl border border-black/10"
           />
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/innovation-poster/"
-            >https://egr314-2025-f-315.github.io/phoenixforce.github.io/innovation-poster/</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/innovation-poster/"
+              class="btn btn-outline"
+              >Open innovation poster</a
+            >
+          </div>
         </div>
       </section>
 
       <section
         class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+        id="reflection"
       >
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
@@ -1299,130 +612,50 @@ If you have multiple units in your design (e.g., a base unit and remote unit) th
               >Reflection</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Reflection
+              Reflection: lessons & next build
             </h2>
           </div>
-          <div class="space-y-2">
-            <p class="font-semibold">Reflection</p>
-            <p class="font-semibold">Lessons &amp; Version 2.0</p>
-            <p class="text-ink/80">
-              What worked, what we’d tune next time, and how we’d evolve the
-              TerraGuard architecture.
-            </p>
-            <p class="font-semibold">Top 10</p>
-            <p class="font-semibold">Lessons learned</p>
-            <ul class="list-disc pl-5 text-ink/80 space-y-1">
-              <li>
-                One toolchain per PCB saves sanity; mixing KiCad/Altium slowed
-                merges.
-              </li>
-              <li>
-                Subsystems worked alone but integration time was the real
-                schedule driver.
-              </li>
-              <li>
-                HTTP pull loop was simpler to debug than ESP-NOW for two-node
-                comms.
-              </li>
-              <li>
-                WS2812 feedback on both boards was the fastest way to see
-                air-quality states.
-              </li>
-              <li>
-                Always budget PSRAM and frame buffers early when planning MJPEG
-                streaming.
-              </li>
-              <li>
-                Pin planning needs to happen before routing—RF + camera lanes
-                compete fast.
-              </li>
-              <li>
-                Calibration for MQ-2 matters more than wiring; we locked in Ro
-                before demos.
-              </li>
-              <li>
-                Power budget reviews caught headroom gaps before we heated
-                traces.
-              </li>
-              <li>
-                Poster/storytelling benefits from early asset collection; it
-                avoids last-minute design crunch.
-              </li>
-              <li>
-                Documenting endpoints and message formats prevented “mystery
-                500s” on the HMI.
-              </li>
-            </ul>
-            <p class="font-semibold">Top 5</p>
-            <p class="font-semibold">Recommendations for future teams</p>
-            <ul class="list-disc pl-5 text-ink/80 space-y-1">
-              <li>
-                Pick one ECAD stack early and stick with it; enforce common
-                footprints.
-              </li>
-              <li>
-                Write a tiny loopback server to simulate the rover so your HMI
-                can be developed offline.
-              </li>
-              <li>
-                Lock down pin maps and regulators before any schematic review.
-              </li>
-              <li>
-                Automate flashing + basic self-tests so every merge proves
-                hardware still responds.
-              </li>
-              <li>
-                Keep a single source of truth for endpoints and message shapes;
-                update it when you change code.
-              </li>
-            </ul>
-            <p class="font-semibold">Next</p>
-            <p class="font-semibold">Version 2.0 ideas</p>
-            <p class="font-semibold">Communication &amp; software</p>
-            <ul class="list-disc pl-5 text-ink/80 space-y-1">
-              <li>
-                Add a command channel from screen → rover (basic drive + OTA).
-              </li>
-              <li>
-                Move to protobuf/CBOR to shrink payloads and add versioning.
-              </li>
-              <li>
-                Stream pipeline with double-buffering + checksum per frame for
-                resilience.
-              </li>
-              <li>
-                Better health pings so the HMI can show link quality and jitter.
-              </li>
-              <li>
-                Split code into comms, sensors, UI, and drivers to isolate bugs
-                faster.
-              </li>
-            </ul>
-            <p class="font-semibold">Hardware</p>
-            <ul class="list-disc pl-5 text-ink/80 space-y-1">
-              <li>
-                Thicker power pours and shorter LED traces based on feedback.
-              </li>
-              <li>
-                Shield the RF path and give GPS a cleaner keep-out.
-              </li>
-              <li>
-                Add current sensing to validate the power budget on-board.
-              </li>
-              <li>
-                Bring test pads for UART/JTAG to speed up field debugging.
-              </li>
-              <li>
-                Drop-in connector for a future particulate sensor or CO sensor.
-              </li>
-            </ul>
+          <p class="text-ink/80">
+            Key lessons and how we would evolve TerraGuard for Version 2.0.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <h3 class="font-semibold">Top 10 lessons</h3>
+              <ul class="list-disc pl-4 text-ink/80 space-y-1 mt-2">
+                <li>One ECAD stack only—KiCad vs Altium slowed merges.</li>
+                <li>Integration time dominates once subsystems work.</li>
+                <li>HTTP polling was simpler to debug than ESP-NOW.</li>
+                <li>WS2812 feedback made air-quality states obvious.</li>
+                <li>Budget PSRAM/frame buffers early for MJPEG.</li>
+                <li>Pin planning first—RF and camera lanes conflict fast.</li>
+                <li>MQ-2 calibration (Ro) mattered more than wiring.</li>
+                <li>Power budget reviews saved traces from overheating.</li>
+                <li>Collect assets early to avoid poster crunch.</li>
+                <li>Document endpoints to prevent “mystery 500s.”</li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <h3 class="font-semibold">Next: Version 2.0 ideas</h3>
+              <ul class="list-disc pl-4 text-ink/80 space-y-1 mt-2">
+                <li>Command channel screen → rover (drive + OTA).</li>
+                <li>Protobuf/CBOR payloads with versioning.</li>
+                <li>Double-buffered streaming with per-frame checksums.</li>
+                <li>Health pings to show link quality/jitter.</li>
+                <li>Layered code: comms, sensors, UI, drivers.</li>
+                <li>Thicker pours, shorter LED traces, RF keep-outs.</li>
+                <li>Add current sensing to validate the budget live.</li>
+                <li>Bring out UART/JTAG test pads.</li>
+                <li>Connector for future particulate or CO sensor.</li>
+              </ul>
+            </div>
           </div>
-          <a
-            class="link font-semibold"
-            href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/reflection/"
-            >And then have a link to
-            https://egr314-2025-f-315.github.io/phoenixforce.github.io/reflection/</a
-          >
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/phoenixforce.github.io/reflection/"
+              class="btn btn-outline"
+              >Full reflection page</a
+            >
+          </div>
         </div>
       </section>
     </main>
