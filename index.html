@@ -402,12 +402,11 @@ title: Project Home · Phoenix Force · EGR314
             />
           </div>
           <p class="text-ink/80">
-            Communication sequence (per diagram): the rover hosts the AP and
-            serves MJPEG + telemetry endpoints. The commander polls those
-            endpoints, and drive commands return over HTTP to the rover. LEDs
-            and audio on both units mirror warnings (gas thresholds, obstacles,
-            visibility) while staying entirely on the rover’s network for field
-            reliability.
+            Communication sequence: the rover hosts the AP and serves MJPEG +
+            telemetry endpoints. The commander polls those endpoints, and drive
+            commands return over HTTP to the rover. LEDs and audio on both units
+            mirror warnings (gas thresholds, obstacles, visibility) while
+            staying entirely on the rover’s network for field reliability.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
@@ -438,6 +437,137 @@ title: Project Home · Phoenix Force · EGR314
             GY‑NEO6MV2 for GPS, L298N for drive control, WS2812B LEDs for clear
             state, and a rugged 7.4V pack feeding 5V/3.3V rails.
           </p>
+          <div class="overflow-x-auto">
+            <table class="table w-full text-sm">
+              <thead>
+                <tr>
+                  <th>Subsystem</th>
+                  <th>Part</th>
+                  <th>Link</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Compute</td>
+                  <td>ESP32-WROOM-32U</td>
+                  <td>
+                    <a
+                      href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32U/9385967"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Rover MCU + AP host</td>
+                </tr>
+                <tr>
+                  <td>HMI</td>
+                  <td>ESP32-S3 7&quot; Elecrow Display</td>
+                  <td>
+                    <a
+                      href="https://www.elecrow.com/7-inch-esp32-display-800x480-lvgl.html"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Screen module + speaker + LEDs</td>
+                </tr>
+                <tr>
+                  <td>Sensing</td>
+                  <td>BME688</td>
+                  <td>
+                    <a
+                      href="https://www.digikey.com/en/products/detail/bosch-sensortec/BME688/13681261"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Air quality + gas resistance</td>
+                </tr>
+                <tr>
+                  <td>Sensing</td>
+                  <td>MQ-2 Gas/Smoke Module</td>
+                  <td>
+                    <a
+                      href="https://a.co/d/e4hOBhI"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Fast gas thresholding</td>
+                </tr>
+                <tr>
+                  <td>Position</td>
+                  <td>u-blox NEO-6M GPS</td>
+                  <td>
+                    <a
+                      href="https://a.co/d/8vv5KV7"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>UART GPS for coords</td>
+                </tr>
+                <tr>
+                  <td>Actuation</td>
+                  <td>L298N Motor Driver</td>
+                  <td>
+                    <a
+                      href="https://a.co/d/f2wVPY0"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Dual H-bridge</td>
+                </tr>
+                <tr>
+                  <td>Indicators</td>
+                  <td>WS2812B LED Strip</td>
+                  <td>
+                    <a
+                      href="https://a.co/d/1gp2LhV"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Status/air-quality feedback</td>
+                </tr>
+                <tr>
+                  <td>Power</td>
+                  <td>L7805CV + LM3940</td>
+                  <td>
+                    <a
+                      href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/591234"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>5 V + 3.3 V rails from 7.4 V pack</td>
+                </tr>
+                <tr>
+                  <td>Energy</td>
+                  <td>7.4 V Li-ion pack</td>
+                  <td>
+                    <a
+                      href="https://a.co/d/2eNwMD9"
+                      target="_blank"
+                      class="link"
+                      >Link</a
+                    >
+                  </td>
+                  <td>Main rover supply</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="flex flex-wrap gap-3">
             <a
               href="/phoenixforce.github.io/assignments/component-selection/"
@@ -458,13 +588,9 @@ title: Project Home · Phoenix Force · EGR314
               >Power Budget</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Power budget snapshot
+              Power budget
             </h2>
           </div>
-          <p class="text-ink/80">
-            Simplified view of the final power budget (full sheet lives in
-            Component Selection).
-          </p>
           <div class="overflow-x-auto">
             <table class="table w-full text-sm">
               <thead>
@@ -569,9 +695,13 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            Full schematic plus routed board and renders. The rover PCB stays
-            within the 100×100 mm target while breaking out power, sensors, and
-            motor control.
+            Full schematic plus routed board and renders. ESP32-S3-U1 is the
+            main processor on the rover PCB, hosting the AP and handling camera,
+            sensing, and drive control. Power steps from the 7.4–7.8 V pack
+            through L7805CV to 5 V and then LM3940 to 3.3 V for logic/sensors.
+            Pin headers break out camera, GPS, MQ-2, BME688, LEDs, and motor
+            lines so off-board components can mount away from the PCB while
+            staying within the 100×100 mm target.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <img
@@ -655,7 +785,17 @@ title: Project Home · Phoenix Force · EGR314
           <p class="text-ink/80">
             Custom rover CAD inspired by NASA Mars rovers, with a rocker-bogie
             suspension to stay stable on uneven ground while keeping costs low.
+            Chassis is split for battery, electronics bay, and sensor mast, and
+            uses generous ground clearance plus mounting bosses for the PCB and
+            off-board sensors.
           </p>
+          <div class="rounded-2xl border border-black/10 overflow-hidden">
+            <img
+              src="/phoenixforce.github.io/assets/Rover_model.png"
+              alt="Rover CAD model"
+              class="w-full object-cover"
+            />
+          </div>
           <div class="flex flex-wrap gap-3">
             <a
               href="/phoenixforce.github.io/components/cad-model"
