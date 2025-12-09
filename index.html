@@ -804,11 +804,9 @@ title: Project Home · Phoenix Force · EGR314
                 class="w-full object-cover"
               />
             </div>
-            <div
-              class="rounded-2xl border border-black/10 overflow-hidden md:col-span-2"
-            >
+            <div class="rounded-2xl border border-black/10 overflow-hidden">
               <img
-                src="/phoenixforce.github.io/assets/SCREEN_RENDER.png"
+                src="/phoenixforce.github.io/assets/SCREEN_RENDER_SIDE.png"
                 alt="Screen render"
                 class="w-full object-cover"
               />
@@ -838,19 +836,24 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            Two core codebases ship the system. <strong>TerraGuard_Rover.ino</strong>
-            (rover / ESP32-CAM) hosts the AP, streams MJPEG, reads BME688 + MQ-2
-            + ultrasonic + GPS + MPU6050, enforces safety thresholds, and
-            drives the L298N motors. <strong>TerraGuard_HMI.ino</strong> (screen
-            / CrowPanel ESP32-S3) joins the AP, polls telemetry, displays live
-            video in LVGL, plays audio/LED cues, and sends drive commands over
-            HTTP back to the rover.
+            Two core codebases ship the system.
+            <strong>TerraGuard_Rover.ino</strong> (rover / ESP32-CAM) hosts the
+            AP, streams MJPEG, reads BME688 + MQ-2 + ultrasonic + GPS + MPU6050,
+            enforces safety thresholds, and drives the L298N motors.
+            <strong>TerraGuard_HMI.ino</strong> (screen / CrowPanel ESP32-S3)
+            joins the AP, polls telemetry, displays live video in LVGL, plays
+            audio/LED cues, and sends drive commands over HTTP back to the
+            rover.
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2">
+            <div
+              class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2"
+            >
               <h3 class="font-semibold">Rover highlights</h3>
-              <pre class="text-xs overflow-x-auto"><code>// HTTP handlers return JSON metrics/coords
+              <pre
+                class="text-xs overflow-x-auto"
+              ><code>// HTTP handlers return JSON metrics/coords
 void handleMetrics() {
   bme_read(bme);
   float mq2Rs = mq2ReadRs();
@@ -873,9 +876,13 @@ void turnLeft(int ms)     { /* ... */ }</code></pre>
                 at boot; BME688 readings plus gas thresholds drive alerts.
               </p>
             </div>
-            <div class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2">
+            <div
+              class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2"
+            >
               <h3 class="font-semibold">Screen highlights</h3>
-              <pre class="text-xs overflow-x-auto"><code>// Display + RGB bus setup for 800x480
+              <pre
+                class="text-xs overflow-x-auto"
+              ><code>// Display + RGB bus setup for 800x480
 LGFX lcd;   // LovyanGFX panel/bus config
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
