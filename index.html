@@ -792,14 +792,27 @@ title: Project Home · Phoenix Force · EGR314
             suspension to stay stable on uneven ground while keeping costs low.
             Chassis is split for battery, electronics bay, and sensor mast, and
             uses generous ground clearance plus mounting bosses for the PCB and
-            off-board sensors.
+            off-board sensors. The screen enclosure was shaped to feel like a
+            carryable tablet with a translucent back so LED alerts stay visible,
+            and a base that can rest on a table as a stand.
           </p>
-          <div class="rounded-2xl border border-black/10 overflow-hidden">
-            <img
-              src="/phoenixforce.github.io/assets/Rover_render.png"
-              alt="Rover CAD model"
-              class="w-full object-cover"
-            />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-black/10 overflow-hidden">
+              <img
+                src="/phoenixforce.github.io/assets/ROVER_RENDER_SIDE.png"
+                alt="Rover side render"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="rounded-2xl border border-black/10 overflow-hidden md:col-span-2"
+            >
+              <img
+                src="/phoenixforce.github.io/assets/SCREEN_RENDER.png"
+                alt="Screen render"
+                class="w-full object-cover"
+              />
+            </div>
           </div>
           <div class="flex flex-wrap gap-3">
             <a
@@ -825,15 +838,63 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            Two core codebases ship the system.
-            <strong>sketch_nov24a.ino</strong> runs on the rover (ESP32-CAM): it
-            hosts the Wi‑Fi AP, streams MJPEG video, reads BME688 + MQ-2 +
-            ultrasonic + GPS + MPU6050, enforces safety thresholds, and drives
-            the L298N motors. <strong>TerraGuard_HMI.ino</strong> runs on the
-            commander screen (CrowPanel ESP32-S3): it joins the AP, polls
-            telemetry, displays live video in LVGL, plays audio and LED cues,
-            and sends drive commands over HTTP back to the rover.
+            Two core codebases ship the system. <strong>TerraGuard_Rover.ino</strong>
+            (rover / ESP32-CAM) hosts the AP, streams MJPEG, reads BME688 + MQ-2
+            + ultrasonic + GPS + MPU6050, enforces safety thresholds, and
+            drives the L298N motors. <strong>TerraGuard_HMI.ino</strong> (screen
+            / CrowPanel ESP32-S3) joins the AP, polls telemetry, displays live
+            video in LVGL, plays audio/LED cues, and sends drive commands over
+            HTTP back to the rover.
           </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2">
+              <h3 class="font-semibold">Rover highlights</h3>
+              <pre class="text-xs overflow-x-auto"><code>// HTTP handlers return JSON metrics/coords
+void handleMetrics() {
+  bme_read(bme);
+  float mq2Rs = mq2ReadRs();
+  // ... map Rs to gasType + airQuality
+  server.send(200, "application/json", json);
+}
+
+void handleControl() {
+  if (server.hasArg("plain")) {
+    processCommandString(server.arg("plain")); // parse "2 forward, left"
+  }
+}
+
+// Drive helpers (mapped to HTTP commands)
+void driveForward(int ms) { /* set motor pins, delay, stop */ }
+void turnLeft(int ms)     { /* ... */ }</code></pre>
+              <p class="text-sm text-ink/75">
+                Rover exposes `/metrics`, `/coords`, and `/control`. Commands
+                map to pin-level motor helpers. MQ-2 is preheated and calibrated
+                at boot; BME688 readings plus gas thresholds drive alerts.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-black/10 bg-black/5 p-4 space-y-2">
+              <h3 class="font-semibold">Screen highlights</h3>
+              <pre class="text-xs overflow-x-auto"><code>// Display + RGB bus setup for 800x480
+LGFX lcd;   // LovyanGFX panel/bus config
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// Poll rover + update LVGL UI
+fetchMetrics();  // HTTP GET /metrics
+fetchCoords();   // HTTP GET /coords
+pollStream();    // MJPEG stream to sprite
+
+// Drive commands over HTTP back to rover
+postCommand("forward");
+postCommand("left");</code></pre>
+              <p class="text-sm text-ink/75">
+                Screen configures the RGB panel for 800×480, runs periodic HTTP
+                polls for metrics/coords, and pulls MJPEG frames into an LVGL
+                sprite. Drive buttons send HTTP POSTs; LEDs mirror link/alert
+                states.
+              </p>
+            </div>
+          </div>
           <div class="flex flex-wrap gap-3">
             <a
               href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/resources/#code"
@@ -963,7 +1024,7 @@ title: Project Home · Phoenix Force · EGR314
           <div class="flex justify-center mt-3">
             <a
               href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/directory/"
-              class="btn btn-outline"
+              class="btn bg-rose border-none text-white hover:bg-rose/90"
               >Channel directory</a
             >
           </div>
