@@ -60,7 +60,7 @@ title: Project Home · Phoenix Force · EGR314
         class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/65"
       ></div>
       <div
-        class="max-w-6xl mx-auto px-4 lg:px-6 py-20 md:py-28 relative min-h-[75vh] flex items-center justify-center text-center"
+        class="max-w-6xl mx-auto px-4 lg:px-6 py-12 md:py-20 relative min-h-[75vh] flex items-start justify-center text-center"
       >
         <div class="max-w-4xl space-y-4 text-white">
           <p class="uppercase tracking-[0.18em] text-xs font-extrabold">
@@ -69,10 +69,10 @@ title: Project Home · Phoenix Force · EGR314
           <h1
             class="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight"
           >
-            Wildfire-ready rover with real-time sensing and a glove-friendly HMI
+            Wildfire-ready rover
           </h1>
           <p class="text-white/85 text-lg">
-            A self-contained rover + commander screen that spins up its own
+            A self-contained rover with commander screen that spins up its own
             access point, streams video and metrics, and alerts crews before
             small hot spots become full wildfires.
           </p>
@@ -376,20 +376,38 @@ title: Project Home · Phoenix Force · EGR314
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
             <span class="badge bg-black/5 border border-black/10 font-bold"
-              >Block Diagram</span
+              >Block Diagram & Comms</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Block diagram
+              Architecture and communication flow
             </h2>
           </div>
           <p class="text-ink/80">
-            We split the architecture into three modules—rover electronics,
-            power, and screen/HMI—to clarify pins, rails, and comms. It
-            satisfied EGR 314 requirements (actuator via L298N, I²C + analog
-            sensing, microcontroller comms via UART/mesh) and guided PCB size,
-            pin mapping, and voltage regulation. Ownership: Erjan (GPS +
-            motors), Amanda + Danitza (BME688 + gas), Emonie (antennas), James
-            (power), Vinny (screen + RX/TX).
+            We split the architecture into rover electronics, power, and
+            screen/HMI to clarify rails, pins, and comms while staying inside
+            the 100×100 mm constraint. Ownership: Erjan (GPS + motors), Amanda
+            + Danitza (BME688 + gas), Emonie (antennas), James (power), Vinny
+            (screen + RX/TX).
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img
+              src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/Block_Diagram.png"
+              alt="Block diagram"
+              class="rounded-2xl border border-black/10"
+            />
+            <img
+              src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/comm_sequence.png"
+              alt="Communication sequence"
+              class="rounded-2xl border border-black/10"
+            />
+          </div>
+          <p class="text-ink/80">
+            Communication sequence (per diagram): the rover hosts the AP and
+            serves MJPEG + telemetry endpoints. The commander polls those
+            endpoints, and drive commands return over HTTP to the rover. LEDs
+            and audio on both units mirror warnings (gas thresholds, obstacles,
+            visibility) while staying entirely on the rover’s network for field
+            reliability.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
@@ -398,32 +416,6 @@ title: Project Home · Phoenix Force · EGR314
               >See block diagram page</a
             >
           </div>
-        </div>
-      </section>
-
-      <section
-        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
-        id="comms"
-      >
-        <div class="card-body space-y-4">
-          <div class="flex items-center gap-2">
-            <span class="badge bg-black/5 border border-black/10 font-bold"
-              >Communication Sequence</span
-            >
-            <h2 class="card-title font-display text-2xl font-black">
-              Communication sequence
-            </h2>
-          </div>
-          <p class="text-ink/80">
-            The commander polls telemetry and video over the rover’s AP, and
-            sends drive commands back via HTTP. LEDs and audio cues fire locally
-            on both units for immediate state feedback.
-          </p>
-          <img
-            src="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/comm_sequence.png"
-            alt="Communication sequence"
-            class="rounded-2xl border border-black/10"
-          />
         </div>
       </section>
 
