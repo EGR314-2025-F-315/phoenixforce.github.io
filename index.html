@@ -60,9 +60,9 @@ title: Project Home · Phoenix Force · EGR314
         class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/65"
       ></div>
       <div
-        class="max-w-6xl mx-auto px-4 lg:px-6 py-20 md:py-28 relative min-h-[75vh] flex items-end"
+        class="max-w-6xl mx-auto px-4 lg:px-6 py-20 md:py-28 relative min-h-[75vh] flex items-center justify-center text-center"
       >
-        <div class="max-w-3xl space-y-4 text-white">
+        <div class="max-w-4xl space-y-4 text-white">
           <p class="uppercase tracking-[0.18em] text-xs font-extrabold">
             Phoenix Force · TerraGuard
           </p>
@@ -76,11 +76,13 @@ title: Project Home · Phoenix Force · EGR314
             access point, streams video and metrics, and alerts crews before
             small hot spots become full wildfires.
           </p>
-          <a
-            href="#mission"
-            class="btn btn-primary bg-rose border-none text-white"
-            >See the mission</a
-          >
+          <div class="flex justify-center">
+            <a
+              href="/phoenixforce.github.io/team-organization/"
+              class="btn btn-primary bg-rose border-none text-white"
+              >Learn more about the team</a
+            >
+          </div>
         </div>
       </div>
     </header>
@@ -211,20 +213,42 @@ title: Project Home · Phoenix Force · EGR314
             </h2>
           </div>
           <p class="text-ink/80">
-            Wildfires are becoming more common and more severe, and the biggest
-            challenge is catching early hot spots before they grow. Many of the
-            warning signs happen in remote terrain where people can’t check in
-            person. TerraGuard is our answer: a rover that patrols, senses
-            temperature, smoke, air quality, humidity, pressure, and shares live
-            video so responders can react faster and safer.
+            Wildfires are becoming more common and more severe, and one of the
+            biggest challenges for responders is catching early hot spots before
+            they grow into large fires. Many of these early warning signs happen
+            in remote areas where people aren’t always able to check in person.
+            Our project focuses on solving this problem by creating TerraGuard,
+            an autonomous rover that can patrol an area and collect real-time
+            environmental data that may point to potential wildfire activity.
+            The main purpose of the system is to help detect changes in
+            temperature, smoke, air quality, and other conditions so responders
+            can react faster and more safely.
           </p>
           <p class="text-ink/80">
-            Primary users are firefighters, fire-watch crews, and emergency
-            responders. Secondary users include researchers and community
-            partners who need simple, durable, and reliable data from the field.
-            The rover raises alerts with LEDs and a speaker when readings cross
-            thresholds, and everything is built to be understandable at a
-            glance—even with gloves on.
+            The target users for this system are firefighters, fire-watch teams,
+            and emergency response groups who need reliable information from the
+            field without having to physically be in dangerous areas. We also
+            considered secondary users like researchers and community partners
+            who could use the data for studying fire behavior or improving
+            prevention strategies. These users need technology that is easy to
+            understand, simple to operate, and durable enough for outdoor
+            environments.
+          </p>
+          <p class="text-ink/80">
+            The scope of our project includes designing and prototyping a
+            complete embedded system using sensors, a microcontroller, wireless
+            communication, and a mobile rover platform. TerraGuard uses HTTPS to
+            send and receive data to and from the base station, where alerts can
+            be viewed in real time. If the rover detects something past a safe
+            threshold, it triggers LEDs and a speaker to warn responders.
+          </p>
+          <p class="text-ink/80">
+            Our prototype includes multiple environmental sensors, a GPS module,
+            and a camera mounted on a mobile rover. The system reads data,
+            checks it against preset safety limits, and communicates the
+            information through a mesh network. Each team member received $60
+            toward the project, giving us a total budget of $360 to build and
+            test the rover.
           </p>
         </div>
       </section>
@@ -246,20 +270,26 @@ title: Project Home · Phoenix Force · EGR314
             <div class="p-4 rounded-2xl bg-black/5 border border-black/10">
               <h3 class="font-semibold text-lg">Team Charter</h3>
               <p class="mt-2 text-ink/80">
-                Build a reliable, realistic wildfire-detection prototype that
-                works without public Wi‑Fi and surfaces clear, glove-friendly
-                alerts. Hit measurable goals—low-latency warnings, accurate
-                sensing, and consistent communication—and document trade-offs
-                along the way.
+                Phoenix Force commits to building a reliable and realistic
+                wildfire-detection prototype that can identify early warning
+                signs, communicate without public Wi‑Fi, and present clear
+                alerts through a simple, glove-friendly interface. Our team aims
+                to meet measurable engineering goals such as low-latency alerts,
+                accurate sensor performance, and consistent communication
+                reliability. We agree to document our decisions, justify our
+                trade-offs, and deliver a final package that demonstrates our
+                technical growth and reflects a meaningful engineering effort.
               </p>
             </div>
             <div class="p-4 rounded-2xl bg-black/5 border border-black/10">
               <h3 class="font-semibold text-lg">Product Mission</h3>
               <p class="mt-2 text-ink/80">
-                Design a rugged, easy-to-use rover that senses early changes,
-                sends dependable real-time information, and stays connected even
-                when no public networks exist—so crews can decide faster and
-                safer.
+                Our mission is to design a rugged, easy-to-use wildfire-response
+                rover that senses early changes in the environment, delivers
+                clear alerts, and stays connected even in areas without public
+                networks. The goal is to help wildfire crews make faster, safer
+                decisions by giving them straightforward and dependable
+                real-time information.
               </p>
             </div>
           </div>
@@ -280,44 +310,45 @@ title: Project Home · Phoenix Force · EGR314
         <div class="card-body space-y-4">
           <div class="flex items-center gap-2">
             <span class="badge bg-black/5 border border-black/10 font-bold"
-              >Decision-Making</span
+              >Decision-Making · System</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Decision-making process
+              Decision-making and final architecture
             </h2>
           </div>
           <p class="text-ink/80">
-            We brainstormed 100+ ideas and narrowed to 15: thermal drones, smoke
-            sensors, LoRa mesh, rugged weather stations, swappable batteries,
-            hybrid firefighting drones. The common thread was early wildfire
-            detection with mobility and reliable comms. We chose a rover over a
-            drone for cost, endurance, payload, and easier ops, then paired it
-            with a simple HMI for clarity.
+            At the start of the project, our team brainstormed over a hundred
+            different ideas. We eventually narrowed them down to a top fifteen
+            list that included things like a thermal-camera drone, smoke
+            sensors, LoRa mesh communication, rugged weather stations,
+            swappable-battery systems, and even a hybrid firefighting drone.
+            While going through these ideas, we noticed that many of them
+            pointed toward the same need, which was early wildfire detection
+            with good mobility and reliable communication. Instead of choosing a
+            fully stationary weather station or going with an expensive UAV
+            platform, our team decided to combine the idea of a mobile sensing
+            unit with a simple HMI. We felt this gave us a unique direction
+            while still being realistic for our skill level and budget. We also
+            chose a rover instead of a drone because drones are much more
+            difficult to operate, cost more to maintain, and have very short
+            battery life. A rover can carry more sensors, run longer, and avoid
+            flight restrictions, which made it the better choice for us.
+            Instructor feedback also played a big role in shaping our concept.
+            We were asked to put our concept generation directly on the website
+            instead of only submitting a document. The suggestion to use
+            pop-ups or tabs pushed us to make the site more interactive. We were
+            also told to cite any AI-generated images and to add callouts to our
+            product sketch so viewers could easily tell what each subsystem was.
+            This helped us clean up our presentation and make our design
+            clearer. The biggest pivot we made was shifting from drone-based
+            sensing to a ground-based rover that collects temperature,
+            heat-pattern, air-quality, humidity, and pressure data. Once we
+            decided on this approach, we focused on adding mesh-network
+            communication and a separate screen module for displaying alerts.
+            This final concept fit the course requirements, stayed within our
+            budget, and gave us something original that was not copied from
+            online projects.
           </p>
-          <p class="text-ink/80">
-            Instructor feedback pushed us to publish concept generation on-site,
-            add callouts to sketches, cite AI imagery, and use interactive
-            tabs/pop-ups. The biggest pivot was dropping a drone for a ground
-            rover with mesh networking, HTTP control, and on-screen alerts—an
-            approach that met requirements, stayed in budget, and remained
-            original.
-          </p>
-        </div>
-      </section>
-
-      <section
-        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
-        id="system"
-      >
-        <div class="card-body space-y-4">
-          <div class="flex items-center gap-2">
-            <span class="badge bg-black/5 border border-black/10 font-bold"
-              >System Overview</span
-            >
-            <h2 class="card-title font-display text-2xl font-black">
-              Final system architecture
-            </h2>
-          </div>
           <p class="text-ink/80">
             Two units work together: the Rover (ESP32‑CAM) and the Commander
             Screen (CrowPanel ESP32‑S3). The rover reads BME688, MQ-2, GPS,
@@ -348,7 +379,7 @@ title: Project Home · Phoenix Force · EGR314
               >Block Diagram</span
             >
             <h2 class="card-title font-display text-2xl font-black">
-              Block diagram rationale
+              Block diagram
             </h2>
           </div>
           <p class="text-ink/80">
