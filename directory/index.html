@@ -1,0 +1,240 @@
+---
+layout: none
+title: Directory · Phoenix Force · EGR314
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Directory · Phoenix Force · EGR314</title>
+    <link
+      rel="icon"
+      href="https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/phoenix-force-logo.png"
+    />
+
+    <!-- Tailwind + daisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { ink: "#151C17", rose: "#D8A48F", peach: "#BB8588" },
+            fontFamily: {
+              display: ["ui-serif", "Georgia", "Times New Roman", "serif"],
+            },
+            boxShadow: { soft: "0 14px 36px rgba(21,28,23,.10)" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: radial-gradient(
+            900px 560px at -10% -20%,
+            rgba(215, 206, 147, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1100px 640px at 120% 0%,
+            rgba(187, 133, 136, 0.1),
+            transparent 55%
+          ),
+          #f6f5f2;
+      }
+    </style>
+  </head>
+  <body class="text-ink">
+    {% include nav.html %}
+
+    <header class="max-w-6xl mx-auto px-4 lg:px-6 pt-10">
+      <div
+        class="relative overflow-hidden rounded-[28px] border border-black/10 shadow-soft"
+      >
+        <div
+          class="absolute inset-0 bg-[url('/phoenixforce.github.io/assets/hero.png')] bg-cover bg-center"
+        ></div>
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
+        <div class="relative px-6 py-12 md:px-10 md:py-14 text-center space-y-3">
+          <p class="uppercase tracking-[0.18em] text-sm text-ink/70 font-extrabold">
+            Channel Directory
+          </p>
+          <h1
+            class="font-display text-4xl md:text-5xl font-black leading-tight text-ink"
+          >
+            Lost? Browse every page
+          </h1>
+          <p class="text-ink/80">
+            Quick links with explanations so you can jump to the right spot.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 lg:px-6 pb-14 space-y-6 mt-8">
+      <section
+        class="card bg-white rounded-3xl border border-black/10 shadow-soft"
+      >
+        <div class="card-body space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="badge bg-black/5 border border-black/10 font-bold"
+              >Pages</span
+            >
+            <h2 class="card-title font-display text-2xl font-black">
+              Site map
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <a
+              class="card bg-black/5 border border-black/10 rounded-2xl hover:bg-black/10 transition"
+              href="/phoenixforce.github.io/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Home</h3>
+                <p class="text-sm text-ink/75">
+                  Hero overview, mission, system story, components, PCB, HMI,
+                  CAD, software, and reflection summaries.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/team-organization/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">
+                  Team Organization
+                </h3>
+                <p class="text-sm text-ink/75">
+                  Charter, mission, roster, contacts, and how roles were
+                  assigned.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/assignments/design-ideation/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Design Ideation</h3>
+                <p class="text-sm text-ink/75">
+                  Concept generation, scoring, and the first assignment
+                  deliverable.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/assignments/block-diagram/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Block Diagram</h3>
+                <p class="text-sm text-ink/75">
+                  Final architecture diagram, comms mapping, and rationale.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/assignments/component-selection/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">
+                  Component Selection
+                </h3>
+                <p class="text-sm text-ink/75">
+                  BOM rationale, regulator choices, and power budget.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/assignments/system-verification/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">
+                  System Verification
+                </h3>
+                <p class="text-sm text-ink/75">
+                  Test plans, comms checks, and verification artifacts.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/resources/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Resources</h3>
+                <p class="text-sm text-ink/75">
+                  Code zip, schematics, PCB renders/photos, gallery, and live
+                  firmware snippets.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/final-report/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Final Report</h3>
+                <p class="text-sm text-ink/75">
+                  Comprehensive write-up with all artifacts and analysis.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/innovation-poster/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">
+                  Innovation Poster
+                </h3>
+                <p class="text-sm text-ink/75">
+                  Showcase poster with rover highlights and visuals.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/reflection/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Reflection</h3>
+                <p class="text-sm text-ink/75">
+                  Lessons learned, recommendations, and Version 2.0 ideas.
+                </p>
+              </div>
+            </a>
+            <a
+              class="card bg-white border border-black/10 rounded-2xl hover:bg-black/5 transition"
+              href="/phoenixforce.github.io/appendix/"
+            >
+              <div class="card-body">
+                <h3 class="font-display text-xl font-black">Appendix</h3>
+                <p class="text-sm text-ink/75">
+                  Supplemental materials and supporting details.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t border-black/10 mt-12">
+      <div class="max-w-6xl mx-auto px-4 lg:px-6 py-10 space-y-4">
+        <div class="text-sm font-bold uppercase tracking-wide text-ink/60">
+          Directory · Phoenix Force · EGR314
+        </div>
+        <div class="text-sm opacity-70">© 2025 Phoenix Force</div>
+      </div>
+    </footer>
+  </body>
+</html>
