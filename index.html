@@ -54,12 +54,14 @@ title: Project Home · Phoenix Force · EGR314
 
     <header class="relative w-full overflow-hidden">
       <div
-        class="absolute inset-0 bg-[url('https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero_group_image.jpeg')] bg-cover bg-center"
+        class="absolute inset-0 bg-[url('https://egr314-2025-f-315.github.io/phoenixforce.github.io/assets/hero_group_image.jpeg')] bg-cover bg-[center_20%]"
       ></div>
       <div
         class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/65"
       ></div>
-      <div class="max-w-6xl mx-auto px-4 lg:px-6 py-16 md:py-24 relative">
+      <div
+        class="max-w-6xl mx-auto px-4 lg:px-6 py-20 md:py-28 relative min-h-[75vh] flex items-end"
+      >
         <div class="max-w-3xl space-y-4 text-white">
           <p class="uppercase tracking-[0.18em] text-xs font-extrabold">
             Phoenix Force · TerraGuard
@@ -74,18 +76,11 @@ title: Project Home · Phoenix Force · EGR314
             access point, streams video and metrics, and alerts crews before
             small hot spots become full wildfires.
           </p>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="#mission"
-              class="btn btn-primary bg-rose border-none text-white"
-              >See the mission</a
-            >
-            <a
-              href="/phoenixforce.github.io/team-organization/"
-              class="btn btn-outline text-white border-white/60 hover:bg-white/10"
-              >Team organization</a
-            >
-          </div>
+          <a
+            href="#mission"
+            class="btn btn-primary bg-rose border-none text-white"
+            >See the mission</a
+          >
         </div>
       </div>
     </header>
@@ -109,17 +104,95 @@ title: Project Home · Phoenix Force · EGR314
             Austin, and Erjan Baigenzhin built TerraGuard to help crews act
             faster and safer around wildfire risk.
           </p>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="/phoenixforce.github.io/team-organization/"
-              class="btn btn-outline"
-              >Open team page</a
-            >
-            <a
-              href="/phoenixforce.github.io/innovation-poster/"
-              class="btn"
-              >See showcase poster</a
-            >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">Vinny Panchal</div>
+              <div class="text-sm text-ink/70">
+                HMI, firmware, PCB, poster, site
+              </div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/panchalvinny/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">Emonie France</div>
+              <div class="text-sm text-ink/70">
+                Poster content, build help, debugging, RF
+              </div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/emonie-france-7b0a60366/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">Amanda Pizarro</div>
+              <div class="text-sm text-ink/70">
+                Gas sensing support and reviews
+              </div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/amapiz/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">Danitza Jimenez</div>
+              <div class="text-sm text-ink/70">
+                Power budget, CAD/3D prints, block diagrams
+              </div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/danitza-jimenez-0624b037a/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">James Austin</div>
+              <div class="text-sm text-ink/70">Power subsystem bring-up</div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/james-austin-14138137b/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl border border-black/10 bg-black/5">
+              <div class="font-semibold text-lg">Erjan Baigenzhin</div>
+              <div class="text-sm text-ink/70">
+                GPS integration, soldering, drive testing
+              </div>
+              <div class="mt-3">
+                <a
+                  class="btn btn-sm btn-outline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/erjanbaigenzhin/"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -142,8 +215,8 @@ title: Project Home · Phoenix Force · EGR314
             challenge is catching early hot spots before they grow. Many of the
             warning signs happen in remote terrain where people can’t check in
             person. TerraGuard is our answer: a rover that patrols, senses
-            temperature, smoke, air quality, humidity, pressure, and shares
-            live video so responders can react faster and safer.
+            temperature, smoke, air quality, humidity, pressure, and shares live
+            video so responders can react faster and safer.
           </p>
           <p class="text-ink/80">
             Primary users are firefighters, fire-watch crews, and emergency
@@ -280,12 +353,12 @@ title: Project Home · Phoenix Force · EGR314
           </div>
           <p class="text-ink/80">
             We split the architecture into three modules—rover electronics,
-            power, and screen/HMI—to clarify pins, rails, and comms. It satisfied
-            EGR 314 requirements (actuator via L298N, I²C + analog sensing,
-            microcontroller comms via UART/mesh) and guided PCB size, pin
-            mapping, and voltage regulation. Ownership: Erjan (GPS + motors),
-            Amanda + Danitza (BME688 + gas), Emonie (antennas), James (power),
-            Vinny (screen + RX/TX).
+            power, and screen/HMI—to clarify pins, rails, and comms. It
+            satisfied EGR 314 requirements (actuator via L298N, I²C + analog
+            sensing, microcontroller comms via UART/mesh) and guided PCB size,
+            pin mapping, and voltage regulation. Ownership: Erjan (GPS +
+            motors), Amanda + Danitza (BME688 + gas), Emonie (antennas), James
+            (power), Vinny (screen + RX/TX).
           </p>
           <div class="flex flex-wrap gap-3">
             <a
