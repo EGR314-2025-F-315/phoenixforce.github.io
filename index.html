@@ -47,6 +47,26 @@ title: Project Home · Phoenix Force · EGR314
           ),
           #f6f5f2;
       }
+      /* Softer badges and pills, especially on mobile */
+      .badge {
+        background: #f5f5f5;
+        border-color: #dcdcdc;
+        color: #4b5563;
+        font-weight: 700;
+      }
+      @media (max-width: 640px) {
+        .card .badge {
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+        .card .btn,
+        .card .btn-outline {
+          min-height: 0;
+          height: auto;
+          padding: 10px 14px;
+          font-size: 13px;
+        }
+      }
     </style>
   </head>
   <body class="text-ink">
@@ -806,7 +826,7 @@ title: Project Home · Phoenix Force · EGR314
             </div>
             <div class="rounded-2xl border border-black/10 overflow-hidden">
               <img
-                src="/phoenixforce.github.io/assets/SCREEN_RENDER_SIDE.png"
+                src="/phoenixforce.github.io/assets/SCREEN_RENDER.png"
                 alt="Screen render"
                 class="w-full object-cover"
               />
